@@ -1,126 +1,94 @@
 import type { Metadata } from "next";
+import { getProducts } from "@/lib/products";
+import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
 
 export const metadata: Metadata = {
-  title: "PS5・Xbox対応ゲーミングモニターおすすめランキング2026 | ゲーミング比較ラボ",
-  description: "PS5・Xbox対応ゲーミングモニターのおすすめランキング。4K・144Hz・1ms対応モデルを徹底比較。INZONE M9・LG・ASUSなど人気5製品。",
+  title: "PS5・Xboxゲーミングモニターおすすめランキング2026 | ゲーミング比較ラボ",
+  description: "PS5・Xbox対応ゲーミングモニターのおすすめランキング。Acer Nitro・JAPANNEXT・I-O DATA・Samsung Odysseyなどを徹底比較。",
 };
 
-const monitors = [
+const editorials: Editorial[] = [
   {
-    rank: 1,
-    name: "INZONE M9 II",
-    maker: "Sony",
-    compatible: ["PS5", "Xbox"],
-    price: "¥89,980",
-    resolution: "4K（3840×2160）",
-    refreshRate: "144Hz",
-    responseTime: "1ms",
-    panel: "IPS",
-    pros: ["PS5向けAuto HDR Tone Mapping搭載", "4K/144Hz・HDMI 2.1対応", "VRR（可変リフレッシュレート）対応", "Anti-motion blur機能搭載"],
-    cons: ["価格が高い", "主にPS5特化の機能"],
-    point: "PS5向けに最適化された唯一無二のモニター。PS5ユーザーなら最高の選択肢。",
-    score: 4.9,
-    amazonLink: "#",
-    rakutenLink: "#",
-    rankColor: "text-amber-400",
-    badge: "PS5最適化",
+    keyword: "Acer Nitro ゲーミングモニター 27インチ IPS WQHD 200Hz",
+    badge: "編集部イチオシ",
     badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/30",
+    rankColor: "text-amber-400",
+    score: 4.7,
+    point: "200HzのIPSパネルでPS5の120fps出力も滑らかに表示。コスパと性能のバランスが◎。",
+    pros: ["200Hzで滑らかな表示", "IPSパネルで色再現性が高い", "WQHD解像度で高精細", "HDR対応"],
+    cons: ["スタンドの高さ調整が簡易的", "スピーカーは付属しない"],
+    specs: [
+      { label: "サイズ", value: "27インチ" },
+      { label: "リフレッシュレート", value: "200Hz" },
+    ],
   },
   {
-    rank: 2,
-    name: "LG 27GP850-B",
-    maker: "LG",
-    compatible: ["PS5", "Xbox", "PC"],
-    price: "¥44,800",
-    resolution: "WQHD（2560×1440）",
-    refreshRate: "180Hz",
-    responseTime: "1ms",
-    panel: "Nano IPS",
-    pros: ["180HzでPC・Xboxも快適", "Nano IPSで発色が優秀", "AMD FreeSync / G-Sync Compatible", "コスパが非常に高い"],
-    cons: ["4K非対応", "PS5では120Hzが上限"],
-    point: "コスパと性能のバランスが最高クラス。PC・Xboxと併用するなら最強候補。",
-    score: 4.6,
-    amazonLink: "#",
-    rakutenLink: "#",
-    rankColor: "text-slate-400",
+    keyword: "JAPANNEXT 27インチ WQHD 165Hz IPSパネル ゲーミングモニター",
     badge: "コスパ最強",
     badgeColor: "bg-blue-500/20 text-blue-300 border-blue-500/30",
-  },
-  {
-    rank: 3,
-    name: "ASUS TUF Gaming VG28UQL1A",
-    maker: "ASUS",
-    compatible: ["PS5", "Xbox", "PC"],
-    price: "¥74,800",
-    resolution: "4K（3840×2160）",
-    refreshRate: "144Hz",
-    responseTime: "1ms",
-    panel: "IPS",
-    pros: ["4K/144Hz・HDMI 2.1対応", "Xbox認定モニター", "DisplayHDR 400対応", "4入力同時表示（PBP）"],
-    cons: ["価格がやや高い", "スタンドの調整範囲が狭い"],
-    point: "Xboxの認定を受けた4Kゲーミングモニター。PS5・Xboxどちらでも性能を最大限に発揮。",
-    score: 4.5,
-    amazonLink: "#",
-    rakutenLink: "#",
-    rankColor: "text-orange-400",
-    badge: "Xbox認定",
-    badgeColor: "bg-green-500/20 text-green-300 border-green-500/30",
-  },
-  {
-    rank: 4,
-    name: "BenQ MOBIUZ EX2710Q",
-    maker: "BenQ",
-    compatible: ["PS5", "Xbox", "PC"],
-    price: "¥48,980",
-    resolution: "WQHD（2560×1440）",
-    refreshRate: "165Hz",
-    responseTime: "1ms",
-    panel: "IPS",
-    pros: ["内蔵スピーカーが高音質", "HDRi（自動HDR調整）搭載", "目に優しいアイケア機能", "デザインがスタイリッシュ"],
-    cons: ["4K非対応", "HDMI 2.1非対応"],
-    point: "スピーカー品質が群を抜いて優秀。ヘッドセットなしで楽しみたい人向け。",
+    rankColor: "text-slate-400",
     score: 4.4,
-    amazonLink: "#",
-    rakutenLink: "#",
-    rankColor: "text-purple-400",
-    badge: "スピーカー最強",
-    badgeColor: "bg-purple-500/20 text-purple-300 border-purple-500/30",
+    point: "価格を抑えつつWQHD・165Hzを実現。初めてのゲーミングモニターに最適。",
+    pros: ["価格が手ごろ", "WQHD高解像度", "165Hzで応答性良好", "国内サポートあり"],
+    cons: ["発色は上位機種にやや劣る", "HDRは簡易対応"],
+    specs: [
+      { label: "サイズ", value: "27インチ" },
+      { label: "リフレッシュレート", value: "165Hz" },
+    ],
   },
   {
-    rank: 5,
-    name: "PHILIPS 242E1GAEZ",
-    maker: "PHILIPS",
-    compatible: ["PS5", "Xbox", "PC"],
-    price: "¥19,800",
-    resolution: "FHD（1920×1080）",
-    refreshRate: "165Hz",
-    responseTime: "1ms",
-    panel: "VA",
-    pros: ["価格が非常に安い", "165Hzで動きが滑らか", "コントラスト比が高い（VAパネル）", "エントリー向け最適"],
-    cons: ["4K・WQHDより解像度が低い", "色域がIPSより狭い"],
-    point: "とにかく安くゲーミングモニターを導入したい人向け。まず始めの1台として最適。",
-    score: 4.1,
-    amazonLink: "#",
-    rakutenLink: "#",
-    rankColor: "text-teal-400",
-    badge: "最安エントリー",
+    keyword: "JAPANNEXT 27インチ 4K 165Hz IPSパネル ゲーミングモニター",
+    badge: "高画質志向",
+    badgeColor: "bg-green-500/20 text-green-300 border-green-500/30",
+    rankColor: "text-orange-400",
+    score: 4.6,
+    point: "4K解像度と165Hzを両立。PS5の4K/120fps出力を最大限活かせる一台。",
+    pros: ["4K高精細表示", "165Hzで滑らかな動き", "IPSパネルで視野角が広い", "据え置き利用に最適"],
+    cons: ["価格はやや高め", "PCで4K/165Hzを出すには高性能GPUが必要"],
+    specs: [
+      { label: "サイズ", value: "27インチ" },
+      { label: "解像度", value: "4K (3840×2160)" },
+    ],
+  },
+  {
+    keyword: "I-O DATA 144Hz対応27型ゲーミングモニター GigaCrysta",
+    badge: "信頼の国産",
+    badgeColor: "bg-purple-500/20 text-purple-300 border-purple-500/30",
+    rankColor: "text-purple-400",
+    score: 4.3,
+    point: "国内メーカーならではの安心サポート。144Hzで快適なプレイ環境を構築できる。",
+    pros: ["国内メーカーで安心", "144Hzで応答性が良い", "ゲームに適した低遅延設計", "サポート体制が充実"],
+    cons: ["解像度はフルHD〜WQHDが中心", "デザインはシンプル"],
+    specs: [
+      { label: "サイズ", value: "27インチ" },
+      { label: "リフレッシュレート", value: "144Hz" },
+    ],
+  },
+  {
+    keyword: "Samsung Odyssey G5 C34G55T ウルトラワイド",
+    badge: "没入感No.1",
     badgeColor: "bg-teal-500/20 text-teal-300 border-teal-500/30",
+    rankColor: "text-teal-400",
+    score: 4.5,
+    point: "ウルトラワイド湾曲画面で圧倒的な没入感。レースゲームやRPGとの相性が抜群。",
+    pros: ["34インチウルトラワイド", "湾曲パネルで没入感が高い", "165Hzで滑らかな表示", "コスパが良い"],
+    cons: ["設置スペースが必要", "対応ゲームによっては表示比率の調整が必要"],
+    specs: [
+      { label: "サイズ", value: "34インチ（ウルトラワイド）" },
+      { label: "リフレッシュレート", value: "165Hz" },
+    ],
   },
 ];
 
-function Stars({ score }: { score: number }) {
-  const full = Math.floor(score);
-  return (
-    <div className="flex items-center gap-1">
-      {[1,2,3,4,5].map(i => (
-        <span key={i} className={i <= full ? "text-amber-400" : "text-slate-600"}>★</span>
-      ))}
-      <span className="ml-1 text-sm font-semibold text-amber-400">{score}</span>
-    </div>
-  );
-}
-
 export default function MonitorsPage() {
+  const { items, updatedAt } = getProducts("monitors");
+  const merged = editorials
+    .map((ed) => {
+      const product = items.find((it) => it.keyword === ed.keyword);
+      return product ? { product, editorial: ed } : null;
+    })
+    .filter((v): v is { product: (typeof items)[number]; editorial: Editorial } => v !== null);
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <nav className="text-sm text-slate-500 mb-6">
@@ -129,96 +97,29 @@ export default function MonitorsPage() {
 
       <div className="mb-10">
         <span className="inline-block bg-emerald-600/20 text-emerald-300 text-xs font-semibold px-3 py-1 rounded-full border border-emerald-500/30 mb-4">
-          2026年6月 最新版
+          {new Date(updatedAt).toLocaleDateString("ja-JP", { year: "numeric", month: "long" })} 更新
         </span>
         <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
-          PS5・Xbox対応ゲーミングモニター<br className="md:hidden" />おすすめランキング
+          PS5・Xboxゲーミングモニター<br className="md:hidden" />おすすめランキング
         </h1>
         <p className="text-slate-400 leading-relaxed max-w-3xl">
-          PS5・Xbox対応のゲーミングモニター全5製品を、解像度・リフレッシュレート・応答速度・価格で徹底比較しました。
-          参考サイト：<a href="https://my-best.com/16253" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline">マイベスト</a>・
-          <a href="https://gamewith.jp/gaming-pc/514193" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline">ゲームウィズ</a>・
-          <a href="https://sakidori.co/article/903259" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline">SAKIDORI</a>ほか信頼性の高いサイトを参考にしています。
+          PS5・Xbox対応のゲーミングモニターを、リフレッシュレート・解像度・パネル種類・サイズの観点で徹底比較しました。
+          価格・在庫情報は楽天市場の最新データを自動取得しています。
+          参考サイト：<a href="https://my-best.com/3138" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline">マイベスト</a>・
+          <a href="https://kakaku.com/pc/monitor/" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline">価格.com</a>・
+          <a href="https://gamewith.jp/ps5/article/show/3198" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline">ゲームウィズ</a>ほか信頼性の高いサイトを参考にしています。
         </p>
       </div>
 
       <div className="space-y-6">
-        {monitors.map((item) => (
-          <div
-            key={item.rank}
-            className="bg-slate-800 border border-slate-700 rounded-2xl p-6 hover:border-emerald-500/40 transition-all"
-          >
-            <div className="flex flex-col md:flex-row md:items-start gap-4">
-              <div className="flex-shrink-0 text-center">
-                <span className={`text-5xl font-black ${item.rankColor}`}>#{item.rank}</span>
-              </div>
-
-              <div className="flex-1">
-                <div className="flex flex-wrap items-center gap-2 mb-2">
-                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full border ${item.badgeColor}`}>
-                    {item.badge}
-                  </span>
-                  {item.compatible.map(c => (
-                    <span key={c} className="text-xs bg-slate-700 text-slate-300 px-2 py-0.5 rounded-full">{c}</span>
-                  ))}
-                </div>
-                <h2 className="text-xl font-bold text-white mb-1">{item.name}</h2>
-                <p className="text-slate-400 text-sm mb-3">{item.maker}</p>
-                <Stars score={item.score} />
-
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 my-4 text-sm">
-                  <div className="bg-slate-700/50 rounded-lg p-3">
-                    <span className="text-slate-400 block text-xs mb-1">価格</span>
-                    <span className="text-violet-400 font-bold">{item.price}</span>
-                  </div>
-                  <div className="bg-slate-700/50 rounded-lg p-3">
-                    <span className="text-slate-400 block text-xs mb-1">解像度</span>
-                    <span className="text-white text-xs">{item.resolution}</span>
-                  </div>
-                  <div className="bg-slate-700/50 rounded-lg p-3">
-                    <span className="text-slate-400 block text-xs mb-1">リフレッシュレート</span>
-                    <span className="text-white text-xs">{item.refreshRate}</span>
-                  </div>
-                  <div className="bg-slate-700/50 rounded-lg p-3">
-                    <span className="text-slate-400 block text-xs mb-1">応答速度</span>
-                    <span className="text-white text-xs">{item.responseTime}</span>
-                  </div>
-                </div>
-
-                <p className="text-slate-300 text-sm bg-emerald-900/20 border border-emerald-700/30 rounded-lg px-4 py-3 mb-4">
-                  💡 {item.point}
-                </p>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <h4 className="text-green-400 text-sm font-semibold mb-2">✓ メリット</h4>
-                    <ul className="space-y-1">
-                      {item.pros.map(p => (
-                        <li key={p} className="text-slate-300 text-sm flex gap-2"><span className="text-green-400">+</span>{p}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="text-red-400 text-sm font-semibold mb-2">✗ デメリット</h4>
-                    <ul className="space-y-1">
-                      {item.cons.map(c => (
-                        <li key={c} className="text-slate-300 text-sm flex gap-2"><span className="text-red-400">-</span>{c}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap gap-3">
-                  <a href={item.amazonLink} className="flex-1 min-w-[140px] text-center bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm py-2.5 px-4 rounded-xl transition-colors">
-                    Amazonで見る
-                  </a>
-                  <a href={item.rakutenLink} className="flex-1 min-w-[140px] text-center bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm py-2.5 px-4 rounded-xl transition-colors">
-                    楽天で見る
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+        {merged.map(({ product, editorial }) => (
+          <ProductRankingCard
+            key={editorial.keyword}
+            product={product}
+            editorial={editorial}
+            accentBorder="hover:border-emerald-500/40"
+            pointBg="bg-emerald-900/20 border-emerald-700/30"
+          />
         ))}
       </div>
 
@@ -226,16 +127,16 @@ export default function MonitorsPage() {
         <h2 className="text-xl font-bold text-white mb-6">ゲーミングモニターの選び方</h2>
         <div className="space-y-4 text-slate-300 text-sm leading-relaxed">
           <div>
-            <h3 className="font-semibold text-white mb-1">① HDMI 2.1対応かを確認</h3>
-            <p>PS5・Xboxで4K/120Hz以上を出すにはHDMI 2.1が必須です。HDMI 2.0までのモニターでは4Kは60Hzまでに制限されます。</p>
+            <h3 className="font-semibold text-white mb-1">① リフレッシュレートを確認</h3>
+            <p>PS5は120fps出力に対応しているため、120Hz以上のモニターを選ぶことで滑らかな映像を楽しめます。FPSなど動きの速いゲームほど高リフレッシュレートが有利です。</p>
           </div>
           <div>
-            <h3 className="font-semibold text-white mb-1">② 解像度とリフレッシュレートのバランス</h3>
-            <p>美しい映像を楽しむなら4K、なめらかな動きを重視するなら高リフレッシュレートを優先。FPSゲームには144Hz以上のWQHDが人気です。</p>
+            <h3 className="font-semibold text-white mb-1">② 解像度とパネルの種類</h3>
+            <p>WQHDや4Kは映像の精細さが向上しますが、PS5側の出力設定や対応ゲームのフレームレートとのバランスを考える必要があります。IPSパネルは発色や視野角に優れています。</p>
           </div>
           <div>
-            <h3 className="font-semibold text-white mb-1">③ VRR（可変リフレッシュレート）対応</h3>
-            <p>PS5・XboxはともにVRRに対応しています。VRR対応モニターを使うと、ゲーム中のカクつきやティアリングが大幅に軽減されます。</p>
+            <h3 className="font-semibold text-white mb-1">③ サイズと設置環境</h3>
+            <p>27インチが標準的なサイズですが、没入感を求めるならウルトラワイドモニターも選択肢になります。設置スペースと視聴距離を確認してから選びましょう。</p>
           </div>
         </div>
       </section>
