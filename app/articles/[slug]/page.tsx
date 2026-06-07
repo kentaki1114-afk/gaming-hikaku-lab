@@ -12,6 +12,8 @@ const CATEGORY_LABELS: Record<string, string> = {
   monitors: "モニター",
 };
 
+const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
+
 export function generateStaticParams() {
   return getAllArticles().map((article) => ({ slug: article.slug }));
 }
@@ -31,8 +33,24 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
 
   const { items } = getProducts(article.category);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.description,
+    datePublished: article.publishedAt,
+    dateModified: article.updatedAt,
+    author: { "@type": "Organization", name: "ゲーミング比較ラボ" },
+    publisher: { "@type": "Organization", name: "ゲーミング比較ラボ" },
+    mainEntityOfPage: `${SITE_ORIGIN}/articles/${article.slug}`,
+  };
+
   return (
     <article className="max-w-3xl mx-auto px-4 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <nav className="text-sm text-slate-500 mb-6">
         <span>ホーム</span> &gt; <Link href="/articles" className="hover:text-violet-400">記事一覧</Link> &gt;{" "}
         <span className="text-violet-400">{CATEGORY_LABELS[article.category]}</span>

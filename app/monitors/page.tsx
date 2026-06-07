@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   description: "PS5・Xbox対応ゲーミングモニターのおすすめランキング。Acer Nitro・JAPANNEXT・I-O DATA・Samsung Odysseyなどを徹底比較。",
 };
 
+const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
+
 const editorials: Editorial[] = [
   {
     keyword: "Acer Nitro ゲーミングモニター 27インチ IPS WQHD 200Hz",
@@ -89,8 +91,34 @@ export default function MonitorsPage() {
     })
     .filter((v): v is { product: (typeof items)[number]; editorial: Editorial } => v !== null);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "PS5・Xboxゲーミングモニターおすすめランキング",
+    itemListElement: merged.map(({ product }, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Product",
+        name: product.name,
+        image: product.imageUrl || undefined,
+        url: `${SITE_ORIGIN}/monitors`,
+        offers: {
+          "@type": "Offer",
+          price: product.price,
+          priceCurrency: "JPY",
+          url: product.affiliateUrl,
+        },
+      },
+    })),
+  };
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <nav className="text-sm text-slate-500 mb-6">
         <span>ホーム</span> &gt; <span className="text-violet-400">モニターランキング</span>
       </nav>
