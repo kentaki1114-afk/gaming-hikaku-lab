@@ -23,7 +23,6 @@ jobs:
 
       - name: 依存パッケージをインストール
         run: npm ci
-        working-directory: gaming-hikaku-lab
 
       - name: 商品データを最新化（楽天APIから取得）
         env:
@@ -31,11 +30,9 @@ jobs:
           RAKUTEN_AFFILIATE_ID: ${{ secrets.RAKUTEN_AFFILIATE_ID }}
           RAKUTEN_ACCESS_KEY: ${{ secrets.RAKUTEN_ACCESS_KEY }}
         run: node scripts/fetch-products.mjs
-        working-directory: gaming-hikaku-lab
 
       - name: 記事を5本自動生成
         run: node scripts/generate-articles.mjs
-        working-directory: gaming-hikaku-lab
 
       - name: 変更をコミット＆プッシュ（Vercelの自動デプロイが起動する）
         run: |
