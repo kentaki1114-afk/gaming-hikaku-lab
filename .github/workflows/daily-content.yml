@@ -1,0 +1,50 @@
+name: 毎日の商品データ更新と記事自動生成
+
+on:
+  schedule:
+    # 毎日 21:00 JST (= 12:00 UTC) に実行
+    - cron: "0 12 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリを取得
+        uses: actions/checkout@v4
+
+      - name: Node.js をセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: 依存パッケージをインストール
+        run: npm ci
+        working-directory: gaming-hikaku-lab
+
+      - name: 商品データを最新化（楽天APIから取得）
+        env:
+          RAKUTEN_APP_ID: ${{ secrets.RAKUTEN_APP_ID }}
+          RAKUTEN_AFFILIATE_ID: ${{ secrets.RAKUTEN_AFFILIATE_ID }}
+          RAKUTEN_ACCESS_KEY: ${{ secrets.RAKUTEN_ACCESS_KEY }}
+        run: node scripts/fetch-products.mjs
+        working-directory: gaming-hikaku-lab
+
+      - name: 記事を5本自動生成
+        run: node scripts/generate-articles.mjs
+        working-directory: gaming-hikaku-lab
+
+      - name: 変更をコミット＆プッシュ（Vercelの自動デプロイが起動する）
+        run: |
+          git config user.name "content-bot"
+          git config user.email "content-bot@users.noreply.github.com"
+          git add data/products data/articles
+          if git diff --cached --quiet; then
+            echo "変更なし。コミットをスキップします。"
+          else
+            git commit -m "chore: 商品データと記事を自動更新 ($(date -u +'%Y-%m-%d'))"
+            git push
+          fi

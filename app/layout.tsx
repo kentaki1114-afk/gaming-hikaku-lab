@@ -31,11 +31,15 @@ export default function RootLayout({
               <Link href="/monitors" className="text-slate-300 hover:text-violet-400 transition-colors">
                 モニター
               </Link>
+              <Link href="/articles" className="text-slate-300 hover:text-violet-400 transition-colors">
+                記事
+              </Link>
             </nav>
             <nav className="md:hidden flex gap-4 text-xs font-medium">
               <Link href="/controllers" className="text-slate-300 hover:text-violet-400">コントローラー</Link>
               <Link href="/headsets" className="text-slate-300 hover:text-violet-400">ヘッドセット</Link>
               <Link href="/monitors" className="text-slate-300 hover:text-violet-400">モニター</Link>
+              <Link href="/articles" className="text-slate-300 hover:text-violet-400">記事</Link>
             </nav>
           </div>
         </header>
@@ -60,6 +64,7 @@ export default function RootLayout({
                   <li><Link href="/controllers" className="hover:text-violet-400 transition-colors">コントローラーランキング</Link></li>
                   <li><Link href="/headsets" className="hover:text-violet-400 transition-colors">ヘッドセットランキング</Link></li>
                   <li><Link href="/monitors" className="hover:text-violet-400 transition-colors">モニターランキング</Link></li>
+                  <li><Link href="/articles" className="hover:text-violet-400 transition-colors">記事一覧</Link></li>
                 </ul>
               </div>
               <div>
