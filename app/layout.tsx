@@ -5,6 +5,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "ゲーミング比較ラボ | PS5・Xbox周辺機器おすすめ比較",
   description: "PS5・Xbox対応のコントローラー、ヘッドセット、モニターをガチで比較。実際にプレイしたレビューをもとに、あなたに最適な周辺機器を見つけよう。",
+  verification: {
+    google: "jOOPrqp1TFD2FWFuZWSuyaswZoKoZkDc0jOX8FxXcNY",
+  },
 };
 
 export default function RootLayout({
