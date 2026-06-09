@@ -74,9 +74,13 @@ export default function RootLayout({
               </div>
               <div>
                 <h3 className="font-semibold text-white mb-3">サイトについて</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-slate-400 text-sm leading-relaxed mb-3">
                   当サイトはAmazon・楽天市場等のアフィリエイトプログラムに参加しています。記事内のリンクから購入いただくと、サイト運営の収益になります。
                 </p>
+                <ul className="space-y-2 text-sm text-slate-400">
+                  <li><Link href="/privacy" className="hover:text-violet-400 transition-colors">プライバシーポリシー</Link></li>
+                  <li><Link href="/disclaimer" className="hover:text-violet-400 transition-colors">免責事項</Link></li>
+                </ul>
               </div>
             </div>
             <div className="border-t border-slate-700/50 pt-6 text-center text-slate-500 text-xs">
