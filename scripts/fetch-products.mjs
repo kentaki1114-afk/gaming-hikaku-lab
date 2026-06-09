@@ -51,6 +51,7 @@ const CATEGORIES = {
       "ASUS ROG Gladius III Wireless ゲーミングマウス",
       "Logicool G703h ゲーミングマウス",
       "SteelSeries Aerox ゲーミングマウス ワイヤレス",
+      "Razer Basilisk V3 Pro ゲーミングマウス",
     ],
   },
   chairs: {

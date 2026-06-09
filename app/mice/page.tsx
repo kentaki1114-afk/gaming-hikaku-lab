@@ -66,6 +66,20 @@ const editorials: Editorial[] = [
       { label: "重量", value: "約68g以下" },
     ],
   },
+  {
+    keyword: "Razer Basilisk V3 Pro ゲーミングマウス",
+    badge: "多ボタン派に最適",
+    badgeColor: "bg-green-500/20 text-green-300 border-green-500/30",
+    rankColor: "text-green-400",
+    score: 4.6,
+    point: "チルトホイール＋11ボタンで、MMO・RPGユーザーに最適な多機能ワイヤレスマウス。",
+    pros: ["3接続方式（有線 / BT / 2.4GHz）", "チルトホイール搭載", "11個のプログラマブルボタン", "Razer Chroma RGB対応"],
+    cons: ["重量127gとやや重め", "ボタン数が多く初心者には慣れが必要"],
+    specs: [
+      { label: "接続方式", value: "有線 / BT / 2.4GHz" },
+      { label: "重量", value: "約127g" },
+    ],
+  },
 ];
 
 export default function MicePage() {
