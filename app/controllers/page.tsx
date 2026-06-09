@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
+import { FaqSection, type Faq } from "@/app/components/FaqSection";
 
 export const metadata: Metadata = {
   title: "PS5・Xboxコントローラーおすすめランキング2026 | ゲーミング比較ラボ",
@@ -123,6 +124,25 @@ export default function ControllersPage() {
     ],
   };
 
+  const faqs: Faq[] = [
+    {
+      question: "PS5のコントローラーはPCでも使えますか？",
+      answer: "はい、DualSenseはUSB-CケーブルまたはBluetoothでPCに接続できます。ただし、アダプティブトリガーなど一部機能はPS5専用タイトルでのみ動作します。",
+    },
+    {
+      question: "プロコン（高性能コントローラー）は初心者にも必要ですか？",
+      answer: "初心者には通常のDualSenseで十分です。プロコンはFPSなどで競技的にプレイしたい方向けです。まず標準コントローラーで慣れてから検討するのをおすすめします。",
+    },
+    {
+      question: "コントローラーのスティックが勝手に動く（ドリフト）のはなぜですか？",
+      answer: "スティック内部のセンサーが摩耗することで発生します。DualSenseは保証期間内であればメーカー修理が可能です。予防策として、使わないときはスティックを倒しっぱなしにしないことが大切です。",
+    },
+    {
+      question: "PS5とXboxのコントローラーは互換性がありますか？",
+      answer: "基本的に互換性はありません。PS5にはDualSense、XboxにはXboxコントローラーが必要です。ただしPC用途では変換アダプターを使うことで両方利用できる場合があります。",
+    },
+  ];
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <script
@@ -182,6 +202,7 @@ export default function ControllersPage() {
           </div>
         </div>
       </section>
+      <FaqSection faqs={faqs} />
     </div>
   );
 }

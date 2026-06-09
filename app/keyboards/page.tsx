@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
+import { FaqSection, type Faq } from "@/app/components/FaqSection";
 
 export const metadata: Metadata = {
   title: "ゲーミングキーボードおすすめランキング2026 | ゲーミング比較ラボ",
@@ -122,6 +123,25 @@ export default function KeyboardsPage() {
     ],
   };
 
+  const faqs: Faq[] = [
+    {
+      question: "赤軸・青軸・茶軸の違いは何ですか？",
+      answer: "赤軸はクリック感なし・静音で長時間タイピング向き、青軸はカチカチ音でタイピングの気持ちよさ重視、茶軸は両者の中間でゲームにも文字入力にも使いやすいバランス型です。ゲーム向けには赤軸が人気です。",
+    },
+    {
+      question: "テンキーレスと通常サイズ、ゲームにはどちらが向いていますか？",
+      answer: "ゲームにはテンキーレス（TKL）がおすすめです。マウスの可動域を広く取れるため、FPSなどで有利になります。数字入力が多い作業も兼ねる場合はフルサイズを検討しましょう。",
+    },
+    {
+      question: "メカニカルとメンブレン、ゲームに向いているのはどちらですか？",
+      answer: "ゲームにはメカニカルキーボードが向いています。キーごとに独立したスイッチで誤入力が少なく、同時押し（Nキーロールオーバー）への対応も優れています。メンブレンは静音・低価格が利点です。",
+    },
+    {
+      question: "ゲーミングキーボードはPS5でも使えますか？",
+      answer: "はい、PS5はUSBキーボードに対応しています。チャット入力やブラウザ操作に便利です。ただしゲームのキャラクター操作はコントローラーが基本で、キーボード操作に対応していないゲームも多いです。",
+    },
+  ];
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <script
@@ -178,6 +198,7 @@ export default function KeyboardsPage() {
           </div>
         </div>
       </section>
+      <FaqSection faqs={faqs} />
     </div>
   );
 }

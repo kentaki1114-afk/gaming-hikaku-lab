@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
+import { FaqSection, type Faq } from "@/app/components/FaqSection";
 
 export const metadata: Metadata = {
   title: "PS5・Xboxゲーミングヘッドセットおすすめランキング2026 | ゲーミング比較ラボ",
@@ -122,6 +123,25 @@ export default function HeadsetsPage() {
     ],
   };
 
+  const faqs: Faq[] = [
+    {
+      question: "ゲーミングヘッドセットと普通のヘッドフォンの違いは何ですか？",
+      answer: "ゲーミングヘッドセットはマイク内蔵・サラウンドサウンド対応・低遅延設計が特徴です。普通のヘッドフォンでもゲームはできますが、ボイスチャットや方向音感の把握で不利になることがあります。",
+    },
+    {
+      question: "ワイヤレスと有線、ゲームにはどちらが向いていますか？",
+      answer: "最新のゲーミングワイヤレスは遅延が極めて少なく、有線とほぼ同等です。ケーブルの煩わしさが気になる方はワイヤレスがおすすめです。ただし充電管理が必要になる点は注意しましょう。",
+    },
+    {
+      question: "PS5用ヘッドセットはPCでも使えますか？",
+      answer: "USB接続モデルはPCでも利用可能です。PS5専用の3.5mmジャック接続モデルもPCに3.5mmポートがあれば使えます。ただしPS5特有の空間オーディオ機能はPC上では動作しない場合があります。",
+    },
+    {
+      question: "サラウンドサウンドはFPSゲームで有利になりますか？",
+      answer: "はい、サラウンドサウンド対応ヘッドセットは敵の足音や銃声の方向を正確に把握しやすくなります。特にPS5の『テンペスト3Dオーディオ』対応機種では効果が顕著です。",
+    },
+  ];
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <script
@@ -181,6 +201,7 @@ export default function HeadsetsPage() {
           </div>
         </div>
       </section>
+      <FaqSection faqs={faqs} />
     </div>
   );
 }

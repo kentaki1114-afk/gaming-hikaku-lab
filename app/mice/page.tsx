@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
+import { FaqSection, type Faq } from "@/app/components/FaqSection";
 
 export const metadata: Metadata = {
   title: "ゲーミングマウスおすすめランキング2026 | ゲーミング比較ラボ",
@@ -122,6 +123,25 @@ export default function MicePage() {
     ],
   };
 
+  const faqs: Faq[] = [
+    {
+      question: "ゲーミングマウスのDPIはどれくらいに設定するのが良いですか？",
+      answer: "FPSでは400〜1600DPIが一般的です。DPIが低いほど精密な操作がしやすく、高いほど速い動作に向きます。自分のマウスパッドのサイズや感度の好みに合わせて調整しましょう。",
+    },
+    {
+      question: "ワイヤレスマウスはゲームで遅延が気になりますか？",
+      answer: "最新の2.4GHzワイヤレスは遅延が1ms以下で有線と体感差はほぼありません。ただしBluetoothは遅延が大きいためゲームには不向きです。専用レシーバー付きのワイヤレスモデルを選びましょう。",
+    },
+    {
+      question: "軽量マウスと重いマウス、どちらがゲームに有利ですか？",
+      answer: "FPSなど素早いエイムが必要なゲームでは60〜80gの軽量マウスが有利です。手首への負担も軽減できます。一方、MMOなど多ボタン操作が中心なら重みがあっても安定感のあるマウスが向いています。",
+    },
+    {
+      question: "ゲーミングマウスと普通のマウスは何が違いますか？",
+      answer: "ゲーミングマウスは高精度センサー・高ポーリングレート（報告頻度）・低遅延設計が特徴です。普通のマウスと比べてカーソルの追従精度が高く、激しい動作でも正確に操作できます。",
+    },
+  ];
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <script
@@ -178,6 +198,7 @@ export default function MicePage() {
           </div>
         </div>
       </section>
+      <FaqSection faqs={faqs} />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
+import { FaqSection, type Faq } from "@/app/components/FaqSection";
 
 export const metadata: Metadata = {
   title: "ゲーミングチェアおすすめランキング2026 | ゲーミング比較ラボ",
@@ -122,6 +123,25 @@ export default function ChairsPage() {
     ],
   };
 
+  const faqs: Faq[] = [
+    {
+      question: "ゲーミングチェアは腰痛の改善に効果がありますか？",
+      answer: "ランバーサポート（腰当て）とリクライニング機能が腰への負担を軽減します。ただし長時間同じ姿勢は腰痛の原因になるため、定期的に立ち上がることも大切です。腰痛が重い場合は医師への相談もおすすめします。",
+    },
+    {
+      question: "ゲーミングチェアとオフィスチェアの違いは何ですか？",
+      answer: "ゲーミングチェアはバケットシート形状で長時間のゲームプレイに特化し、フルリクライニングが特徴です。オフィスチェアは座面の奥行き調整など作業姿勢に最適化されています。在宅ワーク兼用ならオフィスチェア寄りの設計のモデルがおすすめです。",
+    },
+    {
+      question: "在宅ワークとゲームの兼用でゲーミングチェアは使えますか？",
+      answer: "十分に使えます。特にAKRacingやSecretlabのハイエンドモデルはオフィス用途も考慮した設計で、長時間のデスクワークにも向いています。アームレストの調整幅が広いモデルを選ぶと快適度が上がります。",
+    },
+    {
+      question: "ゲーミングチェアを選ぶときの耐荷重の目安は？",
+      answer: "自分の体重より20〜30kg以上の耐荷重があるモデルを選ぶと安心です。多くのモデルは100〜150kgに対応しています。体格が大きい方はXLサイズや耐荷重150kg以上のモデルを検討しましょう。",
+    },
+  ];
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <script
@@ -178,6 +198,7 @@ export default function ChairsPage() {
           </div>
         </div>
       </section>
+      <FaqSection faqs={faqs} />
     </div>
   );
 }

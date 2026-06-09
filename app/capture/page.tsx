@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
+import { FaqSection, type Faq } from "@/app/components/FaqSection";
 
 export const metadata: Metadata = {
   title: "キャプチャーボードおすすめランキング2026 | ゲーミング比較ラボ",
@@ -122,6 +123,25 @@ export default function CapturePage() {
     ],
   };
 
+  const faqs: Faq[] = [
+    {
+      question: "PS5でキャプチャーボードなしで配信はできますか？",
+      answer: "はい、PS5はTwitchやYouTubeへの直接配信機能を内蔵しています。ただしPS5内蔵機能では画質・解像度に制限があります。高画質・高度な編集をしたい場合やPCと連携したい場合はキャプチャーボードが必要です。",
+    },
+    {
+      question: "内部キャプチャーと外部キャプチャーボードの違いは何ですか？",
+      answer: "内部キャプチャー（PCIe接続）はPCに直接取り付けるタイプで遅延が少なく高画質です。外部キャプチャーボードはUSB接続でPCなしでも使えるものもあり、設置が手軽です。PS5との接続にはどちらも対応しています。",
+    },
+    {
+      question: "キャプチャーボードはスマホゲームの録画にも使えますか？",
+      answer: "スマホゲームの録画は基本的にスマホの画面録画機能や、スマホのHDMI出力アダプターを使う方法が一般的です。キャプチャーボードはHDMI出力のある機器（PS5・Switch等）向けで、スマホ直接接続には対応していないものがほとんどです。",
+    },
+    {
+      question: "初めてキャプチャーボードを選ぶ際に重要なことは何ですか？",
+      answer: "①対応解像度（1080p/4K）、②接続方式（USB/PCIe）、③パススルー機能の有無（ゲームプレイ中に遅延なく映像を確認できるか）の3点を確認しましょう。初心者にはUSB接続でパススルー対応のElgato HD60やAVerMediaシリーズがおすすめです。",
+    },
+  ];
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <script
@@ -178,6 +198,7 @@ export default function CapturePage() {
           </div>
         </div>
       </section>
+      <FaqSection faqs={faqs} />
     </div>
   );
 }

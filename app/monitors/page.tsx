@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
+import { FaqSection, type Faq } from "@/app/components/FaqSection";
 
 export const metadata: Metadata = {
   title: "PS5・Xboxゲーミングモニターおすすめランキング2026 | ゲーミング比較ラボ",
@@ -122,6 +123,25 @@ export default function MonitorsPage() {
     ],
   };
 
+  const faqs: Faq[] = [
+    {
+      question: "PS5は4Kモニターに対応していますか？",
+      answer: "はい、PS5はHDMI 2.1経由で4K/120Hzに対応しています。ただし4K対応ゲームとモニター両方が対応している必要があります。4K非対応でも1080p/144Hzのモニターで快適にプレイできます。",
+    },
+    {
+      question: "144Hzと240Hzのリフレッシュレートは体感できる差がありますか？",
+      answer: "144Hzから240Hzへの差は60Hzから144Hzほど劇的ではありませんが、FPSなどで画面が滑らかに感じられます。PS5は最大120Hzのため、PC向けのゲームをする方に240Hzは特に有効です。",
+    },
+    {
+      question: "応答速度（ms）はどれくらいが良いですか？",
+      answer: "ゲーム用途では1ms〜5msが目安です。1msのTNパネルは最速ですが色再現性が低め、IPSパネルは1〜4msで色鮮やかさを両立できます。一般的なゲームでは5ms以下であれば問題ありません。",
+    },
+    {
+      question: "テレビとゲーミングモニター、ゲームにはどちらが向いていますか？",
+      answer: "ゲーミングモニターの方が入力遅延が少なく応答速度が速いため、FPSや格闘ゲームでは有利です。テレビは大画面でRPGや映像重視のゲームを楽しむのに向いています。用途に応じて使い分けが理想的です。",
+    },
+  ];
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <script
@@ -181,6 +201,7 @@ export default function MonitorsPage() {
           </div>
         </div>
       </section>
+      <FaqSection faqs={faqs} />
     </div>
   );
 }
