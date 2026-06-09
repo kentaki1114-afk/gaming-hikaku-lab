@@ -3,11 +3,40 @@ import Link from "next/link";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
+const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
+const SITE_NAME = "ゲーミング比較ラボ";
+const SITE_TITLE = "ゲーミング比較ラボ | PS5・Xbox周辺機器おすすめ比較";
+const SITE_DESCRIPTION =
+  "PS5・Xbox対応のコントローラー、ヘッドセット、モニターをガチで比較。実際にプレイしたレビューをもとに、あなたに最適な周辺機器を見つけよう。";
+
 export const metadata: Metadata = {
-  title: "ゲーミング比較ラボ | PS5・Xbox周辺機器おすすめ比較",
-  description: "PS5・Xbox対応のコントローラー、ヘッドセット、モニターをガチで比較。実際にプレイしたレビューをもとに、あなたに最適な周辺機器を見つけよう。",
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  metadataBase: new URL(SITE_ORIGIN),
   verification: {
     google: "jOOPrqp1TFD2FWFuZWSuyaswZoKoZkDc0jOX8FxXcNY",
+  },
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    url: SITE_ORIGIN,
+    siteName: SITE_NAME,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [
+      {
+        url: `${SITE_ORIGIN}/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: SITE_NAME,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [`${SITE_ORIGIN}/opengraph-image`],
   },
 };
 
