@@ -11,7 +11,7 @@ export type Article = {
   slug: string;
   title: string;
   description: string;
-  category: "controllers" | "headsets" | "monitors";
+  category: "controllers" | "headsets" | "monitors" | "keyboards" | "mice" | "chairs" | "capture";
   publishedAt: string;
   updatedAt: string;
   tags: string[];

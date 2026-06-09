@@ -9,6 +9,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_ORIGIN}/controllers`, changeFrequency: "daily", priority: 0.8 },
     { url: `${SITE_ORIGIN}/headsets`, changeFrequency: "daily", priority: 0.8 },
     { url: `${SITE_ORIGIN}/monitors`, changeFrequency: "daily", priority: 0.8 },
+    { url: `${SITE_ORIGIN}/keyboards`, changeFrequency: "daily", priority: 0.8 },
+    { url: `${SITE_ORIGIN}/mice`, changeFrequency: "daily", priority: 0.8 },
+    { url: `${SITE_ORIGIN}/chairs`, changeFrequency: "daily", priority: 0.8 },
+    { url: `${SITE_ORIGIN}/capture`, changeFrequency: "daily", priority: 0.8 },
     { url: `${SITE_ORIGIN}/articles`, changeFrequency: "daily", priority: 0.7 },
   ];
 
