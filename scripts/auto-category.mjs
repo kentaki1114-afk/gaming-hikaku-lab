@@ -12,8 +12,8 @@
 
 import { readdirSync, readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
 import { resolve, join } from "path";
-import { searchItems, sleep } from "./lib/rakuten.mjs";
 import CATEGORY_CONFIG from "./category-config.mjs";
+// rakuten.mjs は新カテゴリ生成時のみ動的importする（APIキー不要な環境でも起動できるよう）
 
 const ROOT = process.cwd();
 const ARTICLES_DIR = join(ROOT, "data", "articles");
@@ -257,6 +257,17 @@ async function main() {
         fetchedProducts = config.keywords.slice(0, 5).map((kw, i) => ({ rank: i + 1, keyword: kw }));
       } else {
         console.log(`   楽天APIで製品データを取得中...`);
+        // rakuten.mjs を動的importし、APIキーがない環境ではスキップ
+        let searchItems, sleep;
+        try {
+          const rakuten = await import("./lib/rakuten.mjs");
+          searchItems = rakuten.searchItems;
+          sleep = rakuten.sleep;
+        } catch (e) {
+          console.log(`   ⚠️  楽天APIキーが未設定のため製品取得をスキップします`);
+          fetchedProducts = config.keywords.slice(0, 5).map((kw, i) => ({ rank: i + 1, keyword: kw }));
+        }
+        if (searchItems) {
         const results = [];
         for (let i = 0; i < config.keywords.length; i++) {
           const keyword = config.keywords[i];
@@ -280,6 +291,7 @@ async function main() {
           "utf-8"
         );
         console.log(`   ✅ data/products/${slug}.json 保存 (${fetchedProducts.length}件)`);
+        } // end if (searchItems)
       }
     } else {
       const existing = JSON.parse(readFileSync(productsPath, "utf-8"));
