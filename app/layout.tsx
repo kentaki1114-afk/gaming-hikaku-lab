@@ -26,24 +26,35 @@ export default function RootLayout({
               <span className="font-bold text-lg text-white">ゲーミング比較ラボ</span>
             </Link>
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-              <Link href="/controllers" className="text-slate-300 hover:text-violet-400 transition-colors">
-                コントローラー
-              </Link>
-              <Link href="/headsets" className="text-slate-300 hover:text-violet-400 transition-colors">
-                ヘッドセット
-              </Link>
-              <Link href="/monitors" className="text-slate-300 hover:text-violet-400 transition-colors">
-                モニター
-              </Link>
+              <div className="relative group">
+                <button className="text-slate-300 hover:text-violet-400 transition-colors flex items-center gap-1">
+                  ランキング <span className="text-xs">▼</span>
+                </button>
+                <div className="absolute top-full left-0 mt-2 w-48 bg-slate-800 border border-slate-700 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+                  <div className="py-2">
+                    <Link href="/controllers" className="block px-4 py-2 text-slate-300 hover:text-violet-400 hover:bg-slate-700/50 transition-colors">コントローラー</Link>
+                    <Link href="/headsets" className="block px-4 py-2 text-slate-300 hover:text-violet-400 hover:bg-slate-700/50 transition-colors">ヘッドセット</Link>
+                    <Link href="/monitors" className="block px-4 py-2 text-slate-300 hover:text-violet-400 hover:bg-slate-700/50 transition-colors">モニター</Link>
+                    <Link href="/keyboards" className="block px-4 py-2 text-slate-300 hover:text-violet-400 hover:bg-slate-700/50 transition-colors">キーボード</Link>
+                    <Link href="/mice" className="block px-4 py-2 text-slate-300 hover:text-violet-400 hover:bg-slate-700/50 transition-colors">マウス</Link>
+                    <Link href="/chairs" className="block px-4 py-2 text-slate-300 hover:text-violet-400 hover:bg-slate-700/50 transition-colors">ゲーミングチェア</Link>
+                    <Link href="/capture" className="block px-4 py-2 text-slate-300 hover:text-violet-400 hover:bg-slate-700/50 transition-colors">キャプチャーボード</Link>
+                  </div>
+                </div>
+              </div>
               <Link href="/articles" className="text-slate-300 hover:text-violet-400 transition-colors">
                 記事
               </Link>
             </nav>
-            <nav className="md:hidden flex gap-4 text-xs font-medium">
-              <Link href="/controllers" className="text-slate-300 hover:text-violet-400">コントローラー</Link>
-              <Link href="/headsets" className="text-slate-300 hover:text-violet-400">ヘッドセット</Link>
-              <Link href="/monitors" className="text-slate-300 hover:text-violet-400">モニター</Link>
-              <Link href="/articles" className="text-slate-300 hover:text-violet-400">記事</Link>
+            <nav className="md:hidden flex gap-3 text-xs font-medium overflow-x-auto">
+              <Link href="/controllers" className="text-slate-300 hover:text-violet-400 whitespace-nowrap">コントローラー</Link>
+              <Link href="/headsets" className="text-slate-300 hover:text-violet-400 whitespace-nowrap">ヘッドセット</Link>
+              <Link href="/monitors" className="text-slate-300 hover:text-violet-400 whitespace-nowrap">モニター</Link>
+              <Link href="/keyboards" className="text-slate-300 hover:text-violet-400 whitespace-nowrap">キーボード</Link>
+              <Link href="/mice" className="text-slate-300 hover:text-violet-400 whitespace-nowrap">マウス</Link>
+              <Link href="/chairs" className="text-slate-300 hover:text-violet-400 whitespace-nowrap">チェア</Link>
+              <Link href="/capture" className="text-slate-300 hover:text-violet-400 whitespace-nowrap">キャプチャー</Link>
+              <Link href="/articles" className="text-slate-300 hover:text-violet-400 whitespace-nowrap">記事</Link>
             </nav>
           </div>
         </header>
@@ -69,6 +80,10 @@ export default function RootLayout({
                   <li><Link href="/controllers" className="hover:text-violet-400 transition-colors">コントローラーランキング</Link></li>
                   <li><Link href="/headsets" className="hover:text-violet-400 transition-colors">ヘッドセットランキング</Link></li>
                   <li><Link href="/monitors" className="hover:text-violet-400 transition-colors">モニターランキング</Link></li>
+                  <li><Link href="/keyboards" className="hover:text-violet-400 transition-colors">キーボードランキング</Link></li>
+                  <li><Link href="/mice" className="hover:text-violet-400 transition-colors">マウスランキング</Link></li>
+                  <li><Link href="/chairs" className="hover:text-violet-400 transition-colors">ゲーミングチェアランキング</Link></li>
+                  <li><Link href="/capture" className="hover:text-violet-400 transition-colors">キャプチャーボードランキング</Link></li>
                   <li><Link href="/articles" className="hover:text-violet-400 transition-colors">記事一覧</Link></li>
                 </ul>
               </div>

@@ -5,7 +5,7 @@ export type ArticleBlock =
   | { type: "heading"; text: string }
   | { type: "paragraph"; text: string }
   | { type: "list"; items: string[] }
-  | { type: "product"; category: "controllers" | "headsets" | "monitors"; keyword: string; note?: string };
+  | { type: "product"; category: "controllers" | "headsets" | "monitors" | "keyboards" | "mice" | "chairs" | "capture"; keyword: string; note?: string };
 
 export type Article = {
   slug: string;

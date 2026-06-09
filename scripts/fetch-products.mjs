@@ -34,6 +34,45 @@ const CATEGORIES = {
       "Samsung Odyssey G5 C34G55T ウルトラワイド",
     ],
   },
+  keyboards: {
+    title: "ゲーミングキーボード",
+    keywords: [
+      "Logicool G913 TKL ゲーミングキーボード ワイヤレス",
+      "Razer BlackWidow V4 Pro ゲーミングキーボード",
+      "SteelSeries Apex Pro TKL ゲーミングキーボード",
+      "HyperX Alloy Origins Core ゲーミングキーボード",
+      "CORSAIR K70 RGB PRO ゲーミングキーボード",
+    ],
+  },
+  mice: {
+    title: "ゲーミングマウス",
+    keywords: [
+      "Razer DeathAdder V3 Pro ゲーミングマウス",
+      "ASUS ROG Gladius III Wireless ゲーミングマウス",
+      "Logicool G703h ゲーミングマウス",
+      "SteelSeries Aerox ゲーミングマウス ワイヤレス",
+    ],
+  },
+  chairs: {
+    title: "ゲーミングチェア",
+    keywords: [
+      "AKRacing Pro-X V2 ゲーミングチェア",
+      "DXRacer Formula Series ゲーミングチェア",
+      "Secretlab TITAN Evo ゲーミングチェア",
+      "GTRACING ゲーミングチェア GT002",
+      "AKRacing Wolf ゲーミングチェア",
+    ],
+  },
+  capture: {
+    title: "キャプチャーボード",
+    keywords: [
+      "I-O DATA GV-USB3HD キャプチャーボード",
+      "AVerMedia Live Gamer ULTRA 2.1 キャプチャーボード",
+      "Razer Ripsaw HD キャプチャーボード",
+      "Elgato HD60 ゲームキャプチャー",
+      "AVerMedia Live Gamer Portable ゲームキャプチャー",
+    ],
+  },
 };
 
 // 商品名にこれらの語が含まれる結果は除外する(本体ではない付属品・中古品などのノイズ除去。空白の有無を無視して判定)

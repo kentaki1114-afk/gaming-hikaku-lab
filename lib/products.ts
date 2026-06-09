@@ -22,7 +22,9 @@ export type ProductCategory = {
   items: Product[];
 };
 
-export function getProducts(category: "controllers" | "headsets" | "monitors"): ProductCategory {
+export type Category = "controllers" | "headsets" | "monitors" | "keyboards" | "mice" | "chairs" | "capture";
+
+export function getProducts(category: Category): ProductCategory {
   const path = resolve(process.cwd(), "data", "products", `${category}.json`);
   const raw = readFileSync(path, "utf-8");
   return JSON.parse(raw) as ProductCategory;
