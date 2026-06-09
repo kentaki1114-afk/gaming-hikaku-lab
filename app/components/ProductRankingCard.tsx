@@ -100,14 +100,24 @@ export function ProductRankingCard({
             </div>
           </div>
 
-          <a
-            href={product.affiliateUrl}
-            target="_blank"
-            rel="noopener noreferrer nofollow sponsored"
-            className="block text-center bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm py-3 px-4 rounded-xl transition-colors"
-          >
-            楽天市場でチェックする
-          </a>
+          <div className="flex flex-col sm:flex-row gap-2">
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="noopener noreferrer nofollow sponsored"
+              className="flex-1 block text-center bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm py-3 px-4 rounded-xl transition-colors"
+            >
+              楽天市場でチェックする
+            </a>
+            <a
+              href={`https://www.amazon.co.jp/s?k=${encodeURIComponent(editorial.keyword)}&tag=kentaki0d-22`}
+              target="_blank"
+              rel="noopener noreferrer nofollow sponsored"
+              className="flex-1 block text-center bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm py-3 px-4 rounded-xl transition-colors"
+            >
+              Amazonでも見る
+            </a>
+          </div>
         </div>
       </div>
     </div>
