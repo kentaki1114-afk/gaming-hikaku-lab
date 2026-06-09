@@ -114,11 +114,24 @@ export default function ControllersPage() {
     })),
   };
 
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "ホーム", item: SITE_ORIGIN },
+      { "@type": "ListItem", position: 2, name: "コントローラーランキング", item: `${SITE_ORIGIN}/controllers` },
+    ],
+  };
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <nav className="text-sm text-slate-500 mb-6">
         <span>ホーム</span> &gt; <span className="text-violet-400">コントローラーランキング</span>

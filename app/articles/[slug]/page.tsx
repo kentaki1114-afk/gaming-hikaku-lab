@@ -10,6 +10,10 @@ const CATEGORY_LABELS: Record<string, string> = {
   controllers: "コントローラー",
   headsets: "ヘッドセット",
   monitors: "モニター",
+  keyboards: "キーボード",
+  mice: "マウス",
+  chairs: "ゲーミングチェア",
+  capture: "キャプチャーボード",
 };
 
 const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
@@ -45,11 +49,25 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
     mainEntityOfPage: `${SITE_ORIGIN}/articles/${article.slug}`,
   };
 
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "ホーム", item: SITE_ORIGIN },
+      { "@type": "ListItem", position: 2, name: "記事一覧", item: `${SITE_ORIGIN}/articles` },
+      { "@type": "ListItem", position: 3, name: article.title, item: `${SITE_ORIGIN}/articles/${article.slug}` },
+    ],
+  };
+
   return (
     <article className="max-w-3xl mx-auto px-4 py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <nav className="text-sm text-slate-500 mb-6">
         <span>ホーム</span> &gt; <Link href="/articles" className="hover:text-violet-400">記事一覧</Link> &gt;{" "}
