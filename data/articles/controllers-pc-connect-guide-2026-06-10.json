@@ -1,0 +1,88 @@
+{
+  "slug": "controllers-pc-connect-guide-2026-06-10",
+  "title": "PS5コントローラー（DualSense）をPCに接続する方法｜有線・ワイヤレス対応手順まとめ",
+  "description": "PS5のDualSenseコントローラーをPCで使う方法を有線・ワイヤレス別に解説。Steam対応やアダプティブトリガーの使い方まで初心者向けにわかりやすく説明します。",
+  "category": "controllers",
+  "publishedAt": "2026-06-10",
+  "updatedAt": "2026-06-10",
+  "tags": ["PS5", "コントローラー", "PC接続"],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "「PS5のDualSenseをPCでも使いたい」と思ったことはありませんか？実はDualSenseはPCに簡単に接続でき、SteamゲームやPCゲームでもそのまま使うことができます。この記事では有線・ワイヤレス両方の接続方法を手順ごとに解説します。"
+    },
+    {
+      "type": "heading",
+      "text": "DualSenseをPCに接続する2つの方法"
+    },
+    {
+      "type": "list",
+      "items": [
+        "①有線接続：USB-Cケーブル（PS5付属品でOK）でPCと繋ぐだけ",
+        "②ワイヤレス接続：PCのBluetooth設定からペアリングする",
+        "③専用アダプター：Razer Wolverine等の変換アダプターを使う方法もある"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "有線接続の手順（最も簡単）"
+    },
+    {
+      "type": "paragraph",
+      "text": "USB-CケーブルでコントローラーとPCを繋ぐだけで自動認識されます。Windowsの場合はドライバーの自動インストールが走るのでそのまま待ちましょう。Steamを使っている場合は設定→コントローラー→「DualSense設定を使用」をオンにすると振動やスティック感度をゲーム内で調整できます。"
+    },
+    {
+      "type": "heading",
+      "text": "ワイヤレス（Bluetooth）接続の手順"
+    },
+    {
+      "type": "list",
+      "items": [
+        "1. コントローラーのPSボタン＋クリエイトボタンを長押し（LEDが点滅したらペアリングモード）",
+        "2. PCの設定→Bluetooth→デバイスの追加→「DualSense Wireless Controller」を選択",
+        "3. 接続完了。Steamで認識されない場合はSteamを再起動する"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "注意点：BluetoothはUSBより若干遅延が大きいため、FPSなど反応速度が重要なゲームでは有線接続をおすすめします。遅延が気になる場合はDualSenseWireless+USB接続（有線モード）が最も安定します。"
+    },
+    {
+      "type": "heading",
+      "text": "PCで使えるDualSenseの機能・使えない機能"
+    },
+    {
+      "type": "list",
+      "items": [
+        "✅ 使える：スティック・ボタン操作・振動・ジャイロセンサー・マイク",
+        "✅ Steam対応ゲームではアダプティブトリガーも一部動作",
+        "❌ 使えない：PS5専用タイトルのアダプティブトリガー全機能（PC版非対応）",
+        "❌ ハプティクスフィードバックの高度な機能はPS5のみ"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "PCゲームにおすすめのコントローラー"
+    },
+    {
+      "type": "paragraph",
+      "text": "DualSenseはPS5とPC両方で使えるコスパ最高のコントローラーです。PC専用で使うならXbox Eliteコントローラーもおすすめです。各モデルを比較したランキングはこちらをご覧ください。"
+    },
+    {
+      "type": "product",
+      "category": "controllers",
+      "keyword": "DualSense ワイヤレスコントローラー PS5",
+      "note": "PS5・PC両対応。USB-CまたはBluetoothでPCに接続可能。コスパ最強の選択肢。"
+    },
+    {
+      "type": "product",
+      "category": "controllers",
+      "keyword": "Xbox Eliteコントローラー Series2",
+      "note": "PC環境では最高峰。Xbox Game Passとの相性も抜群。40時間バッテリーも魅力。"
+    },
+    {
+      "type": "paragraph",
+      "text": "PS5コントローラーの全ラインナップ比較は[コントローラーランキング](/controllers)でチェックできます。プロコンから標準モデルまで価格・性能で比較しています。"
+    }
+  ]
+}
