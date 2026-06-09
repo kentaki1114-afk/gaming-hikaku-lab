@@ -22,7 +22,7 @@ export type ProductCategory = {
   items: Product[];
 };
 
-export type Category = "controllers" | "headsets" | "monitors" | "keyboards" | "mice" | "chairs" | "capture";
+export type Category = string;
 
 export function getProducts(category: Category): ProductCategory {
   const path = resolve(process.cwd(), "data", "products", `${category}.json`);

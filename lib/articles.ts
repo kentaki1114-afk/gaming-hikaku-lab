@@ -5,13 +5,13 @@ export type ArticleBlock =
   | { type: "heading"; text: string }
   | { type: "paragraph"; text: string }
   | { type: "list"; items: string[] }
-  | { type: "product"; category: "controllers" | "headsets" | "monitors" | "keyboards" | "mice" | "chairs" | "capture"; keyword: string; note?: string };
+  | { type: "product"; category: string; keyword: string; note?: string };
 
 export type Article = {
   slug: string;
   title: string;
   description: string;
-  category: "controllers" | "headsets" | "monitors" | "keyboards" | "mice" | "chairs" | "capture";
+  category: string;
   publishedAt: string;
   updatedAt: string;
   tags: string[];

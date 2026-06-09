@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { BackHomeBar } from "@/app/components/BackHomeBar";
+import { getAllCategories } from "@/lib/categories";
 import "./globals.css";
 
 const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
@@ -45,6 +47,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const categories = getAllCategories();
   return (
     <html lang="ja" className="h-full">
       <body className="min-h-full flex flex-col bg-slate-900 text-slate-100 antialiased">
@@ -61,13 +64,9 @@ export default function RootLayout({
                 </button>
                 <div className="absolute top-full left-0 mt-2 w-48 bg-slate-800 border border-slate-700 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
                   <div className="py-2">
-                    <Link href="/controllers" className="block px-4 py-2 text-slate-300 hover:text-violet-400 hover:bg-slate-700/50 transition-colors">コントローラー</Link>
-                    <Link href="/headsets" className="block px-4 py-2 text-slate-300 hover:text-violet-400 hover:bg-slate-700/50 transition-colors">ヘッドセット</Link>
-                    <Link href="/monitors" className="block px-4 py-2 text-slate-300 hover:text-violet-400 hover:bg-slate-700/50 transition-colors">モニター</Link>
-                    <Link href="/keyboards" className="block px-4 py-2 text-slate-300 hover:text-violet-400 hover:bg-slate-700/50 transition-colors">キーボード</Link>
-                    <Link href="/mice" className="block px-4 py-2 text-slate-300 hover:text-violet-400 hover:bg-slate-700/50 transition-colors">マウス</Link>
-                    <Link href="/chairs" className="block px-4 py-2 text-slate-300 hover:text-violet-400 hover:bg-slate-700/50 transition-colors">ゲーミングチェア</Link>
-                    <Link href="/capture" className="block px-4 py-2 text-slate-300 hover:text-violet-400 hover:bg-slate-700/50 transition-colors">キャプチャーボード</Link>
+                    {categories.map((cat) => (
+                      <Link key={cat.slug} href={`/${cat.slug}`} className="block px-4 py-2 text-slate-300 hover:text-violet-400 hover:bg-slate-700/50 transition-colors">{cat.navLabel}</Link>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -76,18 +75,15 @@ export default function RootLayout({
               </Link>
             </nav>
             <nav className="md:hidden flex gap-3 text-xs font-medium overflow-x-auto">
-              <Link href="/controllers" className="text-slate-300 hover:text-violet-400 whitespace-nowrap">コントローラー</Link>
-              <Link href="/headsets" className="text-slate-300 hover:text-violet-400 whitespace-nowrap">ヘッドセット</Link>
-              <Link href="/monitors" className="text-slate-300 hover:text-violet-400 whitespace-nowrap">モニター</Link>
-              <Link href="/keyboards" className="text-slate-300 hover:text-violet-400 whitespace-nowrap">キーボード</Link>
-              <Link href="/mice" className="text-slate-300 hover:text-violet-400 whitespace-nowrap">マウス</Link>
-              <Link href="/chairs" className="text-slate-300 hover:text-violet-400 whitespace-nowrap">チェア</Link>
-              <Link href="/capture" className="text-slate-300 hover:text-violet-400 whitespace-nowrap">キャプチャー</Link>
+              {categories.map((cat) => (
+                <Link key={cat.slug} href={`/${cat.slug}`} className="text-slate-300 hover:text-violet-400 whitespace-nowrap">{cat.navLabelShort}</Link>
+              ))}
               <Link href="/articles" className="text-slate-300 hover:text-violet-400 whitespace-nowrap">記事</Link>
             </nav>
           </div>
         </header>
 
+        <BackHomeBar />
         <main className="flex-1">{children}</main>
         <GoogleAnalytics gaId="G-7J7E3SX9X7" />
 
@@ -106,13 +102,9 @@ export default function RootLayout({
               <div>
                 <h3 className="font-semibold text-white mb-3">カテゴリ</h3>
                 <ul className="space-y-2 text-sm text-slate-400">
-                  <li><Link href="/controllers" className="hover:text-violet-400 transition-colors">コントローラーランキング</Link></li>
-                  <li><Link href="/headsets" className="hover:text-violet-400 transition-colors">ヘッドセットランキング</Link></li>
-                  <li><Link href="/monitors" className="hover:text-violet-400 transition-colors">モニターランキング</Link></li>
-                  <li><Link href="/keyboards" className="hover:text-violet-400 transition-colors">キーボードランキング</Link></li>
-                  <li><Link href="/mice" className="hover:text-violet-400 transition-colors">マウスランキング</Link></li>
-                  <li><Link href="/chairs" className="hover:text-violet-400 transition-colors">ゲーミングチェアランキング</Link></li>
-                  <li><Link href="/capture" className="hover:text-violet-400 transition-colors">キャプチャーボードランキング</Link></li>
+                  {categories.map((cat) => (
+                    <li key={cat.slug}><Link href={`/${cat.slug}`} className="hover:text-violet-400 transition-colors">{cat.navLabel}ランキング</Link></li>
+                  ))}
                   <li><Link href="/articles" className="hover:text-violet-400 transition-colors">記事一覧</Link></li>
                 </ul>
               </div>

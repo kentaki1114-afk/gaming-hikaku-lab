@@ -1,0 +1,9 @@
+[
+  { "slug": "controllers", "title": "コントローラー",       "navLabel": "コントローラー",     "navLabelShort": "コントローラー", "accentColor": "violet" },
+  { "slug": "headsets",    "title": "ヘッドセット",         "navLabel": "ヘッドセット",        "navLabelShort": "ヘッドセット",   "accentColor": "green"  },
+  { "slug": "monitors",    "title": "ゲーミングモニター",   "navLabel": "モニター",            "navLabelShort": "モニター",       "accentColor": "blue"   },
+  { "slug": "keyboards",   "title": "ゲーミングキーボード", "navLabel": "キーボード",          "navLabelShort": "キーボード",     "accentColor": "orange" },
+  { "slug": "mice",        "title": "ゲーミングマウス",     "navLabel": "マウス",              "navLabelShort": "マウス",         "accentColor": "rose"   },
+  { "slug": "chairs",      "title": "ゲーミングチェア",     "navLabel": "ゲーミングチェア",    "navLabelShort": "チェア",         "accentColor": "yellow" },
+  { "slug": "capture",     "title": "キャプチャーボード",   "navLabel": "キャプチャーボード",  "navLabelShort": "キャプチャー",   "accentColor": "cyan"   }
+]

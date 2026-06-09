@@ -170,7 +170,7 @@ export default function MicePage() {
         </p>
       </div>
 
-      <AuthorCard comment="Apexのプレデター帯でエイムの精度を突き詰めた結果、マウスへの投資は最も費用対効果が高いと確信しています。重さとセンサー精度だけは妥協しないほうがいいです。" />
+      <AuthorCard comment="フォートナイトでアンリアルに到達したのはキーマウに切り替えてからです。マウスの重さとセンサー精度だけは絶対に妥協しないほうがいい、と体で覚えました。" />
 
       <div className="space-y-6">
         {merged.map(({ product, editorial }) => (

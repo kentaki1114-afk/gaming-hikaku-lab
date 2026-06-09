@@ -170,7 +170,7 @@ export default function KeyboardsPage() {
         </p>
       </div>
 
-      <AuthorCard comment="キーボードはマウスほど注目されませんが、長時間プレイでの疲労感に地味に影響します。打鍵感の好みは人によって全然違うので、軸の種類は必ずチェックしてほしいポイントです。" />
+      <AuthorCard comment="フォートナイトのアンリアルはキーマウで取りましたが、キーボード選びには相当悩みました。打鍵感の好みは人によって全然違うので、軸の種類だけは必ずチェックしてほしいポイントです。" />
 
       <div className="space-y-6">
         {merged.map(({ product, editorial }) => (

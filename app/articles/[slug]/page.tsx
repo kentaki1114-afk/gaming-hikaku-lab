@@ -88,7 +88,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
         <p className="text-slate-400 leading-relaxed">{article.description}</p>
       </header>
 
-      <AuthorCard comment="ゲーム歴10年、Apexメインのプレデタープレイヤーです。実際に使ってきた経験をもとに書いています。" />
+      <AuthorCard comment="ゲーム歴10年。Apexはpadでプレデターをフォートナイトはキーマウでアンリアルを達成。実際に使ってきた経験をもとに書いています。" />
 
       <div className="space-y-5">
         {article.blocks.map((block, i) => {
