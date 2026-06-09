@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -48,6 +49,7 @@ export default function RootLayout({
         </header>
 
         <main className="flex-1">{children}</main>
+        <GoogleAnalytics gaId="G-7J7E3SX9X7" />
 
         <footer className="bg-slate-800/50 border-t border-slate-700/50 mt-16">
           <div className="max-w-6xl mx-auto px-4 py-10">
