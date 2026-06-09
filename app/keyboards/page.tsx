@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
+import { AuthorCard } from "@/app/components/AuthorCard";
 
 export const metadata: Metadata = {
   title: "ゲーミングキーボードおすすめランキング2026 | ゲーミング比較ラボ",
@@ -168,6 +169,8 @@ export default function KeyboardsPage() {
           価格・在庫情報は楽天市場の最新データを自動取得しています。
         </p>
       </div>
+
+      <AuthorCard comment="キーボードはマウスほど注目されませんが、長時間プレイでの疲労感に地味に影響します。打鍵感の好みは人によって全然違うので、軸の種類は必ずチェックしてほしいポイントです。" />
 
       <div className="space-y-6">
         {merged.map(({ product, editorial }) => (

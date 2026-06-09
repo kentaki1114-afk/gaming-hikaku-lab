@@ -5,6 +5,7 @@ import { getAllArticles, getArticleBySlug } from "@/lib/articles";
 import { getProducts } from "@/lib/products";
 import { ArticleProductCard } from "@/app/components/ArticleProductCard";
 import { ArticleRichText } from "@/app/components/ArticleRichText";
+import { AuthorCard } from "@/app/components/AuthorCard";
 
 const CATEGORY_LABELS: Record<string, string> = {
   controllers: "コントローラー",
@@ -86,6 +87,8 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
         <h1 className="text-2xl md:text-4xl font-bold text-white leading-snug mb-4">{article.title}</h1>
         <p className="text-slate-400 leading-relaxed">{article.description}</p>
       </header>
+
+      <AuthorCard comment="ゲーム歴10年、Apexメインのプレデタープレイヤーです。実際に使ってきた経験をもとに書いています。" />
 
       <div className="space-y-5">
         {article.blocks.map((block, i) => {

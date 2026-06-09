@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
+import { AuthorCard } from "@/app/components/AuthorCard";
 
 export const metadata: Metadata = {
   title: "PS5・Xboxゲーミングモニターおすすめランキング2026 | ゲーミング比較ラボ",
@@ -171,6 +172,8 @@ export default function MonitorsPage() {
           <a href="https://gamewith.jp/ps5/article/show/3198" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline">ゲームウィズ</a>ほか信頼性の高いサイトを参考にしています。
         </p>
       </div>
+
+      <AuthorCard comment="60Hzから144Hzに切り替えたときの感動は今でも覚えています。Apexのような動きの激しいFPSだと、リフレッシュレートの差は本当に体感できます。予算と用途のバランスで選ぶのが正直なところです。" />
 
       <div className="space-y-6">
         {merged.map(({ product, editorial }) => (

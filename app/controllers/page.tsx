@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
+import { AuthorCard } from "@/app/components/AuthorCard";
 
 export const metadata: Metadata = {
   title: "PS5・Xboxコントローラーおすすめランキング2026 | ゲーミング比較ラボ",
@@ -172,6 +173,8 @@ export default function ControllersPage() {
           <a href="https://kamigame.jp/gaming/7780.html" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline">神ゲー攻略</a>ほか信頼性の高いサイトを参考にしています。
         </p>
       </div>
+
+      <AuthorCard comment="Apex歴10年、プレデター帯を4シーズン維持してきた経験から、実際にパフォーマンスに差が出ると感じた製品だけ選んでいます。コントローラーは手に馴染むまで時間がかかるので、最初の1本選びは慎重に。" />
 
       <div className="space-y-6">
         {merged.map(({ product, editorial }) => (

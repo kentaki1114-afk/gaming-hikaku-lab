@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
+import { AuthorCard } from "@/app/components/AuthorCard";
 
 export const metadata: Metadata = {
   title: "キャプチャーボードおすすめランキング2026 | ゲーミング比較ラボ",
@@ -168,6 +169,8 @@ export default function CapturePage() {
           価格・在庫情報は楽天市場の最新データを自動取得しています。
         </p>
       </div>
+
+      <AuthorCard comment="Apexの配信を始めたとき、キャプチャーボード選びで1週間悩みました。その経験をもとに、初心者が失敗しないための選択肢に絞っています。スペックより「使いやすさ」を優先しました。" />
 
       <div className="space-y-6">
         {merged.map(({ product, editorial }) => (

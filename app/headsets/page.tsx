@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
+import { AuthorCard } from "@/app/components/AuthorCard";
 
 export const metadata: Metadata = {
   title: "PS5・Xboxゲーミングヘッドセットおすすめランキング2026 | ゲーミング比較ラボ",
@@ -171,6 +172,8 @@ export default function HeadsetsPage() {
           <a href="https://picky-s.jp/ps5-headset/" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline">Picky&apos;s</a>ほか信頼性の高いサイトを参考にしています。
         </p>
       </div>
+
+      <AuthorCard comment="FPSで足音を正確に拾えるかどうかが勝率に直結します。Apexでプレデターまで上り詰めた中で、ヘッドセットの音質差に何度も助けられました。このランキングは音の定位感を特に重視して選んでいます。" />
 
       <div className="space-y-6">
         {merged.map(({ product, editorial }) => (

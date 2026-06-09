@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
+import { AuthorCard } from "@/app/components/AuthorCard";
 
 export const metadata: Metadata = {
   title: "ゲーミングマウスおすすめランキング2026 | ゲーミング比較ラボ",
@@ -168,6 +169,8 @@ export default function MicePage() {
           価格・在庫情報は楽天市場の最新データを自動取得しています。
         </p>
       </div>
+
+      <AuthorCard comment="Apexのプレデター帯でエイムの精度を突き詰めた結果、マウスへの投資は最も費用対効果が高いと確信しています。重さとセンサー精度だけは妥協しないほうがいいです。" />
 
       <div className="space-y-6">
         {merged.map(({ product, editorial }) => (

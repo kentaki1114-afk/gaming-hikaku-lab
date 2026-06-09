@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
+import { AuthorCard } from "@/app/components/AuthorCard";
 
 export const metadata: Metadata = {
   title: "ゲーミングチェアおすすめランキング2026 | ゲーミング比較ラボ",
@@ -168,6 +169,8 @@ export default function ChairsPage() {
           価格・在庫情報は楽天市場の最新データを自動取得しています。
         </p>
       </div>
+
+      <AuthorCard comment="毎日数時間ゲームをする生活を10年続けてきて、椅子の差がいかに体に影響するかを痛感しました。腰を壊してプレイを中断した経験から、チェア選びは正直一番後悔したくないカテゴリです。" />
 
       <div className="space-y-6">
         {merged.map(({ product, editorial }) => (
