@@ -149,6 +149,76 @@ const THEMES = {
       return { title, description, blocks, tags: [catTitle, "シーン別", "おすすめ"] };
     },
   },
+
+  budgetGuide: {
+    label: "予算別おすすめ",
+    build(category, products, rng) {
+      const [a, b] = pickTwoDistinct(rng, products);
+      const catTitle = CATEGORY_TITLES[category];
+      const cheaper = a.price <= b.price ? a : b;
+      const premium = a.price <= b.price ? b : a;
+      const budgets = {
+        controllers: ["1万円以下", "1〜2万円", "2万円以上"],
+        headsets: ["1万円以下", "1〜3万円", "3万円以上"],
+        monitors: ["3万円以下", "3〜6万円", "6万円以上"],
+        keyboards: ["1万円以下", "1〜2万円", "2万円以上"],
+        mice: ["5千円以下", "5千〜1万5千円", "1万5千円以上"],
+        chairs: ["2万円以下", "2〜5万円", "5万円以上"],
+        capture: ["1万円以下", "1〜3万円", "3万円以上"],
+      };
+      const budgetList = budgets[category] ?? budgets.controllers;
+      const title = `${catTitle}を予算で選ぶ｜コスパ重視と本格派の2択を徹底比較`;
+      const description = `${catTitle}を予算で選ぶ際のポイントを解説しながら、コスパ重視モデルと本格派モデルの2択を比較します。`;
+      const blocks = [
+        { type: "paragraph", text: `${catTitle}は価格帯によって性能や機能が大きく変わります。この記事では「できるだけコスパよく揃えたい」「多少高くても満足できるものが欲しい」という2つのニーズに応える選び方と、具体的なおすすめモデルを紹介します。` },
+        { type: "heading", text: "予算の目安" },
+        { type: "list", items: [
+          `${budgetList[0]}：エントリーモデル。必要最低限の機能は揃っている`,
+          `${budgetList[1]}：ミドルレンジ。コスパと性能のバランスが最も良い帯域`,
+          `${budgetList[2]}：ハイエンド。プロゲーマー仕様・長期間使用を想定したモデル`,
+        ] },
+        { type: "heading", text: `コスパ重視派におすすめ：${cheaper.name}` },
+        { type: "paragraph", text: `価格を抑えつつも必要な機能をしっかり備えたモデルです。はじめての購入や予算を重視したい方に特におすすめです。` },
+        { type: "product", category, keyword: cheaper.keyword, note: "コスパ重視の定番候補。価格と性能のバランスが良いモデルです。" },
+        { type: "heading", text: `本格派におすすめ：${premium.name}` },
+        { type: "paragraph", text: `価格は上がりますが、その分より高い性能・耐久性・快適さが得られます。長く使い続けることを考えると、こちらを選ぶのも賢明な選択です。` },
+        { type: "product", category, keyword: premium.keyword, note: "長く使うなら投資する価値のある本格派モデルです。" },
+        { type: "heading", text: "まとめ：どちらを選ぶべき？" },
+        { type: "paragraph", text: `まず試してみたい・予算を抑えたいなら「${cheaper.name}」、長く使いたい・性能にこだわりたいなら「${premium.name}」がおすすめです。他のモデルとも比較したい場合は[ランキングページ](/${category})もあわせてチェックしてみてください。` },
+      ];
+      return { title, description, blocks, tags: [catTitle, "予算別", "コスパ"] };
+    },
+  },
+
+  beginnerPick: {
+    label: "初心者向けガイド",
+    build(category, products, rng) {
+      const [main] = pickTwoDistinct(rng, products);
+      const catTitle = CATEGORY_TITLES[category];
+      const checkpoints = {
+        controllers: ["対応ゲーム機（PS5・Xbox・PC）を確認する", "有線か無線かを決める", "プロコンが必要かどうかを考える", "バッテリー持続時間を確認する"],
+        headsets: ["有線か無線かを決める", "対応プラットフォームを確認する", "マイク性能が必要かどうかを考える", "装着感（密閉型 vs 開放型）を確認する"],
+        monitors: ["対応解像度とリフレッシュレートを確認する", "接続端子（HDMI・DisplayPort）を確認する", "画面サイズと設置場所を測る", "応答速度（GTG）を確認する"],
+        keyboards: ["スイッチの種類（赤・青・茶軸）を選ぶ", "レイアウト（フルサイズ・TKL・60%）を決める", "有線か無線かを選ぶ", "日本語配列か英語配列かを確認する"],
+        mice: ["持ち方（かぶせ・つかみ・つまみ）を確認する", "重量（軽量か標準か）を選ぶ", "有線か無線かを選ぶ", "DPI（解像度）の調整機能を確認する"],
+        chairs: ["対応体重・身長を確認する", "素材（レザー vs ファブリック）を選ぶ", "リクライニング角度を確認する", "アームレストの調整範囲を確認する"],
+        capture: ["対応解像度（1080p か 4K か）を確認する", "パススルー機能があるか確認する", "接続方式（USB か PCIe か）を選ぶ", "スタンドアロン録画が必要かを考える"],
+      };
+      const title = `${catTitle}初心者ガイド｜初めての一台の選び方と実際のおすすめモデル`;
+      const description = `${catTitle}を初めて購入する方向けに、失敗しない選び方のポイントと実際におすすめのモデルを分かりやすく解説します。`;
+      const blocks = [
+        { type: "paragraph", text: `「${catTitle}はどれを買えばいいかわからない」という初心者の方向けに、選ぶ際に押さえておきたいポイントと、実際に購入を検討しやすいモデルをまとめました。難しい専門知識がなくても読めるよう、シンプルに解説します。` },
+        { type: "heading", text: "購入前に確認すべき4つのポイント" },
+        { type: "list", items: checkpoints[category] ?? checkpoints.controllers },
+        { type: "heading", text: "初心者におすすめの一台" },
+        { type: "paragraph", text: `上記のポイントを踏まえたうえで、初めての${catTitle}として特に選びやすいモデルを紹介します。価格・レビュー評価・使いやすさのバランスが良く、多くの方が満足しているモデルです。` },
+        { type: "product", category, keyword: main.keyword, note: `初めての${catTitle}として失敗しにくいバランスの良いモデルです。` },
+        { type: "heading", text: "最初はこれで大丈夫" },
+        { type: "paragraph", text: `最初から高価なモデルを買う必要はありません。まずは上記のモデルで${catTitle}の使い心地を体験してみて、物足りなくなったらアップグレードを検討するのが失敗しにくい買い方です。さらに詳しい比較は[ランキングページ](/${category})もあわせてご覧ください。` },
+      ];
+      return { title, description, blocks, tags: [catTitle, "初心者", "入門"] };
+    },
+  },
 };
 
 const THEME_KEYS = Object.keys(THEMES);
