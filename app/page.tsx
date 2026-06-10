@@ -1,31 +1,67 @@
 import Link from "next/link";
+import { getAllCategories, ACCENT_BADGE_CLASSES, DEFAULT_BADGE_CLASS } from "@/lib/categories";
+import { getAllArticles } from "@/lib/articles";
 
-const categories = [
-  {
-    href: "/controllers",
+// カテゴリカードの装飾(絵文字・キャッチ・説明文)。slugをキーに categories.json を補完する。
+// 未定義の新カテゴリにはフォールバックが適用されるため、ここの追記は任意。
+const CATEGORY_EXTRAS: Record<string, { emoji: string; badge: string; description: string }> = {
+  controllers: {
     emoji: "🕹️",
-    title: "コントローラー",
-    description: "PS5・Xbox対応のおすすめコントローラーを徹底比較。純正から高機能サードパーティ製まで。",
     badge: "人気No.1カテゴリ",
-    color: "from-violet-600/20 to-violet-900/10 border-violet-500/30 hover:border-violet-400/60",
+    description: "PS5・Xbox対応のおすすめコントローラーを徹底比較。純正から高機能サードパーティ製まで。",
   },
-  {
-    href: "/headsets",
+  headsets: {
     emoji: "🎧",
-    title: "ヘッドセット",
-    description: "3Dオーディオ対応・ワイヤレスなど、PS5・Xbox向けゲーミングヘッドセットを比較。",
     badge: "没入感が変わる",
-    color: "from-blue-600/20 to-blue-900/10 border-blue-500/30 hover:border-blue-400/60",
+    description: "3Dオーディオ対応・ワイヤレスなど、PS5・Xbox向けゲーミングヘッドセットを比較。",
   },
-  {
-    href: "/monitors",
+  monitors: {
     emoji: "🖥️",
-    title: "ゲーミングモニター",
+    badge: "120fpsを活かす",
     description: "4K・144Hz・1msなど、PS5・Xbox向けの高性能モニターをスペック別に比較。",
-    badge: "高単価・高報酬",
-    color: "from-emerald-600/20 to-emerald-900/10 border-emerald-500/30 hover:border-emerald-400/60",
   },
-];
+  keyboards: {
+    emoji: "⌨️",
+    badge: "キーマウ勢必見",
+    description: "G913・Apex Proなど、FPSで戦えるゲーミングキーボードを軸・サイズ別に比較。",
+  },
+  mice: {
+    emoji: "🖱️",
+    badge: "エイムが変わる",
+    description: "軽量ワイヤレスからコスパモデルまで、FPS向けゲーミングマウスを重量・センサーで比較。",
+  },
+  chairs: {
+    emoji: "💺",
+    badge: "腰を守る投資",
+    description: "長時間プレイでも疲れにくいゲーミングチェアを、腰サポート・素材・価格で比較。",
+  },
+  capture: {
+    emoji: "📹",
+    badge: "配信デビューに",
+    description: "PS5の配信・録画に必要なキャプチャーボードを、画質・パススルー対応で比較。",
+  },
+};
+
+// accentColor → カードのグラデーションクラス(Tailwindは動的生成不可のためリテラル列挙)
+const CARD_GRADIENTS: Record<string, string> = {
+  violet: "from-violet-600/20 to-violet-900/10 border-violet-500/30 hover:border-violet-400/60",
+  green: "from-green-600/20 to-green-900/10 border-green-500/30 hover:border-green-400/60",
+  blue: "from-blue-600/20 to-blue-900/10 border-blue-500/30 hover:border-blue-400/60",
+  orange: "from-orange-600/20 to-orange-900/10 border-orange-500/30 hover:border-orange-400/60",
+  rose: "from-rose-600/20 to-rose-900/10 border-rose-500/30 hover:border-rose-400/60",
+  yellow: "from-yellow-600/20 to-yellow-900/10 border-yellow-500/30 hover:border-yellow-400/60",
+  cyan: "from-cyan-600/20 to-cyan-900/10 border-cyan-500/30 hover:border-cyan-400/60",
+  purple: "from-purple-600/20 to-purple-900/10 border-purple-500/30 hover:border-purple-400/60",
+  indigo: "from-indigo-600/20 to-indigo-900/10 border-indigo-500/30 hover:border-indigo-400/60",
+  teal: "from-teal-600/20 to-teal-900/10 border-teal-500/30 hover:border-teal-400/60",
+  amber: "from-amber-600/20 to-amber-900/10 border-amber-500/30 hover:border-amber-400/60",
+};
+
+const DEFAULT_EXTRA = {
+  emoji: "🎮",
+  badge: "新カテゴリ",
+  description: "PS5・Xbox向けのおすすめ製品をランキング形式で比較しています。",
+};
 
 const topPicks = [
   {
@@ -58,6 +94,15 @@ const topPicks = [
 ];
 
 export default function Home() {
+  const categories = getAllCategories();
+  const latestArticles = getAllArticles().slice(0, 4);
+  const badgeClassOf = (slug: string) => {
+    const accent = categories.find((c) => c.slug === slug)?.accentColor;
+    return (accent && ACCENT_BADGE_CLASSES[accent]) || DEFAULT_BADGE_CLASS;
+  };
+  const labelOf = (slug: string) =>
+    categories.find((c) => c.slug === slug)?.navLabel ?? slug;
+
   return (
     <>
       {/* Hero */}
@@ -72,7 +117,7 @@ export default function Home() {
             <span className="text-violet-400">ガチで比較</span>する
           </h1>
           <p className="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-            コントローラー・ヘッドセット・モニターをPS5・Xboxユーザー目線で徹底比較。
+            コントローラーからキャプチャーボードまで、全{categories.length}カテゴリをPS5・Xboxユーザー目線で徹底比較。
             あなたのゲームライフをワンランク上げる最適な一台を見つけよう。
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
@@ -97,23 +142,27 @@ export default function Home() {
         <h2 className="text-2xl font-bold text-white mb-2">カテゴリから探す</h2>
         <p className="text-slate-400 mb-8">ジャンル別に最新のおすすめランキングをチェック</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {categories.map((cat) => (
-            <Link
-              key={cat.href}
-              href={cat.href}
-              className={`group relative bg-gradient-to-br ${cat.color} border rounded-2xl p-6 transition-all duration-200 hover:-translate-y-1`}
-            >
-              <span className="text-4xl mb-4 block">{cat.emoji}</span>
-              <span className="inline-block text-xs font-semibold bg-white/10 text-slate-300 px-2 py-0.5 rounded-full mb-3">
-                {cat.badge}
-              </span>
-              <h3 className="text-xl font-bold text-white mb-2">{cat.title}</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">{cat.description}</p>
-              <span className="mt-4 inline-flex items-center gap-1 text-violet-400 text-sm font-medium group-hover:gap-2 transition-all">
-                ランキングを見る →
-              </span>
-            </Link>
-          ))}
+          {categories.map((cat) => {
+            const extra = CATEGORY_EXTRAS[cat.slug] ?? DEFAULT_EXTRA;
+            const gradient = CARD_GRADIENTS[cat.accentColor] ?? CARD_GRADIENTS.violet;
+            return (
+              <Link
+                key={cat.slug}
+                href={`/${cat.slug}`}
+                className={`group relative bg-gradient-to-br ${gradient} border rounded-2xl p-6 transition-all duration-200 hover:-translate-y-1`}
+              >
+                <span className="text-4xl mb-4 block">{extra.emoji}</span>
+                <span className="inline-block text-xs font-semibold bg-white/10 text-slate-300 px-2 py-0.5 rounded-full mb-3">
+                  {extra.badge}
+                </span>
+                <h3 className="text-xl font-bold text-white mb-2">{cat.title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{extra.description}</p>
+                <span className="mt-4 inline-flex items-center gap-1 text-violet-400 text-sm font-medium group-hover:gap-2 transition-all">
+                  ランキングを見る →
+                </span>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
@@ -146,21 +195,59 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why this site */}
+      {/* Latest Articles */}
       <section className="max-w-6xl mx-auto px-4 py-16">
-        <h2 className="text-2xl font-bold text-white mb-8 text-center">ゲーミング比較ラボとは</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { emoji: "🎮", title: "ゲーマー目線", desc: "PS5・Xboxを実際にプレイしているゲーマーが執筆。スペックだけでなく実際の使い心地を重視。" },
-            { emoji: "📊", title: "スペックを徹底比較", desc: "接続方式・応答速度・バッテリー持続時間など、選ぶ際に重要な項目を横断比較。" },
-            { emoji: "💰", title: "コスパも重視", desc: "高価な製品だけでなく、コストパフォーマンスに優れた製品もしっかり紹介。予算に合わせて選べる。" },
-          ].map((item) => (
-            <div key={item.title} className="text-center p-6 bg-slate-800/40 border border-slate-700/50 rounded-2xl">
-              <span className="text-4xl mb-4 block">{item.emoji}</span>
-              <h3 className="font-bold text-white mb-3">{item.title}</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
-            </div>
+        <div className="flex items-end justify-between mb-8">
+          <div>
+            <h2 className="text-2xl font-bold text-white mb-2">新着記事</h2>
+            <p className="text-slate-400">選び方ガイドや製品比較の最新記事</p>
+          </div>
+          <Link
+            href="/articles"
+            className="text-violet-400 hover:text-violet-300 text-sm font-medium whitespace-nowrap"
+          >
+            すべての記事を見る →
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {latestArticles.map((article) => (
+            <Link
+              key={article.slug}
+              href={`/articles/${article.slug}`}
+              className="block bg-slate-800 border border-slate-700 hover:border-violet-500/40 rounded-2xl p-6 transition-all"
+            >
+              <div className="flex flex-wrap items-center gap-2 mb-3">
+                <span className={`text-xs font-semibold px-2 py-0.5 rounded-full border ${badgeClassOf(article.category)}`}>
+                  {labelOf(article.category)}
+                </span>
+                <span className="text-xs text-slate-500">
+                  {new Date(article.publishedAt).toLocaleDateString("ja-JP", { year: "numeric", month: "long", day: "numeric" })}
+                </span>
+              </div>
+              <h3 className="font-bold text-white text-base md:text-lg mb-2 leading-snug">{article.title}</h3>
+              <p className="text-slate-400 text-sm leading-relaxed line-clamp-2">{article.description}</p>
+            </Link>
           ))}
+        </div>
+      </section>
+
+      {/* Why this site */}
+      <section className="bg-slate-800/30 border-y border-slate-700/50 py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-white mb-8 text-center">ゲーミング比較ラボとは</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { emoji: "🎮", title: "ゲーマー目線", desc: "PS5・Xboxを実際にプレイしているゲーマーが執筆。スペックだけでなく実際の使い心地を重視。" },
+              { emoji: "📊", title: "スペックを徹底比較", desc: "接続方式・応答速度・バッテリー持続時間など、選ぶ際に重要な項目を横断比較。" },
+              { emoji: "💰", title: "コスパも重視", desc: "高価な製品だけでなく、コストパフォーマンスに優れた製品もしっかり紹介。予算に合わせて選べる。" },
+            ].map((item) => (
+              <div key={item.title} className="text-center p-6 bg-slate-800/40 border border-slate-700/50 rounded-2xl">
+                <span className="text-4xl mb-4 block">{item.emoji}</span>
+                <h3 className="font-bold text-white mb-3">{item.title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </>

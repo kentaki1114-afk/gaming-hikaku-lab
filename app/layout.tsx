@@ -9,7 +9,7 @@ const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
 const SITE_NAME = "ゲーミング比較ラボ";
 const SITE_TITLE = "ゲーミング比較ラボ | PS5・Xbox周辺機器おすすめ比較";
 const SITE_DESCRIPTION =
-  "PS5・Xbox対応のコントローラー、ヘッドセット、モニターをガチで比較。実際にプレイしたレビューをもとに、あなたに最適な周辺機器を見つけよう。";
+  "PS5・Xbox対応のコントローラー、ヘッドセット、モニターからチェア・キャプチャーボードまで7カテゴリをガチで比較。実際にプレイしたレビューをもとに、あなたに最適な周辺機器を見つけよう。";
 
 export const metadata: Metadata = {
   title: SITE_TITLE,
@@ -96,7 +96,7 @@ export default function RootLayout({
                   <span className="font-bold text-white">ゲーミング比較ラボ</span>
                 </div>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  PS5・Xbox ユーザーのための周辺機器比較サイト。実際のゲーマー目線でコントローラー・ヘッドセット・モニターを徹底比較します。
+                  PS5・Xbox ユーザーのための周辺機器比較サイト。実際のゲーマー目線でコントローラーからキャプチャーボードまで全カテゴリを徹底比較します。
                 </p>
               </div>
               <div>
