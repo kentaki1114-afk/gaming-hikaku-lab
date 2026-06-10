@@ -1,26 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllArticles } from "@/lib/articles";
+import { getAllCategories, ACCENT_BADGE_CLASSES, DEFAULT_BADGE_CLASS } from "@/lib/categories";
 
 export const metadata: Metadata = {
   title: "記事一覧 | ゲーミング比較ラボ",
-  description: "PS5・Xbox周辺機器に関する選び方ガイドやレビュー記事の一覧です。コントローラー・ヘッドセット・モニターの最新情報をお届けします。",
-};
-
-const CATEGORY_LABELS: Record<string, string> = {
-  controllers: "コントローラー",
-  headsets: "ヘッドセット",
-  monitors: "モニター",
-};
-
-const CATEGORY_COLORS: Record<string, string> = {
-  controllers: "bg-violet-600/20 text-violet-300 border-violet-500/30",
-  headsets: "bg-blue-600/20 text-blue-300 border-blue-500/30",
-  monitors: "bg-emerald-600/20 text-emerald-300 border-emerald-500/30",
+  description: "PS5・Xbox周辺機器に関する選び方ガイドやレビュー記事の一覧です。コントローラー・ヘッドセット・モニターなど全カテゴリの最新情報をお届けします。",
 };
 
 export default function ArticlesPage() {
   const articles = getAllArticles();
+  const categories = getAllCategories();
+  const labelOf = (slug: string) =>
+    categories.find((c) => c.slug === slug)?.navLabel ?? slug;
+  const badgeClassOf = (slug: string) => {
+    const accent = categories.find((c) => c.slug === slug)?.accentColor;
+    return (accent && ACCENT_BADGE_CLASSES[accent]) || DEFAULT_BADGE_CLASS;
+  };
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
@@ -43,8 +39,8 @@ export default function ArticlesPage() {
             className="block bg-slate-800 border border-slate-700 hover:border-violet-500/40 rounded-2xl p-6 transition-all"
           >
             <div className="flex flex-wrap items-center gap-2 mb-3">
-              <span className={`text-xs font-semibold px-2 py-0.5 rounded-full border ${CATEGORY_COLORS[article.category]}`}>
-                {CATEGORY_LABELS[article.category]}
+              <span className={`text-xs font-semibold px-2 py-0.5 rounded-full border ${badgeClassOf(article.category)}`}>
+                {labelOf(article.category)}
               </span>
               <span className="text-xs text-slate-500">
                 {new Date(article.publishedAt).toLocaleDateString("ja-JP", { year: "numeric", month: "long", day: "numeric" })}
