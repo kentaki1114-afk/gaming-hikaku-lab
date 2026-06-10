@@ -45,7 +45,11 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
     description: article.description,
     datePublished: article.publishedAt,
     dateModified: article.updatedAt,
-    author: { "@type": "Organization", name: "ゲーミング比較ラボ" },
+    author: {
+      "@type": "Person",
+      name: "けんたき",
+      description: "ゲーム歴10年。Apex Legends（pad）でプレデター4シーズン維持、フォートナイト（キーボード&マウス）でアンリアル達成。",
+    },
     publisher: { "@type": "Organization", name: "ゲーミング比較ラボ" },
     mainEntityOfPage: `${SITE_ORIGIN}/articles/${article.slug}`,
   };
