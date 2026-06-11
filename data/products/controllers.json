@@ -1,20 +1,20 @@
 {
   "category": "controllers",
   "title": "コントローラー",
-  "updatedAt": "2026-06-11T20:40:16.193Z",
+  "updatedAt": "2026-06-11T16:40:40.209Z",
   "items": [
     {
       "rank": 1,
       "keyword": "DualSense Edge コントローラー",
-      "name": "ソニー・インタラクティブエンタテインメント スティックモジュール（DualSense Edge(TM) ワイヤレスコントローラー用） [CFI-ZSM1G PS5 デュアルセンスエッジ スティックモジュール]",
-      "price": 2679,
-      "priceLabel": "¥2,679",
-      "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/jism/cabinet/0075/4948872415729.jpg",
-      "affiliateUrl": "https://hb.afl.rakuten.co.jp/hgc/g00pukwn.fgnn8316.g00pukwn.fgnn9007/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fjism%2F4948872415729-54-62526-n%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fjism%2Fi%2F13995797%2F&rafcid=wsc_i_is_e6ba965e-bcef-44a8-aac1-667f73a2aeb1",
-      "itemUrl": "https://hb.afl.rakuten.co.jp/hgc/g00pukwn.fgnn8316.g00pukwn.fgnn9007/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fjism%2F4948872415729-54-62526-n%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fjism%2Fi%2F13995797%2F&rafcid=wsc_i_is_e6ba965e-bcef-44a8-aac1-667f73a2aeb1",
-      "shopName": "Joshin web 家電とPCの大型専門店",
-      "reviewAverage": 4.83,
-      "reviewCount": 6
+      "name": "DualSense Edge ワイヤレスコントローラー",
+      "price": 31170,
+      "priceLabel": "¥31,170",
+      "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/5712/4948872415712_2.jpg",
+      "affiliateUrl": "https://hb.afl.rakuten.co.jp/hgc/g00q072n.fgnn83d6.g00q072n.fgnn9056/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F17332204%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F20815402%2F&rafcid=wsc_i_is_e6ba965e-bcef-44a8-aac1-667f73a2aeb1",
+      "itemUrl": "https://hb.afl.rakuten.co.jp/hgc/g00q072n.fgnn83d6.g00q072n.fgnn9056/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F17332204%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F20815402%2F&rafcid=wsc_i_is_e6ba965e-bcef-44a8-aac1-667f73a2aeb1",
+      "shopName": "楽天ブックス",
+      "reviewAverage": 4.13,
+      "reviewCount": 24
     },
     {
       "rank": 2,
@@ -45,7 +45,7 @@
     {
       "rank": 4,
       "keyword": "SCUF Reflex Pro コントローラー",
-      "name": "SCUF REFLEX PRO スカフ リフレックス プロ PS5, PC用コントローラー スティールグレイ",
+      "name": "【スーパーSALE 最大2000円OFFクーポン 6/11 1:59まで】SCUF REFLEX PRO スカフ リフレックス プロ PS5, PC用コントローラー スティールグレイ",
       "price": 65540,
       "priceLabel": "¥65,540",
       "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/americana/cabinet/ryobulk/0105pot/stgr1.jpg",
@@ -67,6 +67,32 @@
       "shopName": "ベアストア 楽天市場店",
       "reviewAverage": 3.79,
       "reviewCount": 24
+    },
+    {
+      "rank": 6,
+      "keyword": "Nintendo Switch Proコントローラー 純正",
+      "name": "Nintendo Switch 純正 プロコン 任天堂 スイッチ ワイヤレス コントローラー Pro コントローラー ジャイロ 正規品 無線 プロコントローラー 送料無料",
+      "price": 7970,
+      "priceLabel": "¥7,970",
+      "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/selectkoh/cabinet/img2/imgrc0157283459.jpg",
+      "affiliateUrl": "https://hb.afl.rakuten.co.jp/hgc/g00twmvn.fgnn8b6a.g00twmvn.fgnn9234/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fselectkoh%2Fwho117%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fselectkoh%2Fi%2F10000329%2F&rafcid=wsc_i_is_e6ba965e-bcef-44a8-aac1-667f73a2aeb1",
+      "itemUrl": "https://hb.afl.rakuten.co.jp/hgc/g00twmvn.fgnn8b6a.g00twmvn.fgnn9234/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fselectkoh%2Fwho117%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fselectkoh%2Fi%2F10000329%2F&rafcid=wsc_i_is_e6ba965e-bcef-44a8-aac1-667f73a2aeb1",
+      "shopName": "SELECT KOH",
+      "reviewAverage": 4.81,
+      "reviewCount": 490
+    },
+    {
+      "rank": 7,
+      "keyword": "ホリパッド for Nintendo Switch",
+      "name": "ワイヤレスホリパッド for Nintendo Switch ブルー",
+      "price": 6201,
+      "priceLabel": "¥6,201",
+      "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0770/4961818030770.jpg",
+      "affiliateUrl": "https://hb.afl.rakuten.co.jp/hgc/g00q072n.fgnn83d6.g00q072n.fgnn9056/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F15930677%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F19638884%2F&rafcid=wsc_i_is_e6ba965e-bcef-44a8-aac1-667f73a2aeb1",
+      "itemUrl": "https://hb.afl.rakuten.co.jp/hgc/g00q072n.fgnn83d6.g00q072n.fgnn9056/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F15930677%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F19638884%2F&rafcid=wsc_i_is_e6ba965e-bcef-44a8-aac1-667f73a2aeb1",
+      "shopName": "楽天ブックス",
+      "reviewAverage": 4.48,
+      "reviewCount": 21
     }
   ]
 }

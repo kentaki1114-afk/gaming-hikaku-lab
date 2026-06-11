@@ -19,7 +19,7 @@ const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
 const editorials: Editorial[] = [
   {
     keyword: "Logicool G913 TKL ゲーミングキーボード ワイヤレス",
-    platforms: ["ps5", "pc"],
+    platforms: ["ps5", "xbox", "pc"],
     badge: "編集部イチオシ",
     badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/30",
     rankColor: "text-amber-400",
@@ -34,7 +34,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "Razer BlackWidow V4 Pro ゲーミングキーボード",
-    platforms: ["ps5", "pc"],
+    platforms: ["ps5", "xbox", "pc"],
     badge: "高速入力最強",
     badgeColor: "bg-green-500/20 text-green-300 border-green-500/30",
     rankColor: "text-slate-400",
@@ -49,7 +49,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "SteelSeries Apex Pro TKL ゲーミングキーボード",
-    platforms: ["ps5", "pc"],
+    platforms: ["ps5", "xbox", "pc"],
     badge: "アクチュエーション可変",
     badgeColor: "bg-orange-500/20 text-orange-300 border-orange-500/30",
     rankColor: "text-orange-400",
@@ -64,7 +64,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "HyperX Alloy Origins Core ゲーミングキーボード",
-    platforms: ["ps5", "pc"],
+    platforms: ["ps5", "xbox", "pc"],
     badge: "コスパ重視",
     badgeColor: "bg-red-500/20 text-red-300 border-red-500/30",
     rankColor: "text-red-400",
@@ -79,7 +79,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "CORSAIR K70 RGB PRO ゲーミングキーボード",
-    platforms: ["ps5", "pc"],
+    platforms: ["ps5", "xbox", "pc"],
     badge: "定番フルサイズ",
     badgeColor: "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
     rankColor: "text-yellow-400",

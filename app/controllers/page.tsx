@@ -9,8 +9,8 @@ import { AuthorCard } from "@/app/components/AuthorCard";
 import { RelatedArticles } from "@/app/components/RelatedArticles";
 
 export const metadata: Metadata = {
-  title: "PS5・Xboxコントローラーおすすめランキング2026 | ゲーミング比較ラボ",
-  description: "PS5・Xbox対応コントローラーのおすすめランキング。DualSense Edge・Xbox Elite Series 2・SCUF Reflexなど人気製品を徹底比較。",
+  title: "PS5・Switch・Xboxコントローラーおすすめランキング2026 | ゲーミング比較ラボ",
+  description: "PS5・Switch・Xbox対応コントローラーのおすすめランキング。DualSense Edge・Switch Proコントローラー・Xbox Elite Series 2など人気製品を徹底比較。",
   alternates: { canonical: "/controllers" },
 };
 
@@ -80,17 +80,47 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "8BitDo Ultimate Controller",
-    platforms: ["xbox", "pc"],
+    platforms: ["xbox", "switch", "pc"],
     badge: "コスパ王",
     badgeColor: "bg-teal-500/20 text-teal-300 border-teal-500/30",
     rankColor: "text-teal-400",
     score: 4.4,
-    point: "Xbox・PCユーザーでコストを抑えたい人に最適。性能と価格のバランスが◎。",
-    pros: ["コスパ最高クラス", "背面ボタン2つ付き", "アプリでカスタマイズ可", "2.4GHz接続で遅延少ない"],
-    cons: ["PS5非対応（Xbox・PC向け）", "アダプティブトリガーなし"],
+    point: "Switch・Xbox・PC向けにモデル展開する高コスパ機。性能と価格のバランスが◎。",
+    pros: ["コスパ最高クラス", "背面ボタン2つ付き", "アプリでカスタマイズ可", "充電ドック付きで管理が楽"],
+    cons: ["PS5非対応", "対応機種がモデルにより異なる（購入時に要確認）"],
     specs: [
-      { label: "対応機種", value: "Xbox / PC" },
+      { label: "対応機種", value: "Switch / Xbox / PC（モデル別）" },
       { label: "バッテリー", value: "約22時間" },
+    ],
+  },
+  {
+    keyword: "Nintendo Switch Proコントローラー 純正",
+    platforms: ["switch", "pc"],
+    badge: "Switch定番",
+    badgeColor: "bg-red-500/20 text-red-300 border-red-500/30",
+    rankColor: "text-red-400",
+    score: 4.6,
+    point: "Switchユーザーの第一候補。ジャイロ・HD振動・amiibo対応の任天堂純正プロコン。",
+    pros: ["任天堂純正の安心感", "ジャイロ操作が高精度でスプラトゥーンに最適", "約40時間の長時間バッテリー", "PCでもSteam経由で使用可能"],
+    cons: ["PS5・Xbox非対応", "背面ボタンなし"],
+    specs: [
+      { label: "対応機種", value: "Switch / PC" },
+      { label: "バッテリー", value: "約40時間" },
+    ],
+  },
+  {
+    keyword: "ホリパッド for Nintendo Switch",
+    platforms: ["switch"],
+    badge: "Switch入門向け",
+    badgeColor: "bg-pink-500/20 text-pink-300 border-pink-500/30",
+    rankColor: "text-pink-400",
+    score: 4.1,
+    point: "任天堂ライセンス取得の定番サードパーティ製。純正より手頃な価格で買える入門機。",
+    pros: ["任天堂公式ライセンス品", "純正プロコンより安価", "十字キーの操作感に定評", "軽量で子ども・サブ用にも◎"],
+    cons: ["HD振動・amiibo非対応", "モデルによりジャイロ非搭載に注意"],
+    specs: [
+      { label: "対応機種", value: "Switch" },
+      { label: "タイプ", value: "ワイヤレス / 有線（モデル別）" },
     ],
   },
 ];
@@ -107,7 +137,7 @@ export default function ControllersPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "PS5・Xboxコントローラーおすすめランキング",
+    name: "PS5・Switch・Xboxコントローラーおすすめランキング",
     itemListElement: merged.map(({ product }, i) => ({
       "@type": "ListItem",
       position: i + 1,
@@ -173,10 +203,10 @@ export default function ControllersPage() {
           {new Date(updatedAt).toLocaleDateString("ja-JP", { year: "numeric", month: "long" })} 更新
         </span>
         <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
-          PS5・Xboxコントローラー<br className="md:hidden" />おすすめランキング
+          PS5・Switch・Xboxコントローラー<br className="md:hidden" />おすすめランキング
         </h1>
         <p className="text-slate-400 leading-relaxed max-w-3xl">
-          PS5・Xbox対応のコントローラーを、接続方式・カスタマイズ性・バッテリー持続・価格の観点で徹底比較しました。
+          PS5・Switch・Xbox対応のコントローラーを、接続方式・カスタマイズ性・バッテリー持続・価格の観点で徹底比較しました。
           価格・在庫情報は楽天市場の最新データを自動取得しています。
           参考サイト：<a href="https://my-best.com/32755" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline">マイベスト</a>・
           <a href="https://gamewith.jp/gaming-pc/526454" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline">ゲームウィズ</a>・

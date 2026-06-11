@@ -24,6 +24,8 @@ export const CATEGORY_CONFIG = {
       "Xbox Eliteコントローラー Series2",
       "SCUF Reflex Pro コントローラー",
       "8BitDo Ultimate Controller",
+      "Nintendo Switch Proコントローラー 純正",
+      "ホリパッド for Nintendo Switch",
     ],
     choosingGuide: [
       { title: "① 有線 vs ワイヤレスを決める", body: "ワイヤレスは取り回しが楽で快適ですが、バッテリー管理が必要です。FPS競技プレイなら有線の方が遅延ゼロで安心という人も多いです。" },
@@ -53,6 +55,7 @@ export const CATEGORY_CONFIG = {
       "Astro A50X ヘッドセット",
       "HyperX Cloud Alpha Wireless",
       "Xbox ワイヤレス ヘッドセット 純正",
+      "HyperX Cloud III ゲーミングヘッドセット",
     ],
     choosingGuide: [
       { title: "① 音の定位感を確認する", body: "FPSでは敵の足音の方向を正確に聞き取れるかが重要です。バーチャルサラウンド（7.1ch）対応モデルは定位感の向上に役立ちます。" },

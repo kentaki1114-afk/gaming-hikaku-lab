@@ -19,7 +19,7 @@ const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
 const editorials: Editorial[] = [
   {
     keyword: "Razer DeathAdder V3 Pro ゲーミングマウス",
-    platforms: ["ps5", "pc"],
+    platforms: ["ps5", "xbox", "pc"],
     badge: "編集部イチオシ",
     badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/30",
     rankColor: "text-amber-400",
@@ -34,7 +34,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "ASUS ROG Gladius III Wireless ゲーミングマウス",
-    platforms: ["ps5", "pc"],
+    platforms: ["ps5", "xbox", "pc"],
     badge: "カスタマイズ性最高",
     badgeColor: "bg-rose-500/20 text-rose-300 border-rose-500/30",
     rankColor: "text-slate-400",
@@ -49,7 +49,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "Logicool G703h ゲーミングマウス",
-    platforms: ["ps5", "pc"],
+    platforms: ["ps5", "xbox", "pc"],
     badge: "コスパ重視",
     badgeColor: "bg-blue-500/20 text-blue-300 border-blue-500/30",
     rankColor: "text-orange-400",
@@ -64,7 +64,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "SteelSeries Aerox ゲーミングマウス ワイヤレス",
-    platforms: ["ps5", "pc"],
+    platforms: ["ps5", "xbox", "pc"],
     badge: "超軽量",
     badgeColor: "bg-cyan-500/20 text-cyan-300 border-cyan-500/30",
     rankColor: "text-cyan-400",
@@ -79,7 +79,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "Razer Basilisk V3 Pro ゲーミングマウス",
-    platforms: ["ps5", "pc"],
+    platforms: ["ps5", "xbox", "pc"],
     badge: "多ボタン派に最適",
     badgeColor: "bg-green-500/20 text-green-300 border-green-500/30",
     rankColor: "text-green-400",

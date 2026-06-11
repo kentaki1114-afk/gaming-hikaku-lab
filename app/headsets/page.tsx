@@ -34,16 +34,16 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "SteelSeries Arctis Nova Pro Wireless",
-    platforms: ["ps5", "xbox", "pc"],
+    platforms: ["ps5", "xbox", "switch", "pc"],
     badge: "両対応最強",
     badgeColor: "bg-blue-500/20 text-blue-300 border-blue-500/30",
     rankColor: "text-slate-400",
     score: 4.7,
     point: "PS5・Xbox両方持ちなら最強の選択肢。バッテリー交換式で充電切れゼロ。",
-    pros: ["PS5・Xbox両対応", "交換式バッテリーで無限使用可", "Active Noise Cancelling搭載", "音質が非常に高い"],
+    pros: ["PS5・Xbox・Switchに対応", "交換式バッテリーで無限使用可", "Active Noise Cancelling搭載", "音質が非常に高い"],
     cons: ["価格が高い", "本体がやや重い"],
     specs: [
-      { label: "対応機種", value: "PS5 / Xbox / PC" },
+      { label: "対応機種", value: "PS5 / Xbox / Switch / PC" },
       { label: "バッテリー", value: "交換式で無制限" },
     ],
   },
@@ -90,6 +90,21 @@ const editorials: Editorial[] = [
     specs: [
       { label: "対応機種", value: "Xbox / PC" },
       { label: "バッテリー", value: "約15時間" },
+    ],
+  },
+  {
+    keyword: "HyperX Cloud III ゲーミングヘッドセット",
+    platforms: ["ps5", "xbox", "switch", "pc"],
+    badge: "有線万能型",
+    badgeColor: "bg-red-500/20 text-red-300 border-red-500/30",
+    rankColor: "text-red-400",
+    score: 4.4,
+    point: "3.5mm接続で全機種に挿すだけ。Switchの携帯モードでも使える万能有線モデル。",
+    pros: ["3.5mm/USB接続で全プラットフォーム対応", "Switch携帯モードでも使用可能", "装着感に定評のあるCloudシリーズ", "充電不要の有線で扱いが楽"],
+    cons: ["ケーブルの取り回しが必要", "ノイズキャンセリングなし"],
+    specs: [
+      { label: "対応機種", value: "PS5 / Xbox / Switch / PC" },
+      { label: "接続方式", value: "3.5mm / USB" },
     ],
   },
 ];

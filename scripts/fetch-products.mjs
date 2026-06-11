@@ -12,6 +12,8 @@ const CATEGORIES = {
       "Xbox Eliteコントローラー Series2",
       "SCUF Reflex Pro コントローラー",
       "8BitDo Ultimate Controller",
+      "Nintendo Switch Proコントローラー 純正",
+      "ホリパッド for Nintendo Switch",
     ],
   },
   headsets: {
@@ -22,6 +24,7 @@ const CATEGORIES = {
       "Astro A50X ヘッドセット",
       "HyperX Cloud Alpha Wireless",
       "Xbox ワイヤレス ヘッドセット 純正",
+      "HyperX Cloud III ゲーミングヘッドセット",
     ],
   },
   monitors: {
