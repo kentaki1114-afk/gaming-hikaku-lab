@@ -70,10 +70,12 @@ export function PlatformFilteredRanking({ items, accentBorder, pointBg }: ListPr
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   };
 
-  const filtered =
+  // 「すべて」もプラットフォーム別もTop 5に統一する（タブの件数表示は実件数のまま）
+  const filtered = (
     active === "all"
-      ? items.slice(0, TOP_N)
-      : items.filter(({ editorial }) => editorial.platforms.includes(active));
+      ? items
+      : items.filter(({ editorial }) => editorial.platforms.includes(active))
+  ).slice(0, TOP_N);
 
   const tabBase =
     "px-3 py-1.5 rounded-full text-sm font-semibold border transition-colors whitespace-nowrap";

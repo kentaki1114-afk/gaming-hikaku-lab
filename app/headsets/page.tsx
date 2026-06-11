@@ -107,6 +107,36 @@ const editorials: Editorial[] = [
       { label: "接続方式", value: "3.5mm / USB" },
     ],
   },
+  {
+    keyword: "Razer BlackShark V2X ゲーミングヘッドセット",
+    platforms: ["ps5", "xbox", "switch", "pc"],
+    badge: "1万円以下の定番",
+    badgeColor: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
+    rankColor: "text-emerald-400",
+    score: 4.3,
+    point: "eスポーツ向け軽量設計の3.5mm有線モデル。1万円以下で全機種に対応するコスパの良さが光る。",
+    pros: ["240gの軽量設計で長時間も快適", "3.5mm接続で全プラットフォーム対応", "遮音性の高いイヤーカップ", "1万円以下の手頃な価格"],
+    cons: ["マイク取り外し不可", "バーチャルサラウンドはPC接続時のみ"],
+    specs: [
+      { label: "対応機種", value: "PS5 / Xbox / Switch / PC" },
+      { label: "接続方式", value: "3.5mm有線" },
+    ],
+  },
+  {
+    keyword: "Logicool G335 ゲーミングヘッドセット",
+    platforms: ["ps5", "xbox", "switch", "pc"],
+    badge: "軽量コスパ",
+    badgeColor: "bg-cyan-500/20 text-cyan-300 border-cyan-500/30",
+    rankColor: "text-cyan-400",
+    score: 4.2,
+    point: "わずか240gの超軽量3.5mm有線モデル。フリップミュート付きでSwitch携帯モードでも使いやすい。",
+    pros: ["240gの超軽量で疲れにくい", "3.5mm接続で全プラットフォーム対応", "フリップミュートマイクが便利", "カラーバリエーションが豊富"],
+    cons: ["低音はやや控えめ", "サラウンド非対応"],
+    specs: [
+      { label: "対応機種", value: "PS5 / Xbox / Switch / PC" },
+      { label: "接続方式", value: "3.5mm有線" },
+    ],
+  },
 ];
 
 export default function HeadsetsPage() {

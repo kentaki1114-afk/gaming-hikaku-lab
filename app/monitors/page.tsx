@@ -92,6 +92,21 @@ const editorials: Editorial[] = [
       { label: "リフレッシュレート", value: "165Hz" },
     ],
   },
+  {
+    keyword: "BenQ MOBIUZ EX240N ゲーミングモニター",
+    platforms: ["ps5", "xbox", "switch", "pc"],
+    badge: "コンソール入門",
+    badgeColor: "bg-rose-500/20 text-rose-300 border-rose-500/30",
+    rankColor: "text-rose-400",
+    score: 4.2,
+    point: "treVoloスピーカー内蔵でSwitchやPS5を繋ぐだけで完結。コンソール入門に最適な23.8インチ。",
+    pros: ["高音質スピーカー内蔵でSwitchと好相性", "165Hz・1msの快適な応答性", "輝度自動調整B.I.+で目に優しい", "3万円前後の手頃な価格"],
+    cons: ["解像度はフルHDまで", "VAパネルのため視野角はIPSに劣る"],
+    specs: [
+      { label: "サイズ", value: "23.8インチ" },
+      { label: "リフレッシュレート", value: "165Hz" },
+    ],
+  },
 ];
 
 export default function MonitorsPage() {
