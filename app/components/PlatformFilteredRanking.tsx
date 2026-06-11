@@ -18,21 +18,25 @@ type ListProps = {
   pointBg: string;
 };
 
+const TOP_N = 5;
+
 /**
- * フィルタなしの素のランキングリスト。
+ * フィルタなしの素のランキングリスト(Top 5固定)。
  * useSearchParams を使わないため静的HTMLにそのまま出力でき、
  * PlatformFilteredRanking の Suspense fallback として使うことでSEO上のコンテンツを担保する。
  */
 export function RankingList({ items, accentBorder, pointBg }: ListProps) {
+  const top5 = items.slice(0, TOP_N);
   return (
     <div className="space-y-6">
-      {items.map(({ product, editorial }) => (
+      {top5.map(({ product, editorial }, i) => (
         <ProductRankingCard
           key={editorial.keyword}
           product={product}
           editorial={editorial}
           accentBorder={accentBorder}
           pointBg={pointBg}
+          displayRank={i + 1}
         />
       ))}
     </div>
@@ -68,7 +72,7 @@ export function PlatformFilteredRanking({ items, accentBorder, pointBg }: ListPr
 
   const filtered =
     active === "all"
-      ? items
+      ? items.slice(0, TOP_N)
       : items.filter(({ editorial }) => editorial.platforms.includes(active));
 
   const tabBase =
@@ -92,7 +96,7 @@ export function PlatformFilteredRanking({ items, accentBorder, pointBg }: ListPr
           aria-pressed={active === "all"}
           className={`${tabBase} ${active === "all" ? tabActive : tabInactive}`}
         >
-          すべて ({items.length})
+          すべて TOP{TOP_N}
         </button>
         {ALL_PLATFORMS.map((p) => {
           const count = countOf(p);
@@ -113,7 +117,18 @@ export function PlatformFilteredRanking({ items, accentBorder, pointBg }: ListPr
       </div>
 
       {filtered.length > 0 ? (
-        <RankingList items={filtered} accentBorder={accentBorder} pointBg={pointBg} />
+        <div className="space-y-6">
+          {filtered.map(({ product, editorial }, i) => (
+            <ProductRankingCard
+              key={editorial.keyword}
+              product={product}
+              editorial={editorial}
+              accentBorder={accentBorder}
+              pointBg={pointBg}
+              displayRank={i + 1}
+            />
+          ))}
+        </div>
       ) : (
         <div className="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-10 text-center">
           <p className="text-slate-300 font-semibold mb-2">

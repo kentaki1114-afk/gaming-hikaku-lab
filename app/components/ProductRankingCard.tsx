@@ -33,17 +33,20 @@ export function ProductRankingCard({
   editorial,
   accentBorder,
   pointBg,
+  displayRank,
 }: {
   product: Product;
   editorial: Editorial;
   accentBorder: string;
   pointBg: string;
+  displayRank?: number;
 }) {
+  const rank = displayRank ?? product.rank;
   return (
     <div className={`bg-slate-800 border border-slate-700 rounded-2xl p-6 transition-all ${accentBorder}`}>
       <div className="flex flex-col md:flex-row md:items-start gap-5">
         <div className="flex-shrink-0 flex md:flex-col items-center gap-3 md:w-40">
-          <span className={`text-5xl font-black ${editorial.rankColor}`}>#{product.rank}</span>
+          <span className={`text-5xl font-black ${editorial.rankColor}`}>#{rank}</span>
           {product.imageUrl ? (
             <div className="relative w-28 h-28 bg-white rounded-xl overflow-hidden flex-shrink-0">
               <Image
