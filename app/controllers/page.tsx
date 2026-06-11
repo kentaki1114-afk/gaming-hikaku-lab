@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getProducts } from "@/lib/products";
-import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
+import { Suspense } from "react";
+import type { Editorial } from "@/app/components/ProductRankingCard";
+import { PlatformFilteredRanking, RankingList } from "@/app/components/PlatformFilteredRanking";
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
 import { AuthorCard } from "@/app/components/AuthorCard";
 import { RelatedArticles } from "@/app/components/RelatedArticles";
@@ -18,6 +20,7 @@ const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
 const editorials: Editorial[] = [
   {
     keyword: "DualSense Edge コントローラー",
+    platforms: ["ps5", "pc"],
     badge: "編集部イチオシ",
     badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/30",
     rankColor: "text-amber-400",
@@ -32,6 +35,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "DualSense ワイヤレスコントローラー PS5",
+    platforms: ["ps5", "pc"],
     badge: "コスパ最強",
     badgeColor: "bg-blue-500/20 text-blue-300 border-blue-500/30",
     rankColor: "text-slate-400",
@@ -46,6 +50,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "Xbox Eliteコントローラー Series2",
+    platforms: ["xbox", "pc"],
     badge: "Xbox最強",
     badgeColor: "bg-green-500/20 text-green-300 border-green-500/30",
     rankColor: "text-orange-400",
@@ -60,6 +65,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "SCUF Reflex Pro コントローラー",
+    platforms: ["ps5", "pc"],
     badge: "グリップ最高",
     badgeColor: "bg-purple-500/20 text-purple-300 border-purple-500/30",
     rankColor: "text-purple-400",
@@ -74,6 +80,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "8BitDo Ultimate Controller",
+    platforms: ["xbox", "pc"],
     badge: "コスパ王",
     badgeColor: "bg-teal-500/20 text-teal-300 border-teal-500/30",
     rankColor: "text-teal-400",
@@ -177,17 +184,9 @@ export default function ControllersPage() {
         </p>
       </div>
 
-      <div className="space-y-6">
-        {merged.map(({ product, editorial }) => (
-          <ProductRankingCard
-            key={editorial.keyword}
-            product={product}
-            editorial={editorial}
-            accentBorder="hover:border-violet-500/40"
-            pointBg="bg-violet-900/20 border-violet-700/30"
-          />
-        ))}
-      </div>
+      <Suspense fallback={<RankingList items={merged} accentBorder="hover:border-violet-500/40" pointBg="bg-violet-900/20 border-violet-700/30" />}>
+        <PlatformFilteredRanking items={merged} accentBorder="hover:border-violet-500/40" pointBg="bg-violet-900/20 border-violet-700/30" />
+      </Suspense>
 
       <section className="mt-16 bg-slate-800/40 border border-slate-700/50 rounded-2xl p-8">
         <h2 className="text-xl font-bold text-white mb-6">コントローラーの選び方</h2>

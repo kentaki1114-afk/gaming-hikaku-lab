@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getProducts } from "@/lib/products";
-import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
+import { Suspense } from "react";
+import type { Editorial } from "@/app/components/ProductRankingCard";
+import { PlatformFilteredRanking, RankingList } from "@/app/components/PlatformFilteredRanking";
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
 import { AuthorCard } from "@/app/components/AuthorCard";
 import { RelatedArticles } from "@/app/components/RelatedArticles";
@@ -17,6 +19,7 @@ const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
 const editorials: Editorial[] = [
   {
     keyword: "AKRacing Pro-X V2 ゲーミングチェア",
+    platforms: ["ps5", "xbox", "switch", "pc"],
     badge: "編集部イチオシ",
     badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/30",
     rankColor: "text-amber-400",
@@ -31,6 +34,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "DXRacer Formula Series ゲーミングチェア",
+    platforms: ["ps5", "xbox", "switch", "pc"],
     badge: "デザイン重視",
     badgeColor: "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
     rankColor: "text-slate-400",
@@ -45,6 +49,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "Secretlab TITAN Evo ゲーミングチェア",
+    platforms: ["ps5", "xbox", "switch", "pc"],
     badge: "プレミアム品質",
     badgeColor: "bg-purple-500/20 text-purple-300 border-purple-500/30",
     rankColor: "text-orange-400",
@@ -59,6 +64,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "GTRACING ゲーミングチェア GT002",
+    platforms: ["ps5", "xbox", "switch", "pc"],
     badge: "入門コスパ",
     badgeColor: "bg-green-500/20 text-green-300 border-green-500/30",
     rankColor: "text-green-400",
@@ -73,6 +79,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "AKRacing Wolf ゲーミングチェア",
+    platforms: ["ps5", "xbox", "switch", "pc"],
     badge: "スポーティ",
     badgeColor: "bg-red-500/20 text-red-300 border-red-500/30",
     rankColor: "text-red-400",
@@ -173,17 +180,9 @@ export default function ChairsPage() {
         </p>
       </div>
 
-      <div className="space-y-6">
-        {merged.map(({ product, editorial }) => (
-          <ProductRankingCard
-            key={editorial.keyword}
-            product={product}
-            editorial={editorial}
-            accentBorder="hover:border-yellow-500/40"
-            pointBg="bg-yellow-900/20 border-yellow-700/30"
-          />
-        ))}
-      </div>
+      <Suspense fallback={<RankingList items={merged} accentBorder="hover:border-yellow-500/40" pointBg="bg-yellow-900/20 border-yellow-700/30" />}>
+        <PlatformFilteredRanking items={merged} accentBorder="hover:border-yellow-500/40" pointBg="bg-yellow-900/20 border-yellow-700/30" />
+      </Suspense>
 
       <section className="mt-16 bg-slate-800/40 border border-slate-700/50 rounded-2xl p-8">
         <h2 className="text-xl font-bold text-white mb-6">ゲーミングチェアの選び方</h2>

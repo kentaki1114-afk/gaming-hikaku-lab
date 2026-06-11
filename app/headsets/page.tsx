@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getProducts } from "@/lib/products";
-import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
+import { Suspense } from "react";
+import type { Editorial } from "@/app/components/ProductRankingCard";
+import { PlatformFilteredRanking, RankingList } from "@/app/components/PlatformFilteredRanking";
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
 import { AuthorCard } from "@/app/components/AuthorCard";
 import { RelatedArticles } from "@/app/components/RelatedArticles";
@@ -17,6 +19,7 @@ const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
 const editorials: Editorial[] = [
   {
     keyword: "PULSE Elite ワイヤレスヘッドセット",
+    platforms: ["ps5", "pc"],
     badge: "PS5最強",
     badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/30",
     rankColor: "text-amber-400",
@@ -31,6 +34,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "SteelSeries Arctis Nova Pro Wireless",
+    platforms: ["ps5", "xbox", "pc"],
     badge: "両対応最強",
     badgeColor: "bg-blue-500/20 text-blue-300 border-blue-500/30",
     rankColor: "text-slate-400",
@@ -45,6 +49,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "Astro A50X ヘッドセット",
+    platforms: ["ps5", "xbox", "switch", "pc"],
     badge: "全機種対応",
     badgeColor: "bg-orange-500/20 text-orange-300 border-orange-500/30",
     rankColor: "text-orange-400",
@@ -59,6 +64,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "HyperX Cloud Alpha Wireless",
+    platforms: ["ps5", "pc"],
     badge: "バッテリー最長",
     badgeColor: "bg-purple-500/20 text-purple-300 border-purple-500/30",
     rankColor: "text-purple-400",
@@ -73,6 +79,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "Xbox ワイヤレス ヘッドセット 純正",
+    platforms: ["xbox", "pc"],
     badge: "Xbox入門向け",
     badgeColor: "bg-teal-500/20 text-teal-300 border-teal-500/30",
     rankColor: "text-teal-400",
@@ -176,17 +183,9 @@ export default function HeadsetsPage() {
         </p>
       </div>
 
-      <div className="space-y-6">
-        {merged.map(({ product, editorial }) => (
-          <ProductRankingCard
-            key={editorial.keyword}
-            product={product}
-            editorial={editorial}
-            accentBorder="hover:border-blue-500/40"
-            pointBg="bg-blue-900/20 border-blue-700/30"
-          />
-        ))}
-      </div>
+      <Suspense fallback={<RankingList items={merged} accentBorder="hover:border-blue-500/40" pointBg="bg-blue-900/20 border-blue-700/30" />}>
+        <PlatformFilteredRanking items={merged} accentBorder="hover:border-blue-500/40" pointBg="bg-blue-900/20 border-blue-700/30" />
+      </Suspense>
 
       <section className="mt-16 bg-slate-800/40 border border-slate-700/50 rounded-2xl p-8">
         <h2 className="text-xl font-bold text-white mb-6">ゲーミングヘッドセットの選び方</h2>

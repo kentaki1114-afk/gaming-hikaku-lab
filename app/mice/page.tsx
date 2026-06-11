@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getProducts } from "@/lib/products";
-import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
+import { Suspense } from "react";
+import type { Editorial } from "@/app/components/ProductRankingCard";
+import { PlatformFilteredRanking, RankingList } from "@/app/components/PlatformFilteredRanking";
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
 import { AuthorCard } from "@/app/components/AuthorCard";
 import { RelatedArticles } from "@/app/components/RelatedArticles";
@@ -17,6 +19,7 @@ const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
 const editorials: Editorial[] = [
   {
     keyword: "Razer DeathAdder V3 Pro ゲーミングマウス",
+    platforms: ["ps5", "pc"],
     badge: "編集部イチオシ",
     badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/30",
     rankColor: "text-amber-400",
@@ -31,6 +34,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "ASUS ROG Gladius III Wireless ゲーミングマウス",
+    platforms: ["ps5", "pc"],
     badge: "カスタマイズ性最高",
     badgeColor: "bg-rose-500/20 text-rose-300 border-rose-500/30",
     rankColor: "text-slate-400",
@@ -45,6 +49,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "Logicool G703h ゲーミングマウス",
+    platforms: ["ps5", "pc"],
     badge: "コスパ重視",
     badgeColor: "bg-blue-500/20 text-blue-300 border-blue-500/30",
     rankColor: "text-orange-400",
@@ -59,6 +64,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "SteelSeries Aerox ゲーミングマウス ワイヤレス",
+    platforms: ["ps5", "pc"],
     badge: "超軽量",
     badgeColor: "bg-cyan-500/20 text-cyan-300 border-cyan-500/30",
     rankColor: "text-cyan-400",
@@ -73,6 +79,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "Razer Basilisk V3 Pro ゲーミングマウス",
+    platforms: ["ps5", "pc"],
     badge: "多ボタン派に最適",
     badgeColor: "bg-green-500/20 text-green-300 border-green-500/30",
     rankColor: "text-green-400",
@@ -173,17 +180,9 @@ export default function MicePage() {
         </p>
       </div>
 
-      <div className="space-y-6">
-        {merged.map(({ product, editorial }) => (
-          <ProductRankingCard
-            key={editorial.keyword}
-            product={product}
-            editorial={editorial}
-            accentBorder="hover:border-rose-500/40"
-            pointBg="bg-rose-900/20 border-rose-700/30"
-          />
-        ))}
-      </div>
+      <Suspense fallback={<RankingList items={merged} accentBorder="hover:border-rose-500/40" pointBg="bg-rose-900/20 border-rose-700/30" />}>
+        <PlatformFilteredRanking items={merged} accentBorder="hover:border-rose-500/40" pointBg="bg-rose-900/20 border-rose-700/30" />
+      </Suspense>
 
       <section className="mt-16 bg-slate-800/40 border border-slate-700/50 rounded-2xl p-8">
         <h2 className="text-xl font-bold text-white mb-6">ゲーミングマウスの選び方</h2>

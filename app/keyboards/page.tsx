@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getProducts } from "@/lib/products";
-import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
+import { Suspense } from "react";
+import type { Editorial } from "@/app/components/ProductRankingCard";
+import { PlatformFilteredRanking, RankingList } from "@/app/components/PlatformFilteredRanking";
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
 import { AuthorCard } from "@/app/components/AuthorCard";
 import { RelatedArticles } from "@/app/components/RelatedArticles";
@@ -17,6 +19,7 @@ const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
 const editorials: Editorial[] = [
   {
     keyword: "Logicool G913 TKL ゲーミングキーボード ワイヤレス",
+    platforms: ["ps5", "pc"],
     badge: "編集部イチオシ",
     badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/30",
     rankColor: "text-amber-400",
@@ -31,6 +34,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "Razer BlackWidow V4 Pro ゲーミングキーボード",
+    platforms: ["ps5", "pc"],
     badge: "高速入力最強",
     badgeColor: "bg-green-500/20 text-green-300 border-green-500/30",
     rankColor: "text-slate-400",
@@ -45,6 +49,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "SteelSeries Apex Pro TKL ゲーミングキーボード",
+    platforms: ["ps5", "pc"],
     badge: "アクチュエーション可変",
     badgeColor: "bg-orange-500/20 text-orange-300 border-orange-500/30",
     rankColor: "text-orange-400",
@@ -59,6 +64,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "HyperX Alloy Origins Core ゲーミングキーボード",
+    platforms: ["ps5", "pc"],
     badge: "コスパ重視",
     badgeColor: "bg-red-500/20 text-red-300 border-red-500/30",
     rankColor: "text-red-400",
@@ -73,6 +79,7 @@ const editorials: Editorial[] = [
   },
   {
     keyword: "CORSAIR K70 RGB PRO ゲーミングキーボード",
+    platforms: ["ps5", "pc"],
     badge: "定番フルサイズ",
     badgeColor: "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
     rankColor: "text-yellow-400",
@@ -173,17 +180,9 @@ export default function KeyboardsPage() {
         </p>
       </div>
 
-      <div className="space-y-6">
-        {merged.map(({ product, editorial }) => (
-          <ProductRankingCard
-            key={editorial.keyword}
-            product={product}
-            editorial={editorial}
-            accentBorder="hover:border-orange-500/40"
-            pointBg="bg-orange-900/20 border-orange-700/30"
-          />
-        ))}
-      </div>
+      <Suspense fallback={<RankingList items={merged} accentBorder="hover:border-orange-500/40" pointBg="bg-orange-900/20 border-orange-700/30" />}>
+        <PlatformFilteredRanking items={merged} accentBorder="hover:border-orange-500/40" pointBg="bg-orange-900/20 border-orange-700/30" />
+      </Suspense>
 
       <section className="mt-16 bg-slate-800/40 border border-slate-700/50 rounded-2xl p-8">
         <h2 className="text-xl font-bold text-white mb-6">ゲーミングキーボードの選び方</h2>
