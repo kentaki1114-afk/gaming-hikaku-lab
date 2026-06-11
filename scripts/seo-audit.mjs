@@ -109,6 +109,13 @@ console.log("\n[3/7] 記事データ整合性チェック");
     if (article.description && (article.description.length < 50 || article.description.length > 160)) {
       warn(`${file}: description が ${article.description.length} 文字（推奨 50〜160）`);
     }
+    // タイトルへのセール文言混入（楽天商品名由来）。SERP表示が壊れるため検出する。
+    // 検出したら node scripts/fix-article-meta.mjs で修復できる。
+    const salesNoise = /【|】|送料無料|ポイント\d*倍|クーポン|SALE|セール|限定特価/i;
+    if (article.title && salesNoise.test(article.title)) {
+      warn(`${file}: title にセール文言が混入「${article.title.slice(0, 40)}…」（fix-article-meta.mjs で修復可）`);
+      issues++;
+    }
     // 商品ブロックの keyword 参照切れ（リンク切れ商品カード = 表示されない）
     const productsPath = join(PRODUCTS_DIR, `${article.category}.json`);
     if (existsSync(productsPath)) {
@@ -153,7 +160,8 @@ console.log("\n[5/7] sitemap・カテゴリ整合性チェック");
     if (!existsSync(join(APP_DIR, slug, "page.tsx"))) { error(`categories.json の "${slug}" にページがない`); issues++; }
     if (!existsSync(join(PRODUCTS_DIR, `${slug}.json`))) { error(`categories.json の "${slug}" に商品データがない`); issues++; }
   }
-  const knownNonCategory = new Set(["articles", "privacy", "disclaimer"]);
+  // ps5-accessories は7カテゴリ横断のピラーページ（sitemap.ts に静的登録済み）
+  const knownNonCategory = new Set(["articles", "privacy", "disclaimer", "ps5-accessories"]);
   for (const dir of pageDirs) {
     if (!categorySlugs.includes(dir) && !knownNonCategory.has(dir)) {
       warn(`app/${dir} は categories.json 未登録（sitemap から漏れている可能性）`);

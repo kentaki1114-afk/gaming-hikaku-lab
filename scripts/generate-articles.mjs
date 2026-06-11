@@ -4,6 +4,7 @@
 // 生成された記事は lib/articles.ts 経由で /articles/[slug] に自動表示される。
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
 import { resolve } from "path";
+import { shortProductName, clampDescription } from "./product-name.mjs";
 
 const ROOT = process.cwd();
 const PRODUCTS_DIR = resolve(ROOT, "data", "products");
@@ -73,8 +74,10 @@ const THEMES = {
     build(category, products, rng) {
       const [main, sub] = pickTwoDistinct(rng, products);
       const catTitle = CATEGORY_TITLES[category];
-      const title = `${catTitle}の選び方完全ガイド｜${main.name.split(" ")[0]}と${sub.name.split(" ")[0]}を例に解説`;
-      const description = `${catTitle}選びで失敗しないためのチェックポイントを、人気モデル「${main.name}」「${sub.name}」を例にしながら解説します。`;
+      const mainShort = shortProductName(main.name);
+      const subShort = shortProductName(sub.name);
+      const title = `${catTitle}の選び方完全ガイド｜${mainShort}と${subShort}を例に解説`;
+      const description = clampDescription(`${catTitle}選びで失敗しないためのチェックポイントを、人気モデル「${mainShort}」「${subShort}」を例にしながら解説します。`);
       const blocks = [
         { type: "paragraph", text: `${catTitle}は種類が多く、何を基準に選べばいいか迷ってしまう人も多いはずです。この記事では、購入前に確認しておきたいポイントを整理しながら、実際に人気の高いモデルを例に選び方のコツを紹介します。` },
         { type: "heading", text: "購入前に確認しておきたいポイント" },
@@ -83,10 +86,10 @@ const THEMES = {
           "価格と性能のバランス（必要な機能を見極める）",
           "長時間使用したときの快適さ（重さ・装着感・バッテリー）",
         ] },
-        { type: "heading", text: `まず候補にしたい「${main.name}」` },
+        { type: "heading", text: `まず候補にしたい「${mainShort}」` },
         { type: "paragraph", text: `価格・レビュー評価ともにバランスが良く、初めて検討する場合にも選びやすいモデルです。スペックや実際の価格は下記から確認できます。` },
         { type: "product", category, keyword: main.keyword, note: "価格・在庫状況は変動するため、購入前に最新情報を確認しておきましょう。" },
-        { type: "heading", text: `比較候補としておすすめの「${sub.name}」` },
+        { type: "heading", text: `比較候補としておすすめの「${subShort}」` },
         { type: "paragraph", text: `先ほどのモデルと用途や特徴が異なるため、比較することで自分に合った基準が見えてきます。気になる場合は実際のレビューや価格もあわせてチェックしてみてください。` },
         { type: "product", category, keyword: sub.keyword, note: "用途や好みに応じて、上のモデルと比較しながら検討してみてください。" },
         { type: "heading", text: "まとめ" },
@@ -101,14 +104,16 @@ const THEMES = {
     build(category, products, rng) {
       const [a, b] = pickTwoDistinct(rng, products);
       const catTitle = CATEGORY_TITLES[category];
-      const title = `「${a.name.split(" ")[0]}」と「${b.name.split(" ")[0]}」を徹底比較｜どちらを選ぶべき？`;
-      const description = `人気${catTitle}「${a.name}」と「${b.name}」を比較し、それぞれどんな人におすすめかを解説します。`;
+      const aShort = shortProductName(a.name);
+      const bShort = shortProductName(b.name);
+      const title = `「${aShort}」と「${bShort}」を徹底比較｜どちらを選ぶべき？`;
+      const description = clampDescription(`人気${catTitle}「${aShort}」と「${bShort}」を比較し、それぞれどんな人におすすめかを解説します。`);
       const blocks = [
-        { type: "paragraph", text: `今回は人気の高い${catTitle}「${a.name}」と「${b.name}」を比較しながら、それぞれどんなプレイスタイルの人に向いているのかを解説します。どちらを選ぶか迷っている人の参考になれば幸いです。` },
-        { type: "heading", text: `「${a.name}」の特徴` },
+        { type: "paragraph", text: `今回は人気の高い${catTitle}「${aShort}」と「${bShort}」を比較しながら、それぞれどんなプレイスタイルの人に向いているのかを解説します。どちらを選ぶか迷っている人の参考になれば幸いです。` },
+        { type: "heading", text: `「${aShort}」の特徴` },
         { type: "paragraph", text: `レビュー評価${a.reviewAverage ?? "高評価"}を獲得している人気モデルです。価格や販売状況は下記から確認できます。` },
         { type: "product", category, keyword: a.keyword, note: "まず最初の候補として検討したいモデルです。" },
-        { type: "heading", text: `「${b.name}」の特徴` },
+        { type: "heading", text: `「${bShort}」の特徴` },
         { type: "paragraph", text: `先ほどのモデルとは異なる強みを持つ製品で、比較することで自分の優先順位が明確になります。` },
         { type: "product", category, keyword: b.keyword, note: "予算や用途に応じて、こちらも有力な候補になります。" },
         { type: "heading", text: "結局どちらを選ぶべき？" },
@@ -133,14 +138,16 @@ const THEMES = {
       const scenario = pick(rng, scenarios[category] ?? scenarios.controllers);
       const [main, sub] = pickTwoDistinct(rng, products);
       const catTitle = CATEGORY_TITLES[category];
+      const mainShort = shortProductName(main.name);
+      const subShort = shortProductName(sub.name);
       const title = `${scenario}向け${catTitle}おすすめ2選｜目的別に厳選`;
-      const description = `「${scenario}」におすすめの${catTitle}を2つ厳選して紹介します。自分の目的に合った一台を見つける参考にしてください。`;
+      const description = clampDescription(`「${scenario}」におすすめの${catTitle}を2つ厳選して紹介します。自分の目的に合った一台を見つける参考にしてください。`);
       const blocks = [
         { type: "paragraph", text: `${catTitle}選びは、自分がどんな場面で使うことが多いかを軸に考えると失敗しにくくなります。今回は「${scenario}」に向けて、特におすすめできる2モデルを紹介します。` },
-        { type: "heading", text: `おすすめ①：${main.name}` },
+        { type: "heading", text: `おすすめ①：${mainShort}` },
         { type: "paragraph", text: `この用途においてバランスの良い性能を備えたモデルです。価格や販売状況は下記から確認できます。` },
         { type: "product", category, keyword: main.keyword, note: `「${scenario}」に適した特徴を持つモデルです。` },
-        { type: "heading", text: `おすすめ②：${sub.name}` },
+        { type: "heading", text: `おすすめ②：${subShort}` },
         { type: "paragraph", text: `予算やこだわりたいポイントによっては、こちらのモデルも有力な選択肢になります。` },
         { type: "product", category, keyword: sub.keyword, note: "用途や予算に応じて、上のモデルと比較しながら検討してみてください。" },
         { type: "heading", text: "まとめ" },
@@ -167,8 +174,10 @@ const THEMES = {
         capture: ["1万円以下", "1〜3万円", "3万円以上"],
       };
       const budgetList = budgets[category] ?? budgets.controllers;
+      const cheaperShort = shortProductName(cheaper.name);
+      const premiumShort = shortProductName(premium.name);
       const title = `${catTitle}を予算で選ぶ｜コスパ重視と本格派の2択を徹底比較`;
-      const description = `${catTitle}を予算で選ぶ際のポイントを解説しながら、コスパ重視モデルと本格派モデルの2択を比較します。`;
+      const description = clampDescription(`${catTitle}を予算で選ぶ際のポイントを解説しながら、コスパ重視モデルと本格派モデルの2択を比較します。`);
       const blocks = [
         { type: "paragraph", text: `${catTitle}は価格帯によって性能や機能が大きく変わります。この記事では「できるだけコスパよく揃えたい」「多少高くても満足できるものが欲しい」という2つのニーズに応える選び方と、具体的なおすすめモデルを紹介します。` },
         { type: "heading", text: "予算の目安" },
@@ -177,14 +186,14 @@ const THEMES = {
           `${budgetList[1]}：ミドルレンジ。コスパと性能のバランスが最も良い帯域`,
           `${budgetList[2]}：ハイエンド。プロゲーマー仕様・長期間使用を想定したモデル`,
         ] },
-        { type: "heading", text: `コスパ重視派におすすめ：${cheaper.name}` },
+        { type: "heading", text: `コスパ重視派におすすめ：${cheaperShort}` },
         { type: "paragraph", text: `価格を抑えつつも必要な機能をしっかり備えたモデルです。はじめての購入や予算を重視したい方に特におすすめです。` },
         { type: "product", category, keyword: cheaper.keyword, note: "コスパ重視の定番候補。価格と性能のバランスが良いモデルです。" },
-        { type: "heading", text: `本格派におすすめ：${premium.name}` },
+        { type: "heading", text: `本格派におすすめ：${premiumShort}` },
         { type: "paragraph", text: `価格は上がりますが、その分より高い性能・耐久性・快適さが得られます。長く使い続けることを考えると、こちらを選ぶのも賢明な選択です。` },
         { type: "product", category, keyword: premium.keyword, note: "長く使うなら投資する価値のある本格派モデルです。" },
         { type: "heading", text: "まとめ：どちらを選ぶべき？" },
-        { type: "paragraph", text: `まず試してみたい・予算を抑えたいなら「${cheaper.name}」、長く使いたい・性能にこだわりたいなら「${premium.name}」がおすすめです。他のモデルとも比較したい場合は[ランキングページ](/${category})もあわせてチェックしてみてください。` },
+        { type: "paragraph", text: `まず試してみたい・予算を抑えたいなら「${cheaperShort}」、長く使いたい・性能にこだわりたいなら「${premiumShort}」がおすすめです。他のモデルとも比較したい場合は[ランキングページ](/${category})もあわせてチェックしてみてください。` },
       ];
       return { title, description, blocks, tags: [catTitle, "予算別", "コスパ"] };
     },
