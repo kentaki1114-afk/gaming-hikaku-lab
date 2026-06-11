@@ -169,6 +169,18 @@ export default function Home() {
             );
           })}
         </div>
+        <Link
+          href="/ps5-accessories"
+          className="mt-6 flex items-center justify-between bg-gradient-to-r from-violet-600/20 to-slate-800/40 border border-violet-500/30 hover:border-violet-400/60 rounded-2xl p-6 transition-all group"
+        >
+          <div>
+            <h3 className="text-lg font-bold text-white mb-1">PS5・Xbox周辺機器おすすめ総まとめ【2026年版】</h3>
+            <p className="text-slate-400 text-sm">7カテゴリの「今いちばんのおすすめ」と揃える優先順位をまとめてチェック</p>
+          </div>
+          <span className="text-violet-400 text-sm font-medium whitespace-nowrap group-hover:translate-x-1 transition-transform">
+            まとめを見る →
+          </span>
+        </Link>
       </section>
 
       {/* Top Picks */}
