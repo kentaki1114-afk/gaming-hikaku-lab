@@ -6,6 +6,7 @@ import { getProducts } from "@/lib/products";
 import { ArticleProductCard } from "@/app/components/ArticleProductCard";
 import { ArticleRichText } from "@/app/components/ArticleRichText";
 import { AuthorCard } from "@/app/components/AuthorCard";
+import { RelatedArticles } from "@/app/components/RelatedArticles";
 
 const CATEGORY_LABELS: Record<string, string> = {
   controllers: "コントローラー",
@@ -23,26 +24,61 @@ export function generateStaticParams() {
   return getAllArticles().map((article) => ({ slug: article.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const article = getArticleBySlug(params.slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const article = getArticleBySlug(slug);
   if (!article) return {};
+  const url = `/articles/${article.slug}`;
   return {
     title: `${article.title} | ゲーミング比較ラボ`,
     description: article.description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      url,
+      title: article.title,
+      description: article.description,
+      publishedTime: article.publishedAt,
+      modifiedTime: article.updatedAt,
+      authors: ["けんたき"],
+      tags: article.tags,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.description,
+    },
   };
 }
 
-export default function ArticlePage({ params }: { params: { slug: string } }) {
-  const article = getArticleBySlug(params.slug);
+export default async function ArticlePage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const article = getArticleBySlug(slug);
   if (!article) notFound();
 
   const { items } = getProducts(article.category);
+
+  // Article rich results 向けの画像: 記事内の最初の商品画像、なければOG画像
+  const firstProductBlock = article.blocks.find((b) => b.type === "product");
+  const firstProductImage =
+    firstProductBlock?.type === "product"
+      ? items.find((it) => it.keyword === firstProductBlock.keyword)?.imageUrl
+      : undefined;
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: article.title,
     description: article.description,
+    image: firstProductImage || `${SITE_ORIGIN}/opengraph-image`,
     datePublished: article.publishedAt,
     dateModified: article.updatedAt,
     author: {
@@ -75,8 +111,11 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <nav className="text-sm text-slate-500 mb-6">
-        <span>ホーム</span> &gt; <Link href="/articles" className="hover:text-violet-400">記事一覧</Link> &gt;{" "}
-        <span className="text-violet-400">{CATEGORY_LABELS[article.category]}</span>
+        <Link href="/" className="hover:text-violet-400 transition-colors">ホーム</Link> &gt;{" "}
+        <Link href="/articles" className="hover:text-violet-400">記事一覧</Link> &gt;{" "}
+        <Link href={`/${article.category}`} className="text-violet-400 hover:text-violet-300">
+          {CATEGORY_LABELS[article.category]}
+        </Link>
       </nav>
 
       <header className="mb-10">
@@ -144,6 +183,8 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
           {CATEGORY_LABELS[article.category]}ランキングを見る →
         </Link>
       </footer>
+
+      <RelatedArticles category={article.category} excludeSlug={article.slug} />
 
       <AuthorCard comment="ゲーム歴10年。Apexはpadでプレデターをフォートナイトはキーマウでアンリアルを達成。実際に使ってきた経験をもとに書いています。" />
     </article>
