@@ -125,20 +125,6 @@ export default function Home() {
             コントローラーからキャプチャーボードまで、全{categories.length}カテゴリをPS5・Xboxユーザー目線で徹底比較。
             あなたのゲームライフをワンランク上げる最適な一台を見つけよう。
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link
-              href="/controllers"
-              className="bg-violet-600 hover:bg-violet-500 text-white font-semibold px-8 py-3 rounded-full transition-colors text-sm"
-            >
-              コントローラーを探す
-            </Link>
-            <Link
-              href="/headsets"
-              className="bg-slate-700 hover:bg-slate-600 text-white font-semibold px-8 py-3 rounded-full transition-colors text-sm border border-slate-600"
-            >
-              ヘッドセットを探す
-            </Link>
-          </div>
         </div>
       </section>
 
