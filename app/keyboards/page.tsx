@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
 import { AuthorCard } from "@/app/components/AuthorCard";
+import { RelatedArticles } from "@/app/components/RelatedArticles";
 
 export const metadata: Metadata = {
   title: "ゲーミングキーボードおすすめランキング2026 | ゲーミング比較ラボ",
   description: "ゲーミングキーボードのおすすめランキング。Logicool G913・Razer BlackWidow・SteelSeries Apex Proなど人気モデルを徹底比較。",
+  alternates: { canonical: "/keyboards" },
 };
 
 const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
@@ -154,7 +157,7 @@ export default function KeyboardsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <nav className="text-sm text-slate-500 mb-6">
-        <span>ホーム</span> &gt; <span className="text-orange-400">ゲーミングキーボードランキング</span>
+        <Link href="/" className="hover:text-violet-400 transition-colors">ホーム</Link> &gt; <span className="text-orange-400">ゲーミングキーボードランキング</span>
       </nav>
 
       <div className="mb-10">
@@ -200,6 +203,8 @@ export default function KeyboardsPage() {
         </div>
       </section>
       <FaqSection faqs={faqs} />
+
+      <RelatedArticles category="keyboards" />
 
       <AuthorCard comment="フォートナイトのアンリアルはキーマウで取りましたが、キーボード選びには相当悩みました。打鍵感の好みは人によって全然違うので、軸の種類だけは必ずチェックしてほしいポイントです。" />
     </div>

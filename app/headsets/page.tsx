@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
 import { AuthorCard } from "@/app/components/AuthorCard";
+import { RelatedArticles } from "@/app/components/RelatedArticles";
 
 export const metadata: Metadata = {
   title: "PS5・Xboxゲーミングヘッドセットおすすめランキング2026 | ゲーミング比較ラボ",
   description: "PS5・Xbox対応ゲーミングヘッドセットのおすすめランキング。PULSE Elite・SteelSeries Arctis Nova Pro・Astro A50 Xなどを徹底比較。",
+  alternates: { canonical: "/headsets" },
 };
 
 const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
@@ -154,7 +157,7 @@ export default function HeadsetsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <nav className="text-sm text-slate-500 mb-6">
-        <span>ホーム</span> &gt; <span className="text-violet-400">ヘッドセットランキング</span>
+        <Link href="/" className="hover:text-violet-400 transition-colors">ホーム</Link> &gt; <span className="text-violet-400">ヘッドセットランキング</span>
       </nav>
 
       <div className="mb-10">
@@ -203,6 +206,8 @@ export default function HeadsetsPage() {
         </div>
       </section>
       <FaqSection faqs={faqs} />
+
+      <RelatedArticles category="headsets" />
 
       <AuthorCard comment="FPSで足音を正確に拾えるかどうかが勝率に直結します。Apexでプレデターまで上り詰めた中で、ヘッドセットの音質差に何度も助けられました。このランキングは音の定位感を特に重視して選んでいます。" />
     </div>

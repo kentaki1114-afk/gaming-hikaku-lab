@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
 import { AuthorCard } from "@/app/components/AuthorCard";
+import { RelatedArticles } from "@/app/components/RelatedArticles";
 
 export const metadata: Metadata = {
   title: "キャプチャーボードおすすめランキング2026 | ゲーミング比較ラボ",
   description: "キャプチャーボードのおすすめランキング。Elgato・AVerMedia・I-O DATA・Razerなど人気モデルを徹底比較。PS5・Xbox配信に最適な一台を選ぼう。",
+  alternates: { canonical: "/capture" },
 };
 
 const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
@@ -154,7 +157,7 @@ export default function CapturePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <nav className="text-sm text-slate-500 mb-6">
-        <span>ホーム</span> &gt; <span className="text-cyan-400">キャプチャーボードランキング</span>
+        <Link href="/" className="hover:text-violet-400 transition-colors">ホーム</Link> &gt; <span className="text-cyan-400">キャプチャーボードランキング</span>
       </nav>
 
       <div className="mb-10">
@@ -200,6 +203,8 @@ export default function CapturePage() {
         </div>
       </section>
       <FaqSection faqs={faqs} />
+
+      <RelatedArticles category="capture" />
 
       <AuthorCard comment="Apexの配信を始めたとき、キャプチャーボード選びで1週間悩みました。その経験をもとに、初心者が失敗しないための選択肢に絞っています。スペックより「使いやすさ」を優先しました。" />
     </div>

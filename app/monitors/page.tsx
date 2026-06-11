@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
 import { AuthorCard } from "@/app/components/AuthorCard";
+import { RelatedArticles } from "@/app/components/RelatedArticles";
 
 export const metadata: Metadata = {
   title: "PS5・Xboxゲーミングモニターおすすめランキング2026 | ゲーミング比較ラボ",
   description: "PS5・Xbox対応ゲーミングモニターのおすすめランキング。Acer Nitro・JAPANNEXT・I-O DATA・Samsung Odysseyなどを徹底比較。",
+  alternates: { canonical: "/monitors" },
 };
 
 const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
@@ -154,7 +157,7 @@ export default function MonitorsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <nav className="text-sm text-slate-500 mb-6">
-        <span>ホーム</span> &gt; <span className="text-violet-400">モニターランキング</span>
+        <Link href="/" className="hover:text-violet-400 transition-colors">ホーム</Link> &gt; <span className="text-violet-400">モニターランキング</span>
       </nav>
 
       <div className="mb-10">
@@ -203,6 +206,8 @@ export default function MonitorsPage() {
         </div>
       </section>
       <FaqSection faqs={faqs} />
+
+      <RelatedArticles category="monitors" />
 
       <AuthorCard comment="60Hzから144Hzに切り替えたときの感動は今でも覚えています。Apexのような動きの激しいFPSだと、リフレッシュレートの差は本当に体感できます。予算と用途のバランスで選ぶのが正直なところです。" />
     </div>

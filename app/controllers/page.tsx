@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
 import { AuthorCard } from "@/app/components/AuthorCard";
+import { RelatedArticles } from "@/app/components/RelatedArticles";
 
 export const metadata: Metadata = {
   title: "PS5・Xboxコントローラーおすすめランキング2026 | ゲーミング比較ラボ",
   description: "PS5・Xbox対応コントローラーのおすすめランキング。DualSense Edge・Xbox Elite Series 2・SCUF Reflexなど人気製品を徹底比較。",
+  alternates: { canonical: "/controllers" },
 };
 
 const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
@@ -155,7 +158,7 @@ export default function ControllersPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <nav className="text-sm text-slate-500 mb-6">
-        <span>ホーム</span> &gt; <span className="text-violet-400">コントローラーランキング</span>
+        <Link href="/" className="hover:text-violet-400 transition-colors">ホーム</Link> &gt; <span className="text-violet-400">コントローラーランキング</span>
       </nav>
 
       <div className="mb-10">
@@ -204,6 +207,8 @@ export default function ControllersPage() {
         </div>
       </section>
       <FaqSection faqs={faqs} />
+
+      <RelatedArticles category="controllers" />
 
       <AuthorCard comment="Apex歴10年、プレデター帯を4シーズン維持してきた経験から、実際にパフォーマンスに差が出ると感じた製品だけ選んでいます。コントローラーは手に馴染むまで時間がかかるので、最初の1本選びは慎重に。" />
     </div>

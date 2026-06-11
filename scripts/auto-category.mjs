@@ -92,14 +92,17 @@ function generatePageTsx(config, products) {
 // pros / cons / specs / point / authorComment を実際の使用感に基づいてカスタマイズしてください。
 
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
 import { AuthorCard } from "@/app/components/AuthorCard";
+import { RelatedArticles } from "@/app/components/RelatedArticles";
 
 export const metadata: Metadata = {
   title: "${config.title}おすすめランキング${new Date().getFullYear()} | ゲーミング比較ラボ",
   description: ${JSON.stringify(config.description)},
+  alternates: { canonical: "/${config.slug}" },
 };
 
 const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
@@ -163,7 +166,7 @@ ${faqsCode}
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <nav className="text-sm text-slate-500 mb-6">
-        <span>ホーム</span> &gt; <span className="${theme.nav}">${config.title}ランキング</span>
+        <Link href="/" className="hover:text-violet-400 transition-colors">ホーム</Link> &gt; <span className="${theme.nav}">${config.title}ランキング</span>
       </nav>
 
       <div className="mb-10">
@@ -198,6 +201,8 @@ ${choosingGuideCode}
         </div>
       </section>
       <FaqSection faqs={faqs} />
+
+      <RelatedArticles category="${config.slug}" />
 
       <AuthorCard comment=${JSON.stringify(config.authorComment)} />
     </div>

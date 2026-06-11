@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getProducts } from "@/lib/products";
 import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
 import { AuthorCard } from "@/app/components/AuthorCard";
+import { RelatedArticles } from "@/app/components/RelatedArticles";
 
 export const metadata: Metadata = {
   title: "ゲーミングマウスおすすめランキング2026 | ゲーミング比較ラボ",
   description: "ゲーミングマウスのおすすめランキング。Razer DeathAdder・ASUS ROG・Logicool・SteelSeriesなど人気モデルを徹底比較。",
+  alternates: { canonical: "/mice" },
 };
 
 const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
@@ -154,7 +157,7 @@ export default function MicePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <nav className="text-sm text-slate-500 mb-6">
-        <span>ホーム</span> &gt; <span className="text-rose-400">ゲーミングマウスランキング</span>
+        <Link href="/" className="hover:text-violet-400 transition-colors">ホーム</Link> &gt; <span className="text-rose-400">ゲーミングマウスランキング</span>
       </nav>
 
       <div className="mb-10">
@@ -200,6 +203,8 @@ export default function MicePage() {
         </div>
       </section>
       <FaqSection faqs={faqs} />
+
+      <RelatedArticles category="mice" />
 
       <AuthorCard comment="フォートナイトでアンリアルに到達したのはキーマウに切り替えてからです。マウスの重さとセンサー精度だけは絶対に妥協しないほうがいい、と体で覚えました。" />
     </div>
