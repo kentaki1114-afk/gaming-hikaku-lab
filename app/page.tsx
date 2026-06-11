@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllCategories, ACCENT_BADGE_CLASSES, DEFAULT_BADGE_CLASS } from "@/lib/categories";
 import { getAllArticles } from "@/lib/articles";
+import { PLATFORM_LABELS, type Platform } from "@/lib/platforms";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -67,6 +68,56 @@ const DEFAULT_EXTRA = {
   badge: "新カテゴリ",
   description: "PS5・Xbox向けのおすすめ製品をランキング形式で比較しています。",
 };
+
+// プラットフォーム別導線。各ランキングページの ?platform= フィルタに直接リンクする。
+// クエリ付きURLは各ページの canonical（クエリなし）に正規化されるためSEO上の重複は発生しない。
+const PLATFORM_SHORTCUTS: {
+  platform: Platform;
+  emoji: string;
+  cardClass: string;
+  categories: { slug: string; label: string }[];
+}[] = [
+  {
+    platform: "ps5",
+    emoji: "🎮",
+    cardClass: "from-blue-600/20 to-blue-900/10 border-blue-500/30 hover:border-blue-400/60",
+    categories: [
+      { slug: "controllers", label: "コントローラー" },
+      { slug: "headsets", label: "ヘッドセット" },
+      { slug: "capture", label: "キャプチャーボード" },
+    ],
+  },
+  {
+    platform: "xbox",
+    emoji: "🟢",
+    cardClass: "from-green-600/20 to-green-900/10 border-green-500/30 hover:border-green-400/60",
+    categories: [
+      { slug: "controllers", label: "コントローラー" },
+      { slug: "headsets", label: "ヘッドセット" },
+      { slug: "monitors", label: "モニター" },
+    ],
+  },
+  {
+    platform: "switch",
+    emoji: "🔴",
+    cardClass: "from-red-600/20 to-red-900/10 border-red-500/30 hover:border-red-400/60",
+    categories: [
+      { slug: "monitors", label: "モニター" },
+      { slug: "capture", label: "キャプチャーボード" },
+      { slug: "chairs", label: "チェア" },
+    ],
+  },
+  {
+    platform: "pc",
+    emoji: "💻",
+    cardClass: "from-slate-600/20 to-slate-900/10 border-slate-500/30 hover:border-slate-400/60",
+    categories: [
+      { slug: "keyboards", label: "キーボード" },
+      { slug: "mice", label: "マウス" },
+      { slug: "monitors", label: "モニター" },
+    ],
+  },
+];
 
 const topPicks = [
   {
@@ -167,6 +218,37 @@ export default function Home() {
             まとめを見る →
           </span>
         </Link>
+      </section>
+
+      {/* Platform shortcuts */}
+      <section className="max-w-6xl mx-auto px-4 pb-16">
+        <h2 className="text-2xl font-bold text-white mb-2">プラットフォームから探す</h2>
+        <p className="text-slate-400 mb-8">お使いの機種に対応した製品だけを絞り込んでチェック</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {PLATFORM_SHORTCUTS.map(({ platform, emoji, cardClass, categories: cats }) => (
+            <div
+              key={platform}
+              className={`bg-gradient-to-br ${cardClass} border rounded-2xl p-5 transition-all`}
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-2xl">{emoji}</span>
+                <h3 className="text-lg font-bold text-white">{PLATFORM_LABELS[platform]}対応</h3>
+              </div>
+              <ul className="space-y-2">
+                {cats.map((cat) => (
+                  <li key={cat.slug}>
+                    <Link
+                      href={`/${cat.slug}?platform=${platform}`}
+                      className="text-sm text-slate-300 hover:text-violet-300 transition-colors inline-flex items-center gap-1"
+                    >
+                      <span className="text-violet-400">›</span> {cat.label}ランキング
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Top Picks */}
