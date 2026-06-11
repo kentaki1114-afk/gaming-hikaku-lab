@@ -7,7 +7,8 @@ import "./globals.css";
 
 const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
 const SITE_NAME = "ゲーミング比較ラボ";
-const SITE_TITLE = "ゲーミング比較ラボ | PS5・Xbox周辺機器おすすめ比較";
+// 検索される語句（PS5 周辺機器 おすすめ 等）を先頭に置き、サイト名は後ろに付ける
+const SITE_TITLE = "PS5・Xbox周辺機器おすすめ比較 | ゲーミング比較ラボ";
 const SITE_DESCRIPTION =
   "PS5・Xbox対応のコントローラー、ヘッドセット、モニターからチェア・キャプチャーボードまで7カテゴリをガチで比較。実際にプレイしたレビューをもとに、あなたに最適な周辺機器を見つけよう。";
 
@@ -89,6 +90,9 @@ export default function RootLayout({
                   </div>
                 </div>
               </div>
+              <Link href="/ps5-accessories" className="text-slate-300 hover:text-violet-400 transition-colors">
+                周辺機器まとめ
+              </Link>
               <Link href="/articles" className="text-slate-300 hover:text-violet-400 transition-colors">
                 記事
               </Link>
@@ -97,6 +101,7 @@ export default function RootLayout({
               {categories.map((cat) => (
                 <Link key={cat.slug} href={`/${cat.slug}`} className="text-slate-300 hover:text-violet-400 whitespace-nowrap">{cat.navLabelShort}</Link>
               ))}
+              <Link href="/ps5-accessories" className="text-slate-300 hover:text-violet-400 whitespace-nowrap">まとめ</Link>
               <Link href="/articles" className="text-slate-300 hover:text-violet-400 whitespace-nowrap">記事</Link>
             </nav>
           </div>
@@ -124,6 +129,7 @@ export default function RootLayout({
                   {categories.map((cat) => (
                     <li key={cat.slug}><Link href={`/${cat.slug}`} className="hover:text-violet-400 transition-colors">{cat.navLabel}ランキング</Link></li>
                   ))}
+                  <li><Link href="/ps5-accessories" className="hover:text-violet-400 transition-colors">周辺機器おすすめ総まとめ</Link></li>
                   <li><Link href="/articles" className="hover:text-violet-400 transition-colors">記事一覧</Link></li>
                 </ul>
               </div>
