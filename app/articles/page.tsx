@@ -6,6 +6,7 @@ import { getAllCategories, ACCENT_BADGE_CLASSES, DEFAULT_BADGE_CLASS } from "@/l
 export const metadata: Metadata = {
   title: "記事一覧 | ゲーミング比較ラボ",
   description: "PS5・Xbox周辺機器に関する選び方ガイドやレビュー記事の一覧です。コントローラー・ヘッドセット・モニターなど全カテゴリの最新情報をお届けします。",
+  alternates: { canonical: "/articles" },
 };
 
 export default function ArticlesPage() {
@@ -21,7 +22,8 @@ export default function ArticlesPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
       <nav className="text-sm text-slate-500 mb-6">
-        <span>ホーム</span> &gt; <span className="text-violet-400">記事一覧</span>
+        <Link href="/" className="hover:text-violet-400 transition-colors">ホーム</Link> &gt;{" "}
+        <span className="text-violet-400">記事一覧</span>
       </nav>
 
       <div className="mb-10">

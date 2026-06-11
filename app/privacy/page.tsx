@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "プライバシーポリシー | ゲーミング比較ラボ",
   description: "ゲーミング比較ラボのプライバシーポリシーです。",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {

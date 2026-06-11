@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "免責事項 | ゲーミング比較ラボ",
   description: "ゲーミング比較ラボの免責事項・サイトポリシーです。",
+  alternates: { canonical: "/disclaimer" },
 };
 
 export default function DisclaimerPage() {

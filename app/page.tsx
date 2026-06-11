@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllCategories, ACCENT_BADGE_CLASSES, DEFAULT_BADGE_CLASS } from "@/lib/categories";
 import { getAllArticles } from "@/lib/articles";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 // カテゴリカードの装飾(絵文字・キャッチ・説明文)。slugをキーに categories.json を補完する。
 // 未定義の新カテゴリにはフォールバックが適用されるため、ここの追記は任意。

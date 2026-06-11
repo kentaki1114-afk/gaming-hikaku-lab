@@ -42,6 +42,21 @@ export const metadata: Metadata = {
   },
 };
 
+// Google にサイト名・運営者を伝える WebSite / Organization JSON-LD
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  alternateName: "Gaming Hikaku Lab",
+  url: SITE_ORIGIN,
+  inLanguage: "ja",
+  publisher: {
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: SITE_ORIGIN,
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -51,6 +66,10 @@ export default function RootLayout({
   return (
     <html lang="ja" className="h-full">
       <body className="min-h-full flex flex-col bg-slate-900 text-slate-100 antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         <header className="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-700/50">
           <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2">
