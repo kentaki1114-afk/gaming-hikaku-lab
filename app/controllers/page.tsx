@@ -174,8 +174,6 @@ export default function ControllersPage() {
         </p>
       </div>
 
-      <AuthorCard comment="Apex歴10年、プレデター帯を4シーズン維持してきた経験から、実際にパフォーマンスに差が出ると感じた製品だけ選んでいます。コントローラーは手に馴染むまで時間がかかるので、最初の1本選びは慎重に。" />
-
       <div className="space-y-6">
         {merged.map(({ product, editorial }) => (
           <ProductRankingCard
@@ -206,6 +204,8 @@ export default function ControllersPage() {
         </div>
       </section>
       <FaqSection faqs={faqs} />
+
+      <AuthorCard comment="Apex歴10年、プレデター帯を4シーズン維持してきた経験から、実際にパフォーマンスに差が出ると感じた製品だけ選んでいます。コントローラーは手に馴染むまで時間がかかるので、最初の1本選びは慎重に。" />
     </div>
   );
 }

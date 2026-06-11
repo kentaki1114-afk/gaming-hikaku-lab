@@ -173,8 +173,6 @@ export default function HeadsetsPage() {
         </p>
       </div>
 
-      <AuthorCard comment="FPSで足音を正確に拾えるかどうかが勝率に直結します。Apexでプレデターまで上り詰めた中で、ヘッドセットの音質差に何度も助けられました。このランキングは音の定位感を特に重視して選んでいます。" />
-
       <div className="space-y-6">
         {merged.map(({ product, editorial }) => (
           <ProductRankingCard
@@ -205,6 +203,8 @@ export default function HeadsetsPage() {
         </div>
       </section>
       <FaqSection faqs={faqs} />
+
+      <AuthorCard comment="FPSで足音を正確に拾えるかどうかが勝率に直結します。Apexでプレデターまで上り詰めた中で、ヘッドセットの音質差に何度も助けられました。このランキングは音の定位感を特に重視して選んでいます。" />
     </div>
   );
 }

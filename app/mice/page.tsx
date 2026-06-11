@@ -170,8 +170,6 @@ export default function MicePage() {
         </p>
       </div>
 
-      <AuthorCard comment="フォートナイトでアンリアルに到達したのはキーマウに切り替えてからです。マウスの重さとセンサー精度だけは絶対に妥協しないほうがいい、と体で覚えました。" />
-
       <div className="space-y-6">
         {merged.map(({ product, editorial }) => (
           <ProductRankingCard
@@ -202,6 +200,8 @@ export default function MicePage() {
         </div>
       </section>
       <FaqSection faqs={faqs} />
+
+      <AuthorCard comment="フォートナイトでアンリアルに到達したのはキーマウに切り替えてからです。マウスの重さとセンサー精度だけは絶対に妥協しないほうがいい、と体で覚えました。" />
     </div>
   );
 }

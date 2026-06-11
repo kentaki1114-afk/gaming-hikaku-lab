@@ -170,8 +170,6 @@ export default function CapturePage() {
         </p>
       </div>
 
-      <AuthorCard comment="Apexの配信を始めたとき、キャプチャーボード選びで1週間悩みました。その経験をもとに、初心者が失敗しないための選択肢に絞っています。スペックより「使いやすさ」を優先しました。" />
-
       <div className="space-y-6">
         {merged.map(({ product, editorial }) => (
           <ProductRankingCard
@@ -202,6 +200,8 @@ export default function CapturePage() {
         </div>
       </section>
       <FaqSection faqs={faqs} />
+
+      <AuthorCard comment="Apexの配信を始めたとき、キャプチャーボード選びで1週間悩みました。その経験をもとに、初心者が失敗しないための選択肢に絞っています。スペックより「使いやすさ」を優先しました。" />
     </div>
   );
 }

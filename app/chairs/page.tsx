@@ -170,8 +170,6 @@ export default function ChairsPage() {
         </p>
       </div>
 
-      <AuthorCard comment="毎日数時間ゲームをする生活を10年続けてきて、椅子の差がいかに体に影響するかを痛感しました。腰を壊してプレイを中断した経験から、チェア選びは正直一番後悔したくないカテゴリです。" />
-
       <div className="space-y-6">
         {merged.map(({ product, editorial }) => (
           <ProductRankingCard
@@ -202,6 +200,8 @@ export default function ChairsPage() {
         </div>
       </section>
       <FaqSection faqs={faqs} />
+
+      <AuthorCard comment="毎日数時間ゲームをする生活を10年続けてきて、椅子の差がいかに体に影響するかを痛感しました。腰を壊してプレイを中断した経験から、チェア選びは正直一番後悔したくないカテゴリです。" />
     </div>
   );
 }

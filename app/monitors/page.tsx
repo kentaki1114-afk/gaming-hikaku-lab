@@ -173,8 +173,6 @@ export default function MonitorsPage() {
         </p>
       </div>
 
-      <AuthorCard comment="60Hzから144Hzに切り替えたときの感動は今でも覚えています。Apexのような動きの激しいFPSだと、リフレッシュレートの差は本当に体感できます。予算と用途のバランスで選ぶのが正直なところです。" />
-
       <div className="space-y-6">
         {merged.map(({ product, editorial }) => (
           <ProductRankingCard
@@ -205,6 +203,8 @@ export default function MonitorsPage() {
         </div>
       </section>
       <FaqSection faqs={faqs} />
+
+      <AuthorCard comment="60Hzから144Hzに切り替えたときの感動は今でも覚えています。Apexのような動きの激しいFPSだと、リフレッシュレートの差は本当に体感できます。予算と用途のバランスで選ぶのが正直なところです。" />
     </div>
   );
 }

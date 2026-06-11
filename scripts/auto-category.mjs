@@ -179,8 +179,6 @@ ${faqsCode}
         </p>
       </div>
 
-      <AuthorCard comment=${JSON.stringify(config.authorComment)} />
-
       <div className="space-y-6">
         {merged.map(({ product, editorial }) => (
           <ProductRankingCard
@@ -200,6 +198,8 @@ ${choosingGuideCode}
         </div>
       </section>
       <FaqSection faqs={faqs} />
+
+      <AuthorCard comment=${JSON.stringify(config.authorComment)} />
     </div>
   );
 }
