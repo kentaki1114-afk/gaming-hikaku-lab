@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
 
 const editorials: Editorial[] = [
+  // ── 総合 Top 5(スコア順) ─────────────────────────────────────
   {
     keyword: "PULSE Elite ワイヤレスヘッドセット",
     platforms: ["ps5", "pc"],
@@ -35,12 +36,12 @@ const editorials: Editorial[] = [
   {
     keyword: "SteelSeries Arctis Nova Pro Wireless",
     platforms: ["ps5", "xbox", "switch", "pc"],
-    badge: "両対応最強",
+    badge: "全機種対応最強",
     badgeColor: "bg-blue-500/20 text-blue-300 border-blue-500/30",
     rankColor: "text-slate-400",
     score: 4.7,
-    point: "PS5・Xbox両方持ちなら最強の選択肢。バッテリー交換式で充電切れゼロ。",
-    pros: ["PS5・Xbox・Switchに対応", "交換式バッテリーで無限使用可", "Active Noise Cancelling搭載", "音質が非常に高い"],
+    point: "PS5・Xbox・Switch全対応。バッテリー交換式で充電切れゼロの最強マルチ機種モデル。",
+    pros: ["PS5・Xbox・Switch全対応", "交換式バッテリーで無限使用可", "Active Noise Cancelling搭載", "音質が非常に高い"],
     cons: ["価格が高い", "本体がやや重い"],
     specs: [
       { label: "対応機種", value: "PS5 / Xbox / Switch / PC" },
@@ -50,7 +51,7 @@ const editorials: Editorial[] = [
   {
     keyword: "Astro A50X ヘッドセット",
     platforms: ["ps5", "xbox", "switch", "pc"],
-    badge: "全機種対応",
+    badge: "置くだけ充電",
     badgeColor: "bg-orange-500/20 text-orange-300 border-orange-500/30",
     rankColor: "text-orange-400",
     score: 4.6,
@@ -58,7 +59,7 @@ const editorials: Editorial[] = [
     pros: ["全プラットフォーム対応", "充電ベースで置くだけ充電", "Dolby Atmos対応", "音の分離感が優秀"],
     cons: ["価格が最高クラス", "充電ベースが場所を取る"],
     specs: [
-      { label: "対応機種", value: "PS5 / Xbox / PC / Switch" },
+      { label: "対応機種", value: "PS5 / Xbox / Switch / PC" },
       { label: "バッテリー", value: "約24時間" },
     ],
   },
@@ -78,26 +79,11 @@ const editorials: Editorial[] = [
     ],
   },
   {
-    keyword: "Xbox ワイヤレス ヘッドセット 純正",
-    platforms: ["xbox", "pc"],
-    badge: "Xbox入門向け",
-    badgeColor: "bg-teal-500/20 text-teal-300 border-teal-500/30",
-    rankColor: "text-teal-400",
-    score: 4.2,
-    point: "Xboxユーザーのエントリー向け。純正ならではのコントローラー連携が快適。",
-    pros: ["Xbox・PC向け純正品", "コントローラーで音量調整できる", "空間サウンド対応", "価格が手ごろ"],
-    cons: ["PS5非推奨", "音質は価格相応"],
-    specs: [
-      { label: "対応機種", value: "Xbox / PC" },
-      { label: "バッテリー", value: "約15時間" },
-    ],
-  },
-  {
     keyword: "HyperX Cloud III ゲーミングヘッドセット",
     platforms: ["ps5", "xbox", "switch", "pc"],
     badge: "有線万能型",
-    badgeColor: "bg-red-500/20 text-red-300 border-red-500/30",
-    rankColor: "text-red-400",
+    badgeColor: "bg-teal-500/20 text-teal-300 border-teal-500/30",
+    rankColor: "text-teal-400",
     score: 4.4,
     point: "3.5mm接続で全機種に挿すだけ。Switchの携帯モードでも使える万能有線モデル。",
     pros: ["3.5mm/USB接続で全プラットフォーム対応", "Switch携帯モードでも使用可能", "装着感に定評のあるCloudシリーズ", "充電不要の有線で扱いが楽"],
@@ -107,6 +93,7 @@ const editorials: Editorial[] = [
       { label: "接続方式", value: "3.5mm / USB" },
     ],
   },
+  // ── プラットフォームタブ専用(Top 5に入らないがXbox/Switch枠を埋める) ───
   {
     keyword: "Razer BlackShark V2X ゲーミングヘッドセット",
     platforms: ["ps5", "xbox", "switch", "pc"],
@@ -120,6 +107,21 @@ const editorials: Editorial[] = [
     specs: [
       { label: "対応機種", value: "PS5 / Xbox / Switch / PC" },
       { label: "接続方式", value: "3.5mm有線" },
+    ],
+  },
+  {
+    keyword: "Xbox ワイヤレス ヘッドセット 純正",
+    platforms: ["xbox", "pc"],
+    badge: "Xbox純正",
+    badgeColor: "bg-green-500/20 text-green-300 border-green-500/30",
+    rankColor: "text-green-400",
+    score: 4.2,
+    point: "Xboxユーザーのエントリー向け。純正ならではのコントローラー連携が快適。",
+    pros: ["Xbox・PC向け純正品", "コントローラーで音量調整できる", "空間サウンド対応", "価格が手ごろ"],
+    cons: ["PS5非推奨", "音質は価格相応"],
+    specs: [
+      { label: "対応機種", value: "Xbox / PC" },
+      { label: "バッテリー", value: "約15時間" },
     ],
   },
   {
