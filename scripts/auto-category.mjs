@@ -64,6 +64,8 @@ function generatePageTsx(config, products) {
 
   const editorialsCode = products.slice(0, 5).map((p, i) => `  {
     keyword: ${JSON.stringify(p.keyword)},
+    // TODO: 製品の対応プラットフォームに合わせて編集してください（"ps5" | "xbox" | "switch" | "pc"）
+    platforms: ["ps5", "xbox", "switch", "pc"],
     badge: ${JSON.stringify(BADGE_LABELS[i] || `第${i + 1}位`)},
     badgeColor: ${JSON.stringify(BADGE_COLORS[i])},
     rankColor: ${JSON.stringify(RANK_COLORS[i])},
@@ -94,7 +96,9 @@ function generatePageTsx(config, products) {
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getProducts } from "@/lib/products";
-import { ProductRankingCard, type Editorial } from "@/app/components/ProductRankingCard";
+import { Suspense } from "react";
+import type { Editorial } from "@/app/components/ProductRankingCard";
+import { PlatformFilteredRanking, RankingList } from "@/app/components/PlatformFilteredRanking";
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
 import { AuthorCard } from "@/app/components/AuthorCard";
 import { RelatedArticles } from "@/app/components/RelatedArticles";
@@ -182,17 +186,9 @@ ${faqsCode}
         </p>
       </div>
 
-      <div className="space-y-6">
-        {merged.map(({ product, editorial }) => (
-          <ProductRankingCard
-            key={editorial.keyword}
-            product={product}
-            editorial={editorial}
-            accentBorder="${theme.accentBorder}"
-            pointBg="${theme.pointBg}"
-          />
-        ))}
-      </div>
+      <Suspense fallback={<RankingList items={merged} accentBorder="${theme.accentBorder}" pointBg="${theme.pointBg}" />}>
+        <PlatformFilteredRanking items={merged} accentBorder="${theme.accentBorder}" pointBg="${theme.pointBg}" />
+      </Suspense>
 
       <section className="mt-16 bg-slate-800/40 border border-slate-700/50 rounded-2xl p-8">
         <h2 className="text-xl font-bold text-white mb-6">${config.title}の選び方</h2>
