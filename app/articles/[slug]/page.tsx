@@ -73,6 +73,9 @@ export default async function ArticlePage({
       ? items.find((it) => it.keyword === firstProductBlock.keyword)?.imageUrl
       : undefined;
 
+  const faqBlock = article.blocks.find((b) => b.type === "faq");
+  const faqItems = faqBlock?.type === "faq" ? faqBlock.items : [];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -89,6 +92,16 @@ export default async function ArticlePage({
     publisher: { "@type": "Organization", name: "ゲーミング比較ラボ" },
     mainEntityOfPage: `${SITE_ORIGIN}/articles/${article.slug}`,
   };
+
+  const faqLd = faqItems.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map(({ q, a }) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: a },
+    })),
+  } : null;
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
@@ -110,6 +123,12 @@ export default async function ArticlePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
+      {faqLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+        />
+      )}
       <nav className="text-sm text-slate-500 mb-6">
         <Link href="/" className="hover:text-violet-400 transition-colors">ホーム</Link> &gt;{" "}
         <Link href="/articles" className="hover:text-violet-400">記事一覧</Link> &gt;{" "}
@@ -162,6 +181,22 @@ export default async function ArticlePage({
               if (!product) return null;
               return <ArticleProductCard key={i} product={product} note={block.note} />;
             }
+            case "faq":
+              return (
+                <div key={i} className="space-y-4 mt-2">
+                  {block.items.map(({ q, a }, j) => (
+                    <details key={j} className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-5 group">
+                      <summary className="font-semibold text-white cursor-pointer list-none flex items-start gap-3">
+                        <span className="text-violet-400 flex-shrink-0 mt-0.5">Q.</span>
+                        <span>{q}</span>
+                      </summary>
+                      <p className="mt-3 text-slate-300 text-sm leading-relaxed pl-6">
+                        <span className="text-teal-400 font-semibold mr-1">A.</span>{a}
+                      </p>
+                    </details>
+                  ))}
+                </div>
+              );
             default:
               return null;
           }

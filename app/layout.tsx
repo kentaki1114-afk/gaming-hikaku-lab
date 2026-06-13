@@ -139,6 +139,7 @@ export default function RootLayout({
                   当サイトはAmazon・楽天市場等のアフィリエイトプログラムに参加しています。記事内のリンクから購入いただくと、サイト運営の収益になります。
                 </p>
                 <ul className="space-y-2 text-sm text-slate-400">
+                  <li><Link href="/about" className="hover:text-violet-400 transition-colors">このサイトについて</Link></li>
                   <li><Link href="/privacy" className="hover:text-violet-400 transition-colors">プライバシーポリシー</Link></li>
                   <li><Link href="/disclaimer" className="hover:text-violet-400 transition-colors">免責事項</Link></li>
                 </ul>

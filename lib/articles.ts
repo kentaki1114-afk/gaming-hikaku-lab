@@ -5,7 +5,8 @@ export type ArticleBlock =
   | { type: "heading"; text: string }
   | { type: "paragraph"; text: string }
   | { type: "list"; items: string[] }
-  | { type: "product"; category: string; keyword: string; note?: string };
+  | { type: "product"; category: string; keyword: string; note?: string }
+  | { type: "faq"; items: { q: string; a: string }[] };
 
 export type Article = {
   slug: string;

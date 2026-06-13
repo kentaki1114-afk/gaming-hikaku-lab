@@ -7,6 +7,7 @@ import { PlatformFilteredRanking, RankingList } from "@/app/components/PlatformF
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
 import { AuthorCard } from "@/app/components/AuthorCard";
 import { RelatedArticles } from "@/app/components/RelatedArticles";
+import { buildItemListJsonLd, buildBreadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
   title: "ゲーミングチェアおすすめランキング2026 | ゲーミング比較ラボ",
@@ -103,36 +104,17 @@ export default function ChairsPage() {
     })
     .filter((v): v is { product: (typeof items)[number]; editorial: Editorial } => v !== null);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "ゲーミングチェアおすすめランキング",
-    itemListElement: merged.map(({ product }, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      item: {
-        "@type": "Product",
-        name: product.name,
-        image: product.imageUrl || undefined,
-        url: `${SITE_ORIGIN}/chairs`,
-        offers: {
-          "@type": "Offer",
-          price: product.price,
-          priceCurrency: "JPY",
-          url: product.affiliateUrl,
-        },
-      },
-    })),
-  };
+  const jsonLd = buildItemListJsonLd(
+    "ゲーミングチェアおすすめランキング",
+    SITE_ORIGIN,
+    "/chairs",
+    merged
+  );
 
-  const breadcrumbLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "ホーム", item: SITE_ORIGIN },
-      { "@type": "ListItem", position: 2, name: "ゲーミングチェアランキング", item: `${SITE_ORIGIN}/chairs` },
-    ],
-  };
+  const breadcrumbLd = buildBreadcrumbJsonLd([
+    { name: "ホーム", item: SITE_ORIGIN },
+    { name: "ゲーミングチェアランキング", item: `${SITE_ORIGIN}/chairs` },
+  ]);
 
   const faqs: Faq[] = [
     {

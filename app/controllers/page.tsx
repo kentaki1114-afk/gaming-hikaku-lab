@@ -7,6 +7,7 @@ import { PlatformFilteredRanking, RankingList } from "@/app/components/PlatformF
 import { FaqSection, type Faq } from "@/app/components/FaqSection";
 import { AuthorCard } from "@/app/components/AuthorCard";
 import { RelatedArticles } from "@/app/components/RelatedArticles";
+import { buildItemListJsonLd, buildBreadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
   title: "PS5・Switch・Xboxコントローラーおすすめランキング2026 | ゲーミング比較ラボ",
@@ -239,36 +240,17 @@ export default function ControllersPage() {
     })
     .filter((v): v is { product: (typeof items)[number]; editorial: Editorial } => v !== null);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "PS5・Switch・Xboxコントローラーおすすめランキング",
-    itemListElement: merged.map(({ product }, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      item: {
-        "@type": "Product",
-        name: product.name,
-        image: product.imageUrl || undefined,
-        url: `${SITE_ORIGIN}/controllers`,
-        offers: {
-          "@type": "Offer",
-          price: product.price,
-          priceCurrency: "JPY",
-          url: product.affiliateUrl,
-        },
-      },
-    })),
-  };
+  const jsonLd = buildItemListJsonLd(
+    "PS5・Switch・Xboxコントローラーおすすめランキング",
+    SITE_ORIGIN,
+    "/controllers",
+    merged
+  );
 
-  const breadcrumbLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "ホーム", item: SITE_ORIGIN },
-      { "@type": "ListItem", position: 2, name: "コントローラーランキング", item: `${SITE_ORIGIN}/controllers` },
-    ],
-  };
+  const breadcrumbLd = buildBreadcrumbJsonLd([
+    { name: "ホーム", item: SITE_ORIGIN },
+    { name: "コントローラーランキング", item: `${SITE_ORIGIN}/controllers` },
+  ]);
 
   const faqs: Faq[] = [
     {
