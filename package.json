@@ -5,7 +5,7 @@
   "scripts": {
     "predev": "node scripts/auto-category.mjs --dry-run",
     "dev": "next dev",
-    "prebuild": "node scripts/auto-category.mjs",
+    "prebuild": "node scripts/auto-category.mjs && node scripts/generate-sitemap.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",

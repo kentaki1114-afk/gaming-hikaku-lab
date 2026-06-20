@@ -34,11 +34,14 @@ jobs:
       - name: 記事を5本自動生成
         run: node scripts/generate-articles.mjs
 
+      - name: サイトマップを再生成（静的XMLファイル）
+        run: node scripts/generate-sitemap.mjs
+
       - name: 変更をコミット＆プッシュ（Vercelの自動デプロイが起動する）
         run: |
           git config user.name "content-bot"
           git config user.email "content-bot@users.noreply.github.com"
-          git add data/products data/articles
+          git add data/products data/articles public/sitemap.xml
           if git diff --cached --quiet; then
             echo "変更なし。コミットをスキップします。"
           else
