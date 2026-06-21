@@ -7,7 +7,7 @@
   </url>
   <url>
     <loc>https://gaming-hikaku-lab.vercel.app/ps5-accessories</loc>
-    <lastmod>2026-06-20T17:10:36.174Z</lastmod>
+    <lastmod>2026-06-21T17:13:48.361Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -18,43 +18,43 @@
   </url>
   <url>
     <loc>https://gaming-hikaku-lab.vercel.app/controllers</loc>
-    <lastmod>2026-06-20T17:09:19.653Z</lastmod>
+    <lastmod>2026-06-21T17:12:30.047Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gaming-hikaku-lab.vercel.app/headsets</loc>
-    <lastmod>2026-06-20T17:09:37.992Z</lastmod>
+    <lastmod>2026-06-21T17:12:48.917Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gaming-hikaku-lab.vercel.app/monitors</loc>
-    <lastmod>2026-06-20T17:09:51.373Z</lastmod>
+    <lastmod>2026-06-21T17:13:02.639Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gaming-hikaku-lab.vercel.app/keyboards</loc>
-    <lastmod>2026-06-20T17:10:02.664Z</lastmod>
+    <lastmod>2026-06-21T17:13:14.160Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gaming-hikaku-lab.vercel.app/mice</loc>
-    <lastmod>2026-06-20T17:10:13.882Z</lastmod>
+    <lastmod>2026-06-21T17:13:25.638Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gaming-hikaku-lab.vercel.app/chairs</loc>
-    <lastmod>2026-06-20T17:10:25.091Z</lastmod>
+    <lastmod>2026-06-21T17:13:37.052Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gaming-hikaku-lab.vercel.app/capture</loc>
-    <lastmod>2026-06-20T17:10:36.174Z</lastmod>
+    <lastmod>2026-06-21T17:13:48.361Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -114,6 +114,12 @@
   <url>
     <loc>https://gaming-hikaku-lab.vercel.app/articles/controllers-headtohead-2026-06-14-0</loc>
     <lastmod>2026-06-14T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gaming-hikaku-lab.vercel.app/articles/controllers-headtohead-2026-06-21-0</loc>
+    <lastmod>2026-06-21T00:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -256,6 +262,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://gaming-hikaku-lab.vercel.app/articles/headsets-selectionguide-2026-06-21-1</loc>
+    <lastmod>2026-06-21T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://gaming-hikaku-lab.vercel.app/articles/headsets-usecase-2026-06-09-1</loc>
     <lastmod>2026-06-11T00:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
@@ -324,6 +336,12 @@
   <url>
     <loc>https://gaming-hikaku-lab.vercel.app/articles/keyboards-budgetguide-2026-06-17-3</loc>
     <lastmod>2026-06-17T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gaming-hikaku-lab.vercel.app/articles/keyboards-budgetguide-2026-06-21-3</loc>
+    <lastmod>2026-06-21T00:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -412,6 +430,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://gaming-hikaku-lab.vercel.app/articles/mice-headtohead-2026-06-21-4</loc>
+    <lastmod>2026-06-21T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://gaming-hikaku-lab.vercel.app/articles/mice-selectionguide-2026-06-15-4</loc>
     <lastmod>2026-06-15T00:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
@@ -432,6 +456,12 @@
   <url>
     <loc>https://gaming-hikaku-lab.vercel.app/articles/monitors-beginnerpick-2026-06-14-2</loc>
     <lastmod>2026-06-14T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gaming-hikaku-lab.vercel.app/articles/monitors-beginnerpick-2026-06-21-2</loc>
+    <lastmod>2026-06-21T00:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
