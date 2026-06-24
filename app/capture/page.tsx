@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/capture" },
 };
 
-const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
+const SITE_ORIGIN = "https://gaming-hikaku-lab.com";
 
 const editorials: Editorial[] = [
   {

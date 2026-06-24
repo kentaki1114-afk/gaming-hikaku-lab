@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/ps5-accessories" },
 };
 
-const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
+const SITE_ORIGIN = "https://gaming-hikaku-lab.com";
 
 // カテゴリslug → このページでの見出し・リード文（検索語句に寄せた表現にする）
 const SECTIONS: Record<string, { heading: string; lead: string }> = {

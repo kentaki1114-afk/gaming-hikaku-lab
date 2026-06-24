@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllCategories } from "@/lib/categories";
 
-const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
+const SITE_ORIGIN = "https://gaming-hikaku-lab.com";
 
 export const metadata: Metadata = {
   title: "このサイトについて・編集方針 | ゲーミング比較ラボ",

@@ -2,7 +2,7 @@ import { readFileSync, existsSync } from "fs";
 import { resolve } from "path";
 import https from "https";
 
-const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
+const SITE_ORIGIN = "https://gaming-hikaku-lab.com";
 
 // CI環境（GitHub Actions）には .env.local が存在しない（gitignore対象のため）。
 // その場合は process.env（Secretsから渡される値）のみを使う。

@@ -109,7 +109,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/${config.slug}" },
 };
 
-const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
+const SITE_ORIGIN = "https://gaming-hikaku-lab.com";
 
 const editorials: Editorial[] = [
 ${editorialsCode}

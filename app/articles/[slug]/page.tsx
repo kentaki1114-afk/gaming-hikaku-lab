@@ -18,7 +18,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   capture: "キャプチャーボード",
 };
 
-const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
+const SITE_ORIGIN = "https://gaming-hikaku-lab.com";
 
 export function generateStaticParams() {
   return getAllArticles().map((article) => ({ slug: article.slug }));

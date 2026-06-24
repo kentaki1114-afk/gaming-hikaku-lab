@@ -5,7 +5,7 @@ import { readFileSync, readdirSync, writeFileSync } from "fs";
 import { resolve } from "path";
 
 const ROOT = process.cwd();
-const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
+const SITE_ORIGIN = "https://gaming-hikaku-lab.com";
 
 function loadJson(path) {
   return JSON.parse(readFileSync(path, "utf-8"));

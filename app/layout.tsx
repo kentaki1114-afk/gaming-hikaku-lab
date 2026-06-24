@@ -5,7 +5,7 @@ import { BackHomeBar } from "@/app/components/BackHomeBar";
 import { getAllCategories } from "@/lib/categories";
 import "./globals.css";
 
-const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
+const SITE_ORIGIN = "https://gaming-hikaku-lab.com";
 const SITE_NAME = "ゲーミング比較ラボ";
 // 検索される語句（PS5 周辺機器 おすすめ 等）を先頭に置き、サイト名は後ろに付ける
 const SITE_TITLE = "PS5・Xbox周辺機器おすすめ比較 | ゲーミング比較ラボ";

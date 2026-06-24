@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/controllers" },
 };
 
-const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
+const SITE_ORIGIN = "https://gaming-hikaku-lab.com";
 
 // keyword は data/products/controllers.json の各商品と対応させるためのキー
 const editorials: Editorial[] = [

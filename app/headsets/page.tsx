@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/headsets" },
 };
 
-const SITE_ORIGIN = "https://gaming-hikaku-lab.vercel.app";
+const SITE_ORIGIN = "https://gaming-hikaku-lab.com";
 
 const editorials: Editorial[] = [
   // ── 総合 Top 5(スコア順) ─────────────────────────────────────
