@@ -17,7 +17,10 @@ export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
   metadataBase: new URL(SITE_ORIGIN),
   verification: {
-    google: "jOOPrqp1TFD2FWFuZWSuyaswZoKoZkDc0jOX8FxXcNY",
+    google: [
+      "jOOPrqp1TFD2FWFuZWSuyaswZoKoZkDc0jOX8FxXcNY",
+      "HALrvcLTSDpRJ02fh-ySWqjAvt1g2wJ2sGiZmmWzYOI",
+    ],
   },
   openGraph: {
     type: "website",
