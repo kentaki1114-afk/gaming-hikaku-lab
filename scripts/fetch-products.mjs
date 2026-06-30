@@ -21,6 +21,11 @@ const CATEGORIES = {
       "ホリパッド ターボ for Nintendo Switch",
       "PowerA 有線コントローラー Xbox",
       "ホリパッド for Nintendo Switch",
+      "FLYDIGI VADER4 Pro コントローラー",
+      "BIGBIG WON BLITZ2 コントローラー",
+      "GameSir G7 Pro コントローラー",
+      "GameSir Nova Lite",
+      "DUALSHOCK4 ワイヤレスコントローラー",
     ],
   },
   headsets: {
