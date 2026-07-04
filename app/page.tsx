@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllCategories, ACCENT_BADGE_CLASSES, DEFAULT_BADGE_CLASS } from "@/lib/categories";
 import { getAllArticles } from "@/lib/articles";
+import { getProducts } from "@/lib/products";
 import { PLATFORM_LABELS, type Platform } from "@/lib/platforms";
 
 export const metadata: Metadata = {
@@ -119,39 +120,33 @@ const PLATFORM_SHORTCUTS: {
   },
 ];
 
-const topPicks = [
-  {
-    rank: 1,
-    category: "コントローラー",
-    name: "DualSense Edge（Sony純正）",
-    price: "¥29,980",
-    point: "カスタマイズ性と操作精度が段違い",
-    href: "/controllers",
-    rankColor: "text-amber-400",
-  },
-  {
-    rank: 2,
-    category: "ヘッドセット",
-    name: "PULSE Elite（Sony純正）",
-    price: "¥19,980",
-    point: "PS5の3Dオーディオを最大限に体験",
-    href: "/headsets",
-    rankColor: "text-slate-400",
-  },
-  {
-    rank: 3,
-    category: "モニター",
-    name: "INZONE M9（Sony）",
-    price: "¥89,980",
-    point: "PS5向け4K/144Hz、Auto HDR対応",
-    href: "/monitors",
-    rankColor: "text-orange-400",
-  },
+const TOP_PICK_DEFS = [
+  { keyword: "DualSense Edge コントローラー", category: "コントローラー", point: "カスタマイズ性と操作精度が段違い", href: "/controllers", rankColor: "text-amber-400" },
+  { keyword: "PULSE Elite ワイヤレスヘッドセット", category: "ヘッドセット", point: "PS5の3Dオーディオを最大限に体験", href: "/headsets", rankColor: "text-slate-400" },
+  { keyword: "SteelSeries Arctis Nova Pro Wireless", category: "ヘッドセット", point: "全機種対応・バッテリー交換式の最強ワイヤレス", href: "/headsets", rankColor: "text-orange-400" },
 ];
 
 export default function Home() {
   const categories = getAllCategories();
   const latestArticles = getAllArticles().slice(0, 4);
+
+  const controllerItems = getProducts("controllers").items;
+  const headsetItems = getProducts("headsets").items;
+  const allProductItems = [...controllerItems, ...headsetItems];
+  const topPicks = TOP_PICK_DEFS.map((def, i) => {
+    const product = allProductItems.find((p) => p.keyword === def.keyword);
+    return {
+      rank: i + 1,
+      category: def.category,
+      name: product?.name ? product.name.replace(/【[^】]*】/g, "").replace(/\s{2,}/g, " ").trim().slice(0, 40) : def.keyword,
+      price: product?.priceLabel ?? "—",
+      affiliateUrl: product?.affiliateUrl,
+      point: def.point,
+      href: def.href,
+      rankColor: def.rankColor,
+    };
+  });
+
   const badgeClassOf = (slug: string) => {
     const accent = categories.find((c) => c.slug === slug)?.accentColor;
     return (accent && ACCENT_BADGE_CLASSES[accent]) || DEFAULT_BADGE_CLASS;
@@ -258,11 +253,7 @@ export default function Home() {
           <p className="text-slate-400 mb-8">カテゴリを超えて、今一番おすすめの周辺機器</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {topPicks.map((item) => (
-              <Link
-                key={item.rank}
-                href={item.href}
-                className="bg-slate-800 border border-slate-700 rounded-2xl p-6 hover:border-violet-500/50 transition-all hover:-translate-y-0.5"
-              >
+              <div key={item.rank} className="bg-slate-800 border border-slate-700 rounded-2xl p-6 hover:border-violet-500/50 transition-all hover:-translate-y-0.5 flex flex-col">
                 <div className="flex items-center gap-3 mb-4">
                   <span className={`text-4xl font-black ${item.rankColor}`}>
                     #{item.rank}
@@ -273,8 +264,20 @@ export default function Home() {
                 </div>
                 <h3 className="font-bold text-white text-lg mb-1">{item.name}</h3>
                 <p className="text-violet-400 font-semibold mb-3">{item.price}</p>
-                <p className="text-slate-400 text-sm">{item.point}</p>
-              </Link>
+                <p className="text-slate-400 text-sm mb-4">{item.point}</p>
+                <div className="mt-auto flex gap-2">
+                  {item.affiliateUrl && (
+                    <a href={item.affiliateUrl} target="_blank" rel="noopener noreferrer sponsored"
+                      className="flex-1 text-center text-xs font-semibold bg-rose-600 hover:bg-rose-500 text-white py-2 px-3 rounded-lg transition-colors">
+                      楽天で見る
+                    </a>
+                  )}
+                  <Link href={item.href}
+                    className="flex-1 text-center text-xs font-semibold bg-slate-700 hover:bg-slate-600 text-slate-200 py-2 px-3 rounded-lg transition-colors">
+                    ランキングへ
+                  </Link>
+                </div>
+              </div>
             ))}
           </div>
         </div>

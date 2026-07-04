@@ -97,9 +97,23 @@ const CATEGORIES = {
 // 商品名にこれらの語が含まれる結果は除外する(本体ではない付属品・中古品などのノイズ除去。空白の有無を無視して判定)
 const NG_WORDS = ["保護フィルム", "保護フィルター", "ガラスフィルム", "液晶保護", "カバー", "ケース", "中古", "ジャンク", "互換", "スタンド単体", "ステッカー", "アーム"];
 
-function isGenuineProduct(name) {
+// カテゴリ別の価格上限（転売品・セット品などのノイズ除去）
+const PRICE_CAPS = {
+  controllers: 60000,
+  headsets: 80000,
+  monitors: 200000,
+  keyboards: 60000,
+  mice: 40000,
+  chairs: 150000,
+  capture: 80000,
+};
+
+function isGenuineProduct(name, price, category) {
   const normalized = name.replace(/[\s　]/g, "");
-  return !NG_WORDS.some((ng) => normalized.includes(ng.replace(/[\s　]/g, "")));
+  if (NG_WORDS.some((ng) => normalized.includes(ng.replace(/[\s　]/g, "")))) return false;
+  const cap = PRICE_CAPS[category];
+  if (cap && price > cap) return false;
+  return true;
 }
 
 const outDir = resolve(process.cwd(), "data", "products");
@@ -119,7 +133,7 @@ for (const [categoryKey, category] of Object.entries(CATEGORIES)) {
         await sleep(2500);
         items = await searchItems(keyword, 10);
       }
-      const item = items.find((it) => isGenuineProduct(it.name));
+      const item = items.find((it) => isGenuineProduct(it.name, it.price, categoryKey));
       if (!item) {
         console.log(`ヒットなし（${items.length}件中、本体商品なし）`);
         continue;

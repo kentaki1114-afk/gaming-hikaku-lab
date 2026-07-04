@@ -27,7 +27,7 @@ export function buildItemListJsonLd(
           priceCurrency: "JPY",
           url: product.affiliateUrl,
         },
-        ...(product.reviewCount > 0
+        ...(product.reviewCount >= 5
           ? {
               aggregateRating: {
                 "@type": "AggregateRating",

@@ -2,7 +2,7 @@
 // data/products/*.json の実データ（画像・価格・アフィリエイトリンク付き）から商品を選び、
 // あらかじめ用意したテーマ（選び方ガイド／比較／シーン別おすすめ）に当てはめて記事JSONを書き出す。
 // 生成された記事は lib/articles.ts 経由で /articles/[slug] に自動表示される。
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
+import { readFileSync, readdirSync, writeFileSync, existsSync, mkdirSync } from "fs";
 import { resolve } from "path";
 import { shortProductName, clampDescription } from "./product-name.mjs";
 
@@ -20,7 +20,7 @@ const CATEGORY_TITLES = {
   capture: "キャプチャーボード",
 };
 
-const ARTICLES_PER_DAY = 5;
+const ARTICLES_PER_DAY = 1;
 
 function loadProducts(category) {
   const raw = readFileSync(resolve(PRODUCTS_DIR, `${category}.json`), "utf-8");
@@ -422,6 +422,17 @@ function generateForDate(date) {
 
   if (!existsSync(ARTICLES_DIR)) mkdirSync(ARTICLES_DIR, { recursive: true });
 
+  // 既存タイトルを収集してタイトル重複チェックに使う
+  const existingTitles = new Set(
+    readdirSync(ARTICLES_DIR)
+      .filter((f) => f.endsWith(".json"))
+      .map((f) => {
+        try { return JSON.parse(readFileSync(resolve(ARTICLES_DIR, f), "utf-8")).title; }
+        catch { return null; }
+      })
+      .filter(Boolean)
+  );
+
   const created = [];
   for (let i = 0; i < ARTICLES_PER_DAY; i++) {
     const rng = makeRng(seedFromString(`${dateStr}-${i}`));
@@ -433,11 +444,16 @@ function generateForDate(date) {
     const slug = slugify(category, themeKey, dateStr, i);
     const filePath = resolve(ARTICLES_DIR, `${slug}.json`);
     if (existsSync(filePath)) {
-      console.log(`スキップ（既存）: ${slug}`);
+      console.log(`スキップ（既存slug）: ${slug}`);
       continue;
     }
 
     const { title, description, blocks, tags } = theme.build(category, products, rng);
+
+    if (existingTitles.has(title)) {
+      console.log(`スキップ（タイトル重複）: ${title.slice(0, 50)}`);
+      continue;
+    }
     const article = {
       slug,
       title,
