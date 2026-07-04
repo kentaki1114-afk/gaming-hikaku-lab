@@ -103,13 +103,15 @@ export default async function ArticlePage({
     })),
   } : null;
 
+  const categoryLabel = CATEGORY_LABELS[article.category] ?? article.category;
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "ホーム", item: SITE_ORIGIN },
       { "@type": "ListItem", position: 2, name: "記事一覧", item: `${SITE_ORIGIN}/articles` },
-      { "@type": "ListItem", position: 3, name: article.title, item: `${SITE_ORIGIN}/articles/${article.slug}` },
+      { "@type": "ListItem", position: 3, name: categoryLabel, item: `${SITE_ORIGIN}/${article.category}` },
+      { "@type": "ListItem", position: 4, name: article.title, item: `${SITE_ORIGIN}/articles/${article.slug}` },
     ],
   };
 
@@ -132,9 +134,8 @@ export default async function ArticlePage({
       <nav className="text-sm text-slate-500 mb-6">
         <Link href="/" className="hover:text-violet-400 transition-colors">ホーム</Link> &gt;{" "}
         <Link href="/articles" className="hover:text-violet-400">記事一覧</Link> &gt;{" "}
-        <Link href={`/${article.category}`} className="text-violet-400 hover:text-violet-300">
-          {CATEGORY_LABELS[article.category]}
-        </Link>
+        <Link href={`/${article.category}`} className="hover:text-violet-400">{categoryLabel}</Link> &gt;{" "}
+        <span className="text-violet-400 line-clamp-1">{article.title}</span>
       </nav>
 
       <header className="mb-10">

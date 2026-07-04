@@ -14,14 +14,24 @@ export function ArticleProductCard({ product, note }: { product: Product; note?:
         <h3 className="text-base font-bold text-white mb-1 leading-snug">{product.name}</h3>
         <p className="text-violet-400 font-bold mb-2">{product.priceLabel}</p>
         {note ? <p className="text-slate-300 text-sm mb-3">{note}</p> : null}
-        <a
-          href={product.affiliateUrl}
-          target="_blank"
-          rel="noopener noreferrer nofollow sponsored"
-          className="inline-block bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm py-2 px-5 rounded-xl transition-colors"
-        >
-          楽天市場でチェックする
-        </a>
+        <div className="flex flex-col sm:flex-row gap-2">
+          <a
+            href={product.affiliateUrl}
+            target="_blank"
+            rel="noopener noreferrer nofollow sponsored"
+            className="flex-1 text-center bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm py-2 px-5 rounded-xl transition-colors"
+          >
+            楽天市場でチェックする
+          </a>
+          <a
+            href={`https://www.amazon.co.jp/s?k=${encodeURIComponent(product.keyword)}&tag=kentaki0d-22`}
+            target="_blank"
+            rel="noopener noreferrer nofollow sponsored"
+            className="flex-1 text-center bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm py-2 px-5 rounded-xl transition-colors"
+          >
+            Amazonでも見る
+          </a>
+        </div>
       </div>
     </div>
   );
