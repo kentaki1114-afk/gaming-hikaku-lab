@@ -5,7 +5,15 @@
   "category": "controllers",
   "publishedAt": "2026-07-02T09:00:00.000Z",
   "updatedAt": "2026-07-02T09:00:00.000Z",
-  "tags": ["Apex Legends", "コントローラー", "パッド", "FPS", "おすすめ", "PS5", "Xbox"],
+  "tags": [
+    "Apex Legends",
+    "コントローラー",
+    "パッド",
+    "FPS",
+    "おすすめ",
+    "PS5",
+    "Xbox"
+  ],
   "blocks": [
     {
       "type": "paragraph",
@@ -184,5 +192,6 @@
         }
       ]
     }
-  ]
+  ],
+  "featured": true
 }

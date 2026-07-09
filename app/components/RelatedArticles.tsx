@@ -17,8 +17,10 @@ export function RelatedArticles({
   excludeSlug?: string;
   limit?: number;
 }) {
+  // 手書きの柱記事（featured）を自動生成記事より優先して内部リンクを集める
   const articles = getAllArticles()
     .filter((a) => a.category === category && a.slug !== excludeSlug)
+    .sort((a, b) => Number(b.featured ?? false) - Number(a.featured ?? false))
     .slice(0, limit);
 
   if (articles.length === 0) return null;

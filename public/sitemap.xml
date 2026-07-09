@@ -238,6 +238,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://gaming-hikaku-lab.com/articles/gaming-keyboard-switch-guide</loc>
+    <lastmod>2026-07-09T09:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://gaming-hikaku-lab.com/articles/headsets-beginnerpick-2026-06-16-1</loc>
     <lastmod>2026-06-16T00:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
@@ -678,6 +684,12 @@
   <url>
     <loc>https://gaming-hikaku-lab.com/articles/ps5-pro-controller-fps-guide</loc>
     <lastmod>2026-06-07T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gaming-hikaku-lab.com/articles/ps5-second-controller-guide</loc>
+    <lastmod>2026-07-08T09:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>

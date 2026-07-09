@@ -5,7 +5,11 @@
   "category": "headsets",
   "publishedAt": "2026-06-10",
   "updatedAt": "2026-06-10",
-  "tags": ["ヘッドセット", "予算別", "PS5"],
+  "tags": [
+    "ヘッドセット",
+    "予算別",
+    "PS5"
+  ],
   "blocks": [
     {
       "type": "paragraph",
@@ -71,5 +75,6 @@
       "type": "paragraph",
       "text": "全価格帯のヘッドセット比較は[ヘッドセットランキング](/headsets)をご覧ください。予算別・用途別に最適なモデルを紹介しています。"
     }
-  ]
+  ],
+  "featured": true
 }

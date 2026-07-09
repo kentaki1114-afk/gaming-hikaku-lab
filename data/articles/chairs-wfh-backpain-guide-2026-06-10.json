@@ -5,7 +5,11 @@
   "category": "chairs",
   "publishedAt": "2026-06-10",
   "updatedAt": "2026-06-10",
-  "tags": ["ゲーミングチェア", "在宅ワーク", "腰痛対策"],
+  "tags": [
+    "ゲーミングチェア",
+    "在宅ワーク",
+    "腰痛対策"
+  ],
   "blocks": [
     {
       "type": "paragraph",
@@ -61,5 +65,6 @@
       "type": "paragraph",
       "text": "全モデルの比較・最新価格は[ゲーミングチェアランキング](/chairs)で確認できます。"
     }
-  ]
+  ],
+  "featured": true
 }

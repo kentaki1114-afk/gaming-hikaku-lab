@@ -5,7 +5,11 @@
   "category": "controllers",
   "publishedAt": "2026-06-10",
   "updatedAt": "2026-06-10",
-  "tags": ["PS5", "コントローラー", "PC接続"],
+  "tags": [
+    "PS5",
+    "コントローラー",
+    "PC接続"
+  ],
   "blocks": [
     {
       "type": "paragraph",
@@ -84,5 +88,6 @@
       "type": "paragraph",
       "text": "PS5コントローラーの全ラインナップ比較は[コントローラーランキング](/controllers)でチェックできます。プロコンから標準モデルまで価格・性能で比較しています。"
     }
-  ]
+  ],
+  "featured": true
 }
