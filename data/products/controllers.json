@@ -1,7 +1,7 @@
 {
   "category": "controllers",
   "title": "コントローラー",
-  "updatedAt": "2026-07-19T13:07:51.364Z",
+  "updatedAt": "2026-07-20T13:57:22.678Z",
   "items": [
     {
       "rank": 1,
@@ -176,8 +176,8 @@
       "rank": 14,
       "keyword": "ホリパッド for Nintendo Switch",
       "name": "ワイヤレスホリパッド for Nintendo Switch ブルー",
-      "price": 6391,
-      "priceLabel": "¥6,391",
+      "price": 6388,
+      "priceLabel": "¥6,388",
       "imageUrl": "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0770/4961818030770.jpg",
       "affiliateUrl": "https://hb.afl.rakuten.co.jp/hgc/g00q072n.fgnn83d6.g00q072n.fgnn9056/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F15930677%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F19638884%2F&rafcid=wsc_i_is_e6ba965e-bcef-44a8-aac1-667f73a2aeb1",
       "itemUrl": "https://hb.afl.rakuten.co.jp/hgc/g00q072n.fgnn83d6.g00q072n.fgnn9056/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F15930677%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F19638884%2F&rafcid=wsc_i_is_e6ba965e-bcef-44a8-aac1-667f73a2aeb1",
@@ -234,8 +234,8 @@
       "affiliateUrl": "https://hb.afl.rakuten.co.jp/hgc/g00upown.fgnn8b05.g00upown.fgnn9846/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgamesir-official%2Fgamesirnova2lite%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fgamesir-official%2Fi%2F10000024%2F&rafcid=wsc_i_is_e6ba965e-bcef-44a8-aac1-667f73a2aeb1",
       "itemUrl": "https://hb.afl.rakuten.co.jp/hgc/g00upown.fgnn8b05.g00upown.fgnn9846/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgamesir-official%2Fgamesirnova2lite%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fgamesir-official%2Fi%2F10000024%2F&rafcid=wsc_i_is_e6ba965e-bcef-44a8-aac1-667f73a2aeb1",
       "shopName": "GameSir公式ショップ",
-      "reviewAverage": 3.2,
-      "reviewCount": 10
+      "reviewAverage": 3.22,
+      "reviewCount": 9
     },
     {
       "rank": 19,
