@@ -433,10 +433,13 @@ function generateForDate(date) {
       .filter(Boolean)
   );
 
+  // 日付ベースでカテゴリを一巡させる（ARTICLES_PER_DAY=1でもcontrollers固定にならないように）
+  const dayIndex = Math.floor(date.getTime() / 86400000);
+
   const created = [];
   for (let i = 0; i < ARTICLES_PER_DAY; i++) {
     const rng = makeRng(seedFromString(`${dateStr}-${i}`));
-    const category = CATEGORY_KEYS[i % CATEGORY_KEYS.length];
+    const category = CATEGORY_KEYS[(dayIndex + i) % CATEGORY_KEYS.length];
     const themeKey = pick(rng, THEME_KEYS);
     const theme = THEMES[themeKey];
     const products = productsByCategory[category];
